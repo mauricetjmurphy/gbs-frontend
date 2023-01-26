@@ -24,7 +24,7 @@ export const Article = (props: Props) => {
 
   return (
     <MainLayout>
-      <ContentLayout>
+      <ContentLayout title={"Article Page"} description={article?.title}>
         <Box sx={{ height: "130px" }}>
           <Button
             sx={{ marginLeft: "74px" }}

@@ -2,6 +2,7 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ContentLayout, MainLayout } from "../../../components";
+import { aboutContent } from "../../../data/about";
 
 type Props = {};
 
@@ -9,7 +10,10 @@ export const About = (props: Props) => {
   const navigate = useNavigate();
   return (
     <MainLayout>
-      <ContentLayout>
+      <ContentLayout
+        title={"About Page"}
+        description={aboutContent.metaDescription}
+      >
         <Box sx={{ height: "130px" }}>
           <Button
             sx={{ marginLeft: "74px" }}
@@ -30,10 +34,7 @@ export const About = (props: Props) => {
               component={"p"}
               gutterBottom
             >
-              Welcome to InTheKnow, a blog site powered by GPT-3 where you can
-              find the latest and most popular information on a variety of
-              topics. Our mission is to keep you informed and up-to-date on the
-              things that matter most to you.
+              {aboutContent.para1}
             </Typography>
             <Typography
               style={{ paddingBottom: "10px" }}
@@ -41,10 +42,7 @@ export const About = (props: Props) => {
               component={"p"}
               gutterBottom
             >
-              Our team of expert writers, editors, and researchers use GPT-3 to
-              produce high-quality content that is accurate, informative, and
-              engaging. We cover a wide range of topics, including technology,
-              science, business, health, entertainment, and more.
+              {aboutContent.para2}
             </Typography>
             <Typography
               style={{ paddingBottom: "10px" }}
@@ -52,10 +50,7 @@ export const About = (props: Props) => {
               component={"p"}
               gutterBottom
             >
-              We understand that everyone has different interests and that's why
-              we strive to provide a diverse range of content for our readers.
-              Whether you're looking for the latest news, in-depth analysis, or
-              just want to stay informed, InTheKnow has something for you.
+              {aboutContent.para3}
             </Typography>
             <Typography
               style={{ paddingBottom: "10px" }}
@@ -63,10 +58,7 @@ export const About = (props: Props) => {
               component={"p"}
               gutterBottom
             >
-              Our site is updated daily with new content, so be sure to check
-              back regularly to see what's new. And if there's a topic you're
-              interested in that you don't see covered on our site, please let
-              us know and we'll do our best to include it in our content.
+              {aboutContent.para4}
             </Typography>
             <Typography
               style={{ paddingBottom: "10px" }}
@@ -74,8 +66,7 @@ export const About = (props: Props) => {
               component={"p"}
               gutterBottom
             >
-              Thank you for visiting InTheKnow. We hope you enjoy reading our
-              content as much as we enjoy creating it.
+              {aboutContent.para5}
             </Typography>
           </Grid>
           <Grid item xs={12} md={6}>
