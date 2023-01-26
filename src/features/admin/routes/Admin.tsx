@@ -9,7 +9,7 @@ export const Admin = (props: Props) => {
   const navigate = useNavigate();
   return (
     <MainLayout>
-      <ContentLayout>
+      <ContentLayout title={"Admin Page"} description={"Administrator page"}>
         <div>About</div>
         <Button onClick={() => navigate("/")}>Home</Button>
       </ContentLayout>
