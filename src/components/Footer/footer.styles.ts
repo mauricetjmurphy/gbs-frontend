@@ -11,7 +11,6 @@ export const footerStyles = {
     alignItems: "center",
     borderBottom: "1px solid #e5e7eb",
     borderTop: "1px solid #e5e7eb",
-    padding: "0 100px",
   },
   footerNewsLetterSection: {
     borderBottom: "1px solid #e5e7eb",

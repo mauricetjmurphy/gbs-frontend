@@ -64,7 +64,6 @@ function ResponsiveAppBar() {
           <Typography
             variant="h4"
             noWrap
-            component="a"
             onClick={() => navigate("/")}
             sx={{
               mr: 2,

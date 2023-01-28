@@ -1,10 +1,19 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import { Box, Grid, Typography, TextField } from "@mui/material";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 export const SignUp = () => {
+  const windowSize = useWindowSize();
+
   return (
-    <Grid sx={{ padding: "0 100px" }} direction="row" container>
+    <Grid
+      sx={
+        windowSize.width > 400 ? { padding: "0 100px" } : { padding: "0 20px" }
+      }
+      direction="row"
+      container
+    >
       <Grid xs={12} md={8} item sx={{ padding: "20px" }}>
         <Typography gutterBottom sx={{ fontWeight: "bold" }} variant={"h6"}>
           Sign up for our free monthly newsletter

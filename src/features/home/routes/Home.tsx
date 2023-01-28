@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { MainLayout } from "../../../components";
+import { ContentLayout, MainLayout } from "../../../components";
 import { API_URL } from "../../../config";
 import { VerticalSection } from "../components/VerticalSection/VerticalSection";
 import { Post } from "../types";
@@ -18,15 +18,22 @@ export const Home = (props: Props) => {
 
   return (
     <MainLayout>
-      <VerticalSection
-        data={verticalSection1Data}
-        textListTitle={"MOST READ"}
-      />
-      <VerticalSection
-        data={verticalSection2Data}
-        textListTitle={"JUST ADDED"}
-        direction="flip"
-      />
+      <ContentLayout
+        title={"Home Page"}
+        description={
+          "Here we share interesting insights and perspectives on the latest news and trends in popular topics."
+        }
+      >
+        <VerticalSection
+          data={verticalSection1Data}
+          textListTitle={"MOST READ"}
+        />
+        <VerticalSection
+          data={verticalSection2Data}
+          textListTitle={"JUST ADDED"}
+          direction="flip"
+        />
+      </ContentLayout>
     </MainLayout>
   );
 };
