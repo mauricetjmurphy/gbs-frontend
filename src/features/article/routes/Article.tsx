@@ -13,7 +13,7 @@ export const Article = (props: Props) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const { isLoading, error, data } = useQuery<Post[], Error>(
+  const { data } = useQuery<Post[], Error>(
     ["posts"],
     () =>
       fetch("http://localhost:4000/posts").then((response) => response.json()),

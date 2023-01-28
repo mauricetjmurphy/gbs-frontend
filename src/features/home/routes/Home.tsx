@@ -8,7 +8,7 @@ import { Post } from "../types";
 type Props = {};
 
 export const Home = (props: Props) => {
-  const { isLoading, error, data } = useQuery<Post[], Error>(["posts"], () =>
+  const { data } = useQuery<Post[], Error>(["posts"], () =>
     fetch(`${API_URL}/posts`).then((response) => response.json())
   );
 
