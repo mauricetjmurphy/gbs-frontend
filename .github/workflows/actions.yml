@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - master
+      - dev
 
 jobs:
   build-and-deploy-frontend:
@@ -26,6 +26,7 @@ jobs:
       - name: Build the app
         run: |
           yarn build:dev
+          echo "REACT_APP_API_URL: $REACT_APP_API_URL"
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
