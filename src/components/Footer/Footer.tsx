@@ -1,8 +1,10 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
+
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { SocialLinks } from "../SocialMedia/SocialLinks";
+
 import { footerStyles } from "./footer.styles";
 import { SignUp } from "./SignUp";
 
@@ -13,7 +15,7 @@ const links = [
   { name: "Contact Support", route: "/support" },
 ];
 
-type Props = {};
+interface Props {}
 
 export const Footer = (props: Props) => {
   const navigate = useNavigate();
@@ -44,7 +46,9 @@ export const Footer = (props: Props) => {
               <Button
                 color="inherit"
                 sx={{ fontSize: "12px" }}
-                onClick={() => navigate(item.route)}
+                onClick={() => {
+                  navigate(item.route);
+                }}
               >
                 {item.name}
               </Button>

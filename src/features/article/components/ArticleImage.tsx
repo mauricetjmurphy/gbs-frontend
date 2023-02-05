@@ -1,10 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 
-type ArticleImageProps = {
+interface ArticleImageProps {
   title: string | undefined;
   image: string | undefined;
-};
+}
 
 export const ArticleImage = ({ title, image }: ArticleImageProps) => {
   return (

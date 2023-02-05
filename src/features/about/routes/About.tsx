@@ -1,10 +1,11 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
 import { ContentLayout, MainLayout } from "../../../components";
 import { aboutContent } from "../../../data/about";
 
-type Props = {};
+interface Props {}
 
 export const About = (props: Props) => {
   const navigate = useNavigate();
@@ -18,7 +19,9 @@ export const About = (props: Props) => {
           <Button
             sx={{ marginLeft: "74px" }}
             variant={"outlined"}
-            onClick={() => navigate("/")}
+            onClick={() => {
+              navigate("/");
+            }}
           >
             Back to home
           </Button>

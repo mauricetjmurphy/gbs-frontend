@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Helmet } from "react-helmet-async";
 
-type HeadProps = {
+interface HeadProps {
   title: string;
   description: string | undefined;
-};
+}
 
 export const Head = ({ title, description }: HeadProps) => {
   return (

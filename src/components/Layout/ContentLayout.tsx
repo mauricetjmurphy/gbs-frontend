@@ -1,13 +1,15 @@
 import { Box } from "@mui/material";
 import React from "react";
+
 import { Head } from "../Head/Head";
+
 import { layoutStyles } from "./layout.styles";
 
-type ContentLayoutProps = {
+interface ContentLayoutProps {
   children: React.ReactElement | React.ReactElement[];
   title: string;
   description: string | undefined;
-};
+}
 
 export const ContentLayout = ({
   children,

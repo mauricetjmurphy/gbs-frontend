@@ -1,12 +1,13 @@
 import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router";
-import { Post } from "../../features/home/types";
+
+import { type Post } from "../../features/home/types";
 import { formatDate } from "../../utils/formatDate";
 
-type MainImageCardProps = {
+interface MainImageCardProps {
   data: Post[] | undefined;
-};
+}
 
 export const MainImageCard: React.FC<MainImageCardProps> = (props) => {
   const navigate = useNavigate();
@@ -18,7 +19,9 @@ export const MainImageCard: React.FC<MainImageCardProps> = (props) => {
 
   return (
     <Button
-      onClick={() => navigate(`/article/${post?.id}`)}
+      onClick={() => {
+        navigate(`/article/${post?.id}`);
+      }}
       sx={{
         width: "100%",
         display: "flex",
@@ -70,7 +73,7 @@ export const MainImageCard: React.FC<MainImageCardProps> = (props) => {
           variant="body1"
           component="p"
         >
-          {post &&
+          {post != null &&
             post.body[0].text.split(".")[0] + post.body[0].text.split(".")[1]}
           ...
         </Typography>

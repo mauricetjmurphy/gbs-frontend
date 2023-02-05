@@ -3,9 +3,11 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import { Box, Button, Grid, List, ListItem, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
-import { navigationStyles } from "./navigation.styles";
-import { SocialLinks } from "../SocialMedia/SocialLinks";
 import SearchIcon from "@mui/icons-material/Search";
+
+import { SocialLinks } from "../SocialMedia/SocialLinks";
+
+import { navigationStyles } from "./navigation.styles";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -133,7 +135,7 @@ const Title: React.FC<TitleProps> = (props) => {
   );
 };
 
-const MainNavigation: React.FC<MainNavigationProps> = (props) => {
+export const MainNavigation: React.FC<MainNavigationProps> = (props) => {
   return (
     <Box style={{ overflow: "hidden" }}>
       <PageNavigation />
@@ -145,5 +147,3 @@ const MainNavigation: React.FC<MainNavigationProps> = (props) => {
     </Box>
   );
 };
-
-export default MainNavigation;

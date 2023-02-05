@@ -1,4 +1,4 @@
-import * as React from "react";
+export const store = {};
 // import { configureStore } from "@reduxjs/toolkit";
 
 // import postReducer from "../features/auth/redux/userSlice";

@@ -1,9 +1,9 @@
 import * as React from "react";
 
-type WindowSize = {
+interface WindowSize {
   width: number;
   height: number;
-};
+}
 
 export const useWindowSize = () => {
   const [windowSize, setWindowSize] = React.useState<WindowSize>({
@@ -22,7 +22,9 @@ export const useWindowSize = () => {
 
     handleResize();
 
-    return () => window.removeEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
   return windowSize;
 };

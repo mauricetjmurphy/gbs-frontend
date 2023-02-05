@@ -13,16 +13,16 @@ import theme from "../styles/Styles";
 const queryClient = new QueryClient();
 
 const handleRefreshClick = async () => {
-  navigator.serviceWorker.getRegistrations().then((registrations) => {
+  await navigator.serviceWorker.getRegistrations().then((registrations) => {
     registrations.forEach((registration) => {
       registration.unregister();
     });
   });
 
-  caches.keys().then((keyList) => {
-    return Promise.all(
-      keyList.map((key) => {
-        return caches.delete(key);
+  caches.keys().then(async (keyList) => {
+    return await Promise.all(
+      keyList.map(async (key) => {
+        return await caches.delete(key);
       })
     );
   });
@@ -32,7 +32,7 @@ const handleRefreshClick = async () => {
   }, 1000);
 };
 
-const ErrorFallback = () => {
+const ErrorFallback: React.FC = () => {
   return (
     <div
       className="w-screen h-screen flex flex-col justify-center items-center"
@@ -53,13 +53,14 @@ const ErrorFallback = () => {
   );
 };
 
-type AppProviderProps = {
+interface AppProviderProps {
   children: React.ReactNode;
-};
+}
 
-export const AppProvider = ({ children }: AppProviderProps) => {
+export const AppProvider: React.FC<AppProviderProps> = ({
+  children,
+}: AppProviderProps) => {
   return (
-    // <Provider store={store}>
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <HelmetProvider>
         <QueryClientProvider client={queryClient}>
@@ -72,6 +73,5 @@ export const AppProvider = ({ children }: AppProviderProps) => {
         </QueryClientProvider>
       </HelmetProvider>
     </ErrorBoundary>
-    // </Provider>
   );
 };

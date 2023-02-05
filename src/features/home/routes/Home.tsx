@@ -1,19 +1,23 @@
-import { Box, Typography } from "@mui/material";
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
+
 import { ContentLayout, MainLayout } from "../../../components";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { API_URL } from "../../../config";
 import { HorizontalSection } from "../components/HorizontalSection/HorizontalSection";
-import VerticalSection from "../components/VerticalSection/VerticalSection";
-import { Post } from "../types";
+import { VerticalSection } from "../components/VerticalSection/VerticalSection";
+import { type Post } from "../types";
 
-type Props = {};
-
-export const Home = (props: Props) => {
-  const { data } = useQuery<Post[], Error>(["posts"], () =>
-    fetch(`${API_URL}/posts`).then((response) => response.json())
+export const Home: React.FC = () => {
+  const { data } = useQuery<Post[], Error>(
+    ["posts"],
+    async () =>
+      await fetch(`${API_URL}/posts`).then(
+        async (response) => await response.json()
+      )
   );
+
+  console.log(data);
 
   const verticalSectionData = data;
 
