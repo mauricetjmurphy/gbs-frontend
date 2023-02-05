@@ -23,10 +23,9 @@ jobs:
       - name: Install dependencies
         run: |
           yarn install
-          yarn add -g cross-env
       - name: Build the app
         run: |
-          cross-env $(cat .env.development) react-scripts build
+          cross-env REACT_APP_API_URL=https://5rfmoewmc6.execute-api.us-east-1.amazonaws.com/dev react-scripts build
           echo "REACT_APP_API_URL: $REACT_APP_API_URL"
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
