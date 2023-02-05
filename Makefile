@@ -21,6 +21,7 @@ run-tests:
 
 deploy-dev: build-dev
 	aws s3 sync --delete build/ s3://gpt-blog-dev-web
+	aws cloudfront create-invalidation --distribution-id "E3K2LH4M35U8R" --paths '/*'
 
 deploy-stg: build-stg
 	aws s3 sync --delete build/ s3://gpt-blog-stg-web
@@ -30,4 +31,4 @@ deploy-dr: build-dr
 
 deploy-prod: build-prod
 	aws s3 sync --delete build/ s3://sgpt-blog-prod-web
-	aws cloudfront create-invalidation --distribution-id "E1CUYQLHXWMCYY" --paths '/*'
+	aws cloudfront create-invalidation --distribution-id "" --paths '/*'

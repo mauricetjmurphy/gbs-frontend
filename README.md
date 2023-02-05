@@ -3,4 +3,4 @@
 - Swagger docs
 - Auth login
 - Image processor
--
+- CI/CD Pipeline
