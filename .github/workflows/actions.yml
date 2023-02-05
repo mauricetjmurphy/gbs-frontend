@@ -19,11 +19,11 @@ jobs:
           sudo apt update
           sudo apt install yarn
           yarn --version
-          yarn add -g cross-env
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: |
           yarn install
+          yarn add -g cross-env
       - name: Build the app
         run: |
           cross-env $(cat .env.development) react-scripts build
