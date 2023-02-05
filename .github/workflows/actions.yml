@@ -19,6 +19,7 @@ jobs:
           sudo apt update
           sudo apt install yarn
           yarn --version
+          yarb add -g cross-env
       - uses: actions/checkout@v2
       - name: Install dependencies
         run: |
@@ -36,4 +37,7 @@ jobs:
       - name: Deploy to S3
         run: |
           aws s3 sync build/ s3://gpt-blog-dev-web --delete
+      - name: Clean up environment files
+        run: |
+          rm build/.env.production build/.env.staging build/.env.development
           aws cloudfront create-invalidation --distribution-id "E3K2LH4M35U8R" --paths '/*'
