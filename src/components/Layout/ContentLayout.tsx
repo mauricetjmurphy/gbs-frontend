@@ -15,9 +15,11 @@ export const ContentLayout = ({
   description,
 }: ContentLayoutProps) => {
   return (
-    <>
-      <Head title={title} description={description} />
-      <Box sx={layoutStyles.contentlayoutContainer}>{children}</Box>;
-    </>
+    <Box sx={layoutStyles.contentlayoutContainer}>
+      <Box>
+        <Head title={title} description={description} />
+        {children}
+      </Box>
+    </Box>
   );
 };

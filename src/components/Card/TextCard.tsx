@@ -1,58 +1,118 @@
-import { Box, ListItem, ListItemText, Typography } from "@mui/material";
+import {
+  Avatar,
+  Box,
+  Button,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router";
 
+import ImageIcon from "@mui/icons-material/Image";
+import { Section } from "../../features/home/types";
+
 type TextCardProps = {
   title: string;
-  category: string;
-  index: number;
   id: string;
+  body: Section[];
 };
 
-export const TextCard = ({ title, category, index, id }: TextCardProps) => {
+export const TextCard = ({ title, id, body }: TextCardProps) => {
   const navigate = useNavigate();
 
   return (
-    <ListItem sx={{ display: "flex", marginTop: "20px" }}>
-      <Box
-        sx={{
-          display: "flex",
-          padding: "14px 20px",
-          marginRight: "15px",
-          border: "2px solid #FF4D53",
-          borderRadius: "27px",
-        }}
+    <Button
+      onClick={() => navigate(`/article/${id}`)}
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        padding: "0px",
+        width: "100%",
+        "&:hover": {
+          backgroundColor: "#fff",
+        },
+      }}
+      disableRipple
+    >
+      <ListItem
+        sx={{ display: "flex", flexDirection: "column", padding: "18px 0px" }}
       >
-        <Box sx={{ color: "#FF4D53", fontWeight: "bold", fontSize: "20px" }}>
-          {index + 1}
-        </Box>
-      </Box>
-      <ListItemText>
-        <Typography
-          gutterBottom
-          sx={{ fontWeight: "bold" }}
-          variant="body1"
-          component="h1"
-          color="#3b82f6"
-        >
-          {category}
-        </Typography>
-        <Typography
-          variant="h5"
-          component="h2"
-          color="#000"
-          onClick={() => navigate(`/article/${id}`)}
+        <Box
           sx={{
-            fontWeight: "bold",
-            "&:hover": {
-              textDecoration: "underline",
-              cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            padding: "0px",
+            width: "100%",
+            ".MuiAvatar-root": {
+              width: "32px",
+              height: "32px",
             },
           }}
         >
-          {title}
-        </Typography>
-      </ListItemText>
-    </ListItem>
+          <ListItemAvatar
+            sx={{
+              display: "flex",
+              justifyContent: "start",
+              minWidth: "0px",
+              paddingRight: "12px",
+            }}
+          >
+            <Avatar
+              sx={{
+                ".MuiSvgIcon-root": {
+                  width: "18px",
+                },
+              }}
+            >
+              <ImageIcon />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText>
+            <Typography variant="h6" component={"h1"}>
+              Admin
+            </Typography>
+            <Typography variant="h6" component={"h2"}>
+              Dec 15, 2022
+            </Typography>
+          </ListItemText>
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            marginTop: "8px",
+            padding: "0px",
+          }}
+        >
+          <ListItemText>
+            <Typography
+              variant="h1"
+              component="h1"
+              color="#000"
+              sx={{
+                textAlign: "left",
+                "&:hover": {
+                  textDecoration: "underline",
+                },
+              }}
+              gutterBottom
+            >
+              {title}
+            </Typography>
+            <Typography
+              variant={"body2"}
+              component={"p"}
+              sx={{
+                textAlign: "left",
+              }}
+            >
+              {body && `${body[0].text.split(".")[0]}.`}
+            </Typography>
+          </ListItemText>
+        </Box>
+      </ListItem>
+    </Button>
   );
 };

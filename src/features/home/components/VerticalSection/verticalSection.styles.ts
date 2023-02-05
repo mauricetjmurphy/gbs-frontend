@@ -1,7 +1,5 @@
 export const verticalSectionStyles = {
-  verticalSectionContainer: {
-    padding: "50px 50px",
-  },
+  verticalSectionContainer: {},
   verticalCardContainer: {
     width: "100%",
     display: "flex",
@@ -10,7 +8,9 @@ export const verticalSectionStyles = {
   },
   verticalCardListContainer: {
     display: "flex",
+    flexDirection: "column",
     justifyContent: "center",
+    width: "100%",
   },
   verticalTitledListContainer: {
     display: "flex",

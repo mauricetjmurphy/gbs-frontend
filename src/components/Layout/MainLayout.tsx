@@ -8,10 +8,10 @@ type MainLayoutProps = {
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
   return (
-    <>
-      <MainNavigation />
+    <main>
+      <MainNavigation text="test" />
       {children}
       <Footer />
-    </>
+    </main>
   );
 };
