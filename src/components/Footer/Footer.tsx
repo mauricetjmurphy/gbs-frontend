@@ -1,8 +1,8 @@
-import { Box, Button, Grid, List, ListItem, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useWindowSize } from "../../hooks/useWindowSize";
+import { SocialLinks } from "../SocialMedia/SocialLinks";
 import { footerStyles } from "./footer.styles";
 import { SignUp } from "./SignUp";
 
@@ -11,11 +11,6 @@ const links = [
   { name: "Privacy Policy", route: "/privacy" },
   { name: "Cookies Policy", route: "/cookies" },
   { name: "Contact Support", route: "/support" },
-];
-
-const socialIcons = [
-  { name: "", icon: "" },
-  { name: "", icon: "" },
 ];
 
 type Props = {};
@@ -77,13 +72,7 @@ export const Footer = (props: Props) => {
               of Gemtech Solutions LTD.
             </Typography>
           </Grid>
-          <Grid xs={12} md={4} item>
-            <List>
-              {socialIcons.map((item) => (
-                <ListItem key={nanoid()}>{item.icon}</ListItem>
-              ))}
-            </List>
-          </Grid>
+          <SocialLinks />
         </Grid>
       </Box>
     </Box>

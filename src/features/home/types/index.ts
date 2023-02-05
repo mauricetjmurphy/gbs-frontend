@@ -1,9 +1,9 @@
-type Section = {
+export interface Section {
   title: string;
   text: string;
-};
+}
 
-export type Post = {
+export interface Post {
   id: string;
   image_url: string;
   title: string;
@@ -11,4 +11,4 @@ export type Post = {
   body: Section[];
   author: string;
   date: string;
-};
+}

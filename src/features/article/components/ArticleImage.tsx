@@ -9,7 +9,12 @@ type ArticleImageProps = {
 export const ArticleImage = ({ title, image }: ArticleImageProps) => {
   return (
     <Box sx={{ paddingBottom: "50px" }}>
-      <Typography gutterBottom sx={{ fontSize: "42px", fontWeight: "bold" }}>
+      <Typography
+        variant="h1"
+        component={"h1"}
+        gutterBottom
+        sx={{ fontSize: "42px", fontWeight: 500, paddingBottom: "20px" }}
+      >
         {title}
       </Typography>
       <Box>

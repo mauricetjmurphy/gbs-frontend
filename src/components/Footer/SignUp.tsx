@@ -15,10 +15,10 @@ export const SignUp = () => {
       container
     >
       <Grid xs={12} md={8} item sx={{ padding: "20px" }}>
-        <Typography gutterBottom sx={{ fontWeight: "bold" }} variant={"h6"}>
+        <Typography gutterBottom sx={{ fontWeight: "bold" }} variant={"body1"}>
           Sign up for our free monthly newsletter
         </Typography>
-        <Typography>
+        <Typography variant="body2">
           We'll be in your inbox every Saturday morning with all the day’s top
           business news, inspiring stories, best advice and exclusive reporting
           from InTheKnow.

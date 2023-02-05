@@ -6,6 +6,8 @@ import { Post } from "../../home/types";
 import { ArticleImage } from "../components/ArticleImage";
 import { ArticleList } from "../components/ArticleList";
 import { Box, Button, Grid } from "@mui/material";
+import { ImageCardList } from "../../../components/Card/ImageCardList";
+import { PageTitle } from "../../../components/PageTitle/PageTitle";
 
 type Props = {};
 
@@ -21,26 +23,39 @@ export const Article = (props: Props) => {
   );
 
   const article = data?.filter((item: Post) => item.id === id)[0];
+  const ImageCardListData = data?.slice(0, 5);
 
   return (
     <MainLayout>
       <ContentLayout title={"Article Page"} description={article?.title}>
-        <Box sx={{ height: "130px" }}>
+        <PageTitle title={article?.category} />
+        <Box sx={{ height: "60px", display: "flex", alignItems: "center" }}>
           <Button
-            sx={{ marginLeft: "74px" }}
             variant={"outlined"}
             onClick={() => navigate("/")}
+            size={"small"}
+            color={"inherit"}
           >
             Back to home
           </Button>
         </Box>
-        <Grid container sx={{ padding: "50px 50px" }}>
-          <Grid item md={2} xs={12}></Grid>
-          <Grid item md={8} xs={12}>
+        <Grid container sx={{ padding: "20px 0 50px 0" }}>
+          <Grid
+            item
+            md={8}
+            xs={12}
+            sx={{ background: "#fff", padding: "50px" }}
+          >
             <ArticleImage title={article?.title} image={article?.image_url} />
             <ArticleList article={article} />
           </Grid>
-          <Grid item md={2} xs={12}></Grid>
+          <Grid item md={4} xs={12} sx={{ padding: "0px 50px" }}>
+            <ImageCardList
+              direction="vertical"
+              data={ImageCardListData}
+              sectionTitle={"Top Stories"}
+            />
+          </Grid>
         </Grid>
       </ContentLayout>
     </MainLayout>

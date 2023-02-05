@@ -2,20 +2,23 @@ import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router";
 import { Post } from "../../features/home/types";
+import { formatDate } from "../../utils/formatDate";
 
-type VerticalCard2Props = {
+type MainImageCardProps = {
   data: Post[] | undefined;
 };
 
-export const MainImageCard = ({ data }: VerticalCard2Props) => {
+export const MainImageCard: React.FC<MainImageCardProps> = (props) => {
   const navigate = useNavigate();
-  // if (isLoading) return <h1>"Loading..."</h1>;
+  const { data } = props;
+  const post = data && data[0];
 
+  // if (isLoading) return <h1>"Loading..."</h1>;
   // if (error) return <h1>"An error has occurred"</h1>;
 
   return (
     <Button
-      onClick={() => navigate(`/article/${data && data[2].id}`)}
+      onClick={() => navigate(`/article/${post?.id}`)}
       sx={{
         width: "100%",
         display: "flex",
@@ -28,51 +31,47 @@ export const MainImageCard = ({ data }: VerticalCard2Props) => {
       }}
       disableRipple
     >
-      <Box sx={{ height: "500px", width: "100%" }}>
+      <Box sx={{ width: "100%" }}>
         <img
-          src={data && data[2].image_url}
+          src={post?.image_url}
           style={{
             objectFit: "cover",
             height: "100%",
             width: "100%",
-            borderRadius: "25px",
+            border: "none",
           }}
-          alt={data && data[2].title}
+          alt={post?.title || "image"}
         />
       </Box>
       <Box>
         <Typography
-          gutterBottom
-          variant="h5"
-          component="h1"
-          color="#3b82f6"
-          sx={{ fontWeight: "bold", paddingTop: "20px", textAlign: "left" }}
+          variant={"h6"}
+          component={"h2"}
+          sx={{ textAlign: "left", padding: "26px 0px" }}
         >
-          {data && data[2].category}
+          {formatDate(new Date())}
         </Typography>
         <Typography
           gutterBottom
-          variant="h3"
-          component="h2"
+          variant="h1"
+          component="h1"
           sx={{
-            fontWeight: "bold",
+            fontSize: "64px",
             textAlign: "left",
             "&:hover": {
               textDecoration: "underline",
             },
           }}
         >
-          {data && data[2].title}
+          {post?.title}
         </Typography>
         <Typography
-          style={{ textAlign: "left" }}
-          variant="h6"
-          component="h3"
-          color={"#6b7280"}
+          style={{ textAlign: "left", fontSize: "18px" }}
+          variant="body1"
+          component="p"
         >
-          {data &&
-            data[2].body[0].text.split(".")[0] +
-              data[2].body[0].text.split(".")[1]}
+          {post &&
+            post.body[0].text.split(".")[0] + post.body[0].text.split(".")[1]}
           ...
         </Typography>
       </Box>

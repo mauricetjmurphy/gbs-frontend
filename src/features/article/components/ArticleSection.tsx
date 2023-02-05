@@ -9,11 +9,16 @@ type ArticleTextParaProps = {
 export const ArticleSection = ({ title, text }: ArticleTextParaProps) => {
   return (
     <Box sx={{ paddingBottom: "50px" }}>
-      <Typography gutterBottom sx={{ fontSize: "22px", fontWeight: "bold" }}>
+      <Typography
+        variant="h1"
+        component={"h1"}
+        sx={{ fontSize: "22px", marginBottom: "20px" }}
+      >
         {title}
       </Typography>
       <Typography
-        sx={{ fontSize: "18px", letterSpacing: ".5px", color: "#292929" }}
+        variant="body2"
+        sx={{ fontSize: "15px", letterSpacing: ".5px", color: "#292929" }}
       >
         {text}
       </Typography>
