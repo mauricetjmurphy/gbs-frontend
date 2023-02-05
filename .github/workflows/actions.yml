@@ -25,7 +25,7 @@ jobs:
           yarn install
       - name: Build the app
         run: |
-          yarn build:dev
+          env-cmd -f ./config/.env.development yarn build
           echo "REACT_APP_API_URL: $REACT_APP_API_URL"
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
