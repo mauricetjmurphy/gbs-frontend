@@ -12,7 +12,7 @@ interface MainImageCardProps {
 export const MainImageCard: React.FC<MainImageCardProps> = (props) => {
   const navigate = useNavigate();
   const { data } = props;
-  const post = data != null && data[0];
+  const post = data && data[0];
 
   // if (isLoading) return <h1>"Loading..."</h1>;
   // if (error) return <h1>"An error has occurred"</h1>;

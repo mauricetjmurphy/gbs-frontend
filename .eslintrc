@@ -1,7 +1,5 @@
 {
   "extends": [
-    "plugin:react/recommended",
-    "plugin:react/jsx-runtime",
     "plugin:sonarjs/recommended",
     "plugin:prettier/recommended",
     "plugin:import/recommended",

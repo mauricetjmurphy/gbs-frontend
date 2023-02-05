@@ -7,18 +7,14 @@ import { type Section } from "../../features/home/types";
 
 interface ListImageCardProps {
   id: string;
-  category: string;
   title: string;
-  author: string;
   image_url: string;
   body: Section[];
 }
 
 export const ImageCard = ({
   id,
-  category,
   title,
-  author,
   image_url,
   body,
 }: ListImageCardProps) => {

@@ -29,9 +29,7 @@ export const ImageCardList: React.FC<ImageCardListProps> = (
     >
       <ImageCard
         id={item.id}
-        category={item.category}
         title={item.title}
-        author={item.author}
         image_url={item.image_url}
         body={item.body}
       />

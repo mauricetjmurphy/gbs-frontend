@@ -17,6 +17,8 @@ export const Home: React.FC = () => {
       )
   );
 
+  console.log(data);
+
   const verticalSectionData = data;
 
   const horizontalSection = data?.slice(0, 5);
