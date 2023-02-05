@@ -1,11 +1,11 @@
 import { Grid, IconButton, List, ListItem } from "@mui/material";
 import { nanoid } from "nanoid";
 import React from "react";
-import { navigationStyles } from "../Navigation/navigation.styles";
-
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
+
+import { navigationStyles } from "../Navigation/navigation.styles";
 
 interface SocialNavigationItem {
   name: string;

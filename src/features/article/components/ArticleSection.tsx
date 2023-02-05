@@ -1,10 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 
-type ArticleTextParaProps = {
+interface ArticleTextParaProps {
   title: string;
   text: string;
-};
+}
 
 export const ArticleSection = ({ title, text }: ArticleTextParaProps) => {
   return (

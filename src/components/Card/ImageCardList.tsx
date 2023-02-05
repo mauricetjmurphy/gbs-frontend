@@ -1,7 +1,9 @@
 import { Box, Divider, List, ListItem, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
+
+import { type Post } from "../../features/home/types";
+
 import { ImageCard } from "./ImageCard";
-import { Post } from "../../features/home/types";
 
 interface ImageCardListProps {
   data: Post[] | undefined;
@@ -9,7 +11,9 @@ interface ImageCardListProps {
   direction: string;
 }
 
-export const ImageCardList: React.FC<ImageCardListProps> = (props) => {
+export const ImageCardList: React.FC<ImageCardListProps> = (
+  props: ImageCardListProps
+) => {
   const { data, sectionTitle, direction } = props;
   // if (isLoading) return <h1>"Loading..."</h1>;
 

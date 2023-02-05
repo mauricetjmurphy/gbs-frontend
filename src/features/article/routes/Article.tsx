@@ -1,15 +1,16 @@
 import * as React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router";
+import { Box, Button, Grid } from "@mui/material";
+
 import { ContentLayout, MainLayout } from "../../../components";
-import { Post } from "../../home/types";
+import { type Post } from "../../home/types";
 import { ArticleImage } from "../components/ArticleImage";
 import { ArticleList } from "../components/ArticleList";
-import { Box, Button, Grid } from "@mui/material";
 import { ImageCardList } from "../../../components/Card/ImageCardList";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 
-type Props = {};
+interface Props {}
 
 export const Article = (props: Props) => {
   const { id } = useParams();
@@ -17,8 +18,10 @@ export const Article = (props: Props) => {
 
   const { data } = useQuery<Post[], Error>(
     ["posts"],
-    () =>
-      fetch("http://localhost:4000/posts").then((response) => response.json()),
+    async () =>
+      await fetch("http://localhost:4000/posts").then(
+        async (response) => await response.json()
+      ),
     { cacheTime: 1000 * 60 * 120 }
   );
 
@@ -32,7 +35,9 @@ export const Article = (props: Props) => {
         <Box sx={{ height: "60px", display: "flex", alignItems: "center" }}>
           <Button
             variant={"outlined"}
-            onClick={() => navigate("/")}
+            onClick={() => {
+              navigate("/");
+            }}
             size={"small"}
             color={"inherit"}
           >

@@ -2,16 +2,17 @@ import * as React from "react";
 import Typography from "@mui/material/Typography";
 import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router";
-import { Section } from "../../features/home/types";
 
-type ListImageCardProps = {
+import { type Section } from "../../features/home/types";
+
+interface ListImageCardProps {
   id: string;
   category: string;
   title: string;
   author: string;
   image_url: string;
   body: Section[];
-};
+}
 
 export const ImageCard = ({
   id,
@@ -24,7 +25,9 @@ export const ImageCard = ({
   const navigate = useNavigate();
   return (
     <Button
-      onClick={() => navigate(`/article/${id}`)}
+      onClick={() => {
+        navigate(`/article/${id}`);
+      }}
       sx={{
         display: "flex",
         flexDirection: "column",

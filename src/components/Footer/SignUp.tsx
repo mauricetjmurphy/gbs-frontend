@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
 import { Box, Grid, Typography, TextField } from "@mui/material";
+
 import { useWindowSize } from "../../hooks/useWindowSize";
 
 export const SignUp = () => {
@@ -19,9 +20,9 @@ export const SignUp = () => {
           Sign up for our free monthly newsletter
         </Typography>
         <Typography variant="body2">
-          We'll be in your inbox every Saturday morning with all the day’s top
+          {`We'll be in your inbox every Saturday morning with all the day’s top
           business news, inspiring stories, best advice and exclusive reporting
-          from InTheKnow.
+          from InTheKnow.`}
         </Typography>
       </Grid>
       <Grid xs={12} md={4} item sx={{ padding: "20px" }}>
@@ -57,9 +58,9 @@ export const SignUp = () => {
               variant={"subtitle2"}
               gutterBottom
             >
-              I understand that the data I am submitting will be used to provide
+              {`I understand that the data I am submitting will be used to provide
               me with the above-described products and/or services and
-              communications in connection therewith.
+              communications in connection therewith.`}
             </Typography>
             <Typography
               variant={"subtitle2"}

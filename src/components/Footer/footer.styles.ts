@@ -1,3 +1,5 @@
+const BORDER_BOTTOM = "1px solid #e5e7eb";
+
 export const footerStyles = {
   footerContainer: {
     background: "#f3f4f6",
@@ -9,17 +11,17 @@ export const footerStyles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderBottom: "1px solid #e5e7eb",
+    borderBottom: BORDER_BOTTOM,
     borderTop: "1px solid #e5e7eb",
   },
   footerNewsLetterSection: {
-    borderBottom: "1px solid #e5e7eb",
+    borderBottom: BORDER_BOTTOM,
     display: "flex",
     alignItems: "center",
   },
   footerSocialSection: {
     padding: "20px",
-    borderBottom: "1px solid #e5e7eb",
+    borderBottom: BORDER_BOTTOM,
     display: "flex",
     alignItems: "center",
   },

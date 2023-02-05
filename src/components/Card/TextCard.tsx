@@ -9,22 +9,24 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router";
-
 import ImageIcon from "@mui/icons-material/Image";
-import { Section } from "../../features/home/types";
 
-type TextCardProps = {
+import { type Section } from "../../features/home/types";
+
+interface TextCardProps {
   title: string;
   id: string;
   body: Section[];
-};
+}
 
 export const TextCard = ({ title, id, body }: TextCardProps) => {
   const navigate = useNavigate();
 
   return (
     <Button
-      onClick={() => navigate(`/article/${id}`)}
+      onClick={() => {
+        navigate(`/article/${id}`);
+      }}
       sx={{
         display: "flex",
         flexDirection: "column",

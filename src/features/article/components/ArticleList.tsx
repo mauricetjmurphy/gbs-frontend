@@ -1,16 +1,18 @@
 import { nanoid } from "nanoid";
 import React from "react";
-import { Post } from "../../home/types";
+
+import { type Post } from "../../home/types";
+
 import { ArticleSection } from "./ArticleSection";
 
-type ArticleListProps = {
+interface ArticleListProps {
   article: Post | undefined;
-};
+}
 
-type Section = {
+interface Section {
   title: string;
   text: string;
-};
+}
 
 export const ArticleList = ({ article }: ArticleListProps) => {
   return (

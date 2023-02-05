@@ -1,10 +1,12 @@
 import { Box, Divider, Grid, List, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
 import React from "react";
+
 import { MainImageCard } from "../../../../components/Card/MainImageCard";
 import { TextCard } from "../../../../components/Card/TextCard";
-import { Post } from "../../types";
+import { type Post } from "../../types";
 import { ImageCardList } from "../../../../components/Card/ImageCardList";
+
 import { verticalSectionStyles } from "./verticalSection.styles";
 
 interface VerticalSectionProps {
@@ -54,7 +56,7 @@ const VerticalCard: React.FC<VerticalCardProps> = ({
   );
 };
 
-const VerticalSection: React.FC<VerticalSectionProps> = (props) => {
+export const VerticalSection: React.FC<VerticalSectionProps> = (props) => {
   const { data } = props;
 
   const imageCardListData = data?.slice(0, 2);
@@ -81,5 +83,3 @@ const VerticalSection: React.FC<VerticalSectionProps> = (props) => {
     </Box>
   );
 };
-
-export default VerticalSection;

@@ -1,5 +1,6 @@
 export const aboutContent = {
-  metaDescription: `Welcome to our blog! Here we share interesting insights and perspectives on the latest news and trends in popular topics. From celebrity gossip to tech advancements, you can count on us to provide you with the latest information.`,
+  metaDescription:
+    "Welcome to our blog! Here we share interesting insights and perspectives on the latest news and trends in popular topics. From celebrity gossip to tech advancements, you can count on us to provide you with the latest information.",
   para1: `Welcome to InTheKnow, a blog site powered by GPT-3 where you can
   find the latest and most popular information on a variety of
   topics. Our mission is to keep you informed and up-to-date on the
