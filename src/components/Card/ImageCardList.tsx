@@ -23,12 +23,12 @@ export const ImageCardList: React.FC<ImageCardListProps> = (
 
   const cards = data?.map((item: Post) => (
     <ListItem
+      disablePadding
       key={nanoid()}
       sx={{
         display: "flex",
         justifyContent: "center",
         width: "100%",
-        padding: direction === "vertical" ? "10px" : "0px 5px",
       }}
     >
       <ImageCard
@@ -49,7 +49,7 @@ export const ImageCardList: React.FC<ImageCardListProps> = (
             flexDirection: "column",
             justifyContent: "center",
             width: "100%",
-            padding: width > 600 ? "0px" : "0 10px",
+            padding: width > 600 ? "0px" : "0 20px",
           }}
         >
           <Typography variant={"h1"} component={"h1"}>

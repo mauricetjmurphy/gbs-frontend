@@ -10,7 +10,7 @@ export const SignUp = () => {
   return (
     <Grid
       sx={{
-        padding: width > 400 ? "0 100px" : "0px",
+        padding: width > 600 ? "0 100px" : "0px",
       }}
       direction="row"
       container
