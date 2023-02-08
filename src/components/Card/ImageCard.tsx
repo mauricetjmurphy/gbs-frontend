@@ -43,7 +43,6 @@ export const ImageCard = ({
         <img
           src={image_url}
           style={{
-            objectFit: "cover",
             height: "100%",
             width: "100%",
             border: "none",

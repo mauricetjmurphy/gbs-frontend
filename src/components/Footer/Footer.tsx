@@ -19,15 +19,13 @@ interface Props {}
 
 export const Footer = (props: Props) => {
   const navigate = useNavigate();
-  const windowSize = useWindowSize();
+  const { width } = useWindowSize();
 
   return (
     <Box sx={footerStyles.footerContainer}>
       <Box
         sx={{
-          ...(windowSize.width > 400
-            ? { padding: "0 100px" }
-            : { padding: "0 20px" }),
+          padding: width > 600 ? "0 100px" : "0 20px",
           ...footerStyles.footerLinkSection,
         }}
       >
@@ -61,11 +59,9 @@ export const Footer = (props: Props) => {
       </Box>
       <Box sx={footerStyles.footerSocialSection}>
         <Grid
-          sx={
-            windowSize.width > 400
-              ? { padding: "0 100px" }
-              : { padding: "0 20px" }
-          }
+          sx={{
+            padding: width > 600 ? "0 100px" : "0px",
+          }}
           direction="row"
           container
         >

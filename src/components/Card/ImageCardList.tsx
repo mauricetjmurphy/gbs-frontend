@@ -1,4 +1,4 @@
-import { Box, Divider, List, ListItem, Typography } from "@mui/material";
+import { Box, Divider, Grid, List, ListItem, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
 
 import { type Post } from "../../features/home/types";
@@ -22,8 +22,8 @@ export const ImageCardList: React.FC<ImageCardListProps> = (
   // if (error) return <h1>"An error has occurred"</h1>;
 
   const cards = data?.map((item: Post) => (
-    <ListItem
-      disablePadding
+    <Grid
+      item
       key={nanoid()}
       sx={{
         display: "flex",
@@ -37,7 +37,7 @@ export const ImageCardList: React.FC<ImageCardListProps> = (
         image_url={item.image_url}
         body={item.body}
       />
-    </ListItem>
+    </Grid>
   ));
 
   return (
@@ -49,18 +49,20 @@ export const ImageCardList: React.FC<ImageCardListProps> = (
             flexDirection: "column",
             justifyContent: "center",
             width: "100%",
-            padding: width > 600 ? "0px" : "0 20px",
           }}
         >
-          <Typography variant={"h1"} component={"h1"}>
-            {sectionTitle}
-          </Typography>
+          <Box sx={{ padding: "0 20px" }}>
+            <Typography variant={"h1"} component={"h1"}>
+              {sectionTitle}
+            </Typography>
 
-          <Divider
-            sx={{ background: "#000", marginTop: "8px", width: "100%" }}
-          />
+            <Divider
+              sx={{ background: "#000", marginTop: "8px", width: "100%" }}
+            />
+          </Box>
 
-          <List
+          <Grid
+            container
             sx={{
               padding: "0px",
               display: "flex",
@@ -68,7 +70,7 @@ export const ImageCardList: React.FC<ImageCardListProps> = (
             }}
           >
             {cards}
-          </List>
+          </Grid>
         </Box>
       )}
 

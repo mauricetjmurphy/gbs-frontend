@@ -20,6 +20,7 @@ export const ContentLayout = ({
   const { width } = useWindowSize();
   return (
     <Box
+      maxWidth={"100vw"}
       sx={{
         padding: width > 600 ? "0 150px" : "0px 20px",
         ...layoutStyles.contentlayoutContainer,

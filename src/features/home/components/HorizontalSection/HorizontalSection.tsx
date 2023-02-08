@@ -19,6 +19,7 @@ export const HorizontalSection: React.FC<HorizontalSectionProps> = (props) => {
       sx={{
         padding: "100px 0px",
         display: "flex",
+        maxWidth: "100vw",
       }}
     >
       <ImageCardList
