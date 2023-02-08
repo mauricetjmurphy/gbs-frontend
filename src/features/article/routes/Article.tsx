@@ -9,12 +9,14 @@ import { ArticleImage } from "../components/ArticleImage";
 import { ArticleList } from "../components/ArticleList";
 import { ImageCardList } from "../../../components/Card/ImageCardList";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
+import { useWindowSize } from "../../../hooks/useWindowSize";
 
 interface Props {}
 
 export const Article = (props: Props) => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { width } = useWindowSize();
 
   const { data } = useQuery<Post[], Error>(
     ["posts"],
@@ -49,12 +51,17 @@ export const Article = (props: Props) => {
             item
             md={8}
             xs={12}
-            sx={{ background: "#fff", padding: "50px" }}
+            sx={{ background: "#fff", padding: width > 600 ? "50px" : "20px" }}
           >
             <ArticleImage title={article?.title} image={article?.image_url} />
             <ArticleList article={article} />
           </Grid>
-          <Grid item md={4} xs={12} sx={{ padding: "0px 50px" }}>
+          <Grid
+            item
+            md={4}
+            xs={12}
+            sx={{ padding: width > 600 ? "0px 50px" : "0px" }}
+          >
             <ImageCardList
               direction="vertical"
               data={ImageCardListData}

@@ -1,11 +1,25 @@
 import * as React from "react";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
-import { Box, Button, Grid, List, ListItem, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  List,
+  ListItem,
+  Typography,
+  Drawer,
+  Divider,
+  ListItemButton,
+  ListItemText,
+  IconButton,
+} from "@mui/material";
 import { nanoid } from "nanoid";
 import SearchIcon from "@mui/icons-material/Search";
+import MenuIcon from "@mui/icons-material/Menu";
 
 import { SocialLinks } from "../SocialMedia/SocialLinks";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 import { navigationStyles } from "./navigation.styles";
 
@@ -52,7 +66,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-interface PageNavigationProps {}
+interface PageNavigationProps {
+  handleDrawerToggle: () => void;
+}
 
 interface SearchProps {}
 
@@ -77,27 +93,46 @@ const navigation = [
   { name: "All Articles", route: "/articles" },
 ].filter(Boolean) as NavigationItem[];
 
-const PageNavigation: React.FC<PageNavigationProps> = () => {
+const PageNavigation: React.FC<PageNavigationProps> = (props) => {
+  const { width } = useWindowSize();
   return (
-    <Box style={navigationStyles.secondaryNavSection}>
+    <Box
+      style={{
+        justifyContent: width > 600 ? "center" : "space-between",
+        ...navigationStyles.secondaryNavSection,
+      }}
+    >
       <List style={navigationStyles.pageLinkList}>
-        {navigation.map((item) => (
-          <ListItem style={navigationStyles.pageListItem} key={nanoid()}>
-            <Button
-              sx={{
-                padding: "0px",
-                color: "#000",
-                "&:hover": {
-                  color: "#00000080",
-                  backgroundColor: "transparent",
-                },
-              }}
-              disableRipple
-            >
-              {item.name}
-            </Button>
-          </ListItem>
-        ))}
+        {width < 600 && (
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            edge="start"
+            onClick={props.handleDrawerToggle}
+            sx={{ mr: 2, display: { sm: "none" } }}
+          >
+            <MenuIcon />
+          </IconButton>
+        )}
+
+        {width > 600 &&
+          navigation.map((item) => (
+            <ListItem style={navigationStyles.pageListItem} key={nanoid()}>
+              <Button
+                sx={{
+                  padding: "0px",
+                  color: "#000",
+                  "&:hover": {
+                    color: "#00000080",
+                    backgroundColor: "transparent",
+                  },
+                }}
+                disableRipple
+              >
+                {item.name}
+              </Button>
+            </ListItem>
+          ))}
       </List>
     </Box>
   );
@@ -105,7 +140,12 @@ const PageNavigation: React.FC<PageNavigationProps> = () => {
 
 const SearchSection: React.FC<SearchProps> = (props) => {
   return (
-    <Grid item md={4} xs={12} style={navigationStyles.searchContainer}>
+    <Grid
+      item
+      md={4}
+      xs={12}
+      style={{ padding: "20px", ...navigationStyles.searchContainer }}
+    >
       <Search>
         <SearchIconWrapper>
           <SearchIcon sx={{ width: "18px" }} />
@@ -122,12 +162,13 @@ const SearchSection: React.FC<SearchProps> = (props) => {
 
 const Title: React.FC<TitleProps> = (props) => {
   const { title } = props;
+  const windowSize = useWindowSize();
   return (
     <Grid item md={4} xs={12} style={navigationStyles.titleContainer}>
       <Typography
         variant={"h1"}
         component={"h1"}
-        sx={{ fontSize: "30px", cursor: "pointer" }}
+        sx={{ fontSize: "30px", cursor: "pointer", textAlign: "center" }}
       >
         {title}
       </Typography>
@@ -136,14 +177,68 @@ const Title: React.FC<TitleProps> = (props) => {
 };
 
 export const MainNavigation: React.FC<MainNavigationProps> = (props) => {
-  return (
-    <Box style={{ overflow: "hidden" }}>
-      <PageNavigation />
-      <Grid container style={navigationStyles.primaryNavSection}>
-        <SearchSection />
-        <Title title={"Never Too Late"} />
-        <SocialLinks />
-      </Grid>
+  const { width } = useWindowSize();
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen((prevState) => !prevState);
+  };
+
+  const drawer = (
+    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
+      <List>
+        {navigation.map((item) => (
+          <ListItem key={nanoid()} disablePadding>
+            <ListItemButton sx={{ textAlign: "center" }}>
+              <ListItemText primary={item.name} />
+            </ListItemButton>
+          </ListItem>
+        ))}
+      </List>
     </Box>
+  );
+
+  const container =
+    typeof window !== "undefined" ? window.document.body : undefined;
+
+  return (
+    <>
+      <Box component="nav">
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+          anchor="left"
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              marginTop: "50px",
+              boxSizing: "border-box",
+              width: "100vw",
+            },
+          }}
+        >
+          {drawer}
+        </Drawer>
+      </Box>
+      <Box style={{ overflow: "hidden" }}>
+        <PageNavigation handleDrawerToggle={handleDrawerToggle} />
+        <Grid
+          container
+          style={{
+            padding: width > 600 ? "0 100px" : "0 50px",
+            ...navigationStyles.primaryNavSection,
+          }}
+        >
+          <SearchSection />
+          <Title title={"Never Too Late"} />
+          <SocialLinks />
+        </Grid>
+      </Box>
+    </>
   );
 };

@@ -3,6 +3,7 @@ import React from "react";
 
 import { type Post } from "../../types";
 import { ImageCardList } from "../../../../components/Card/ImageCardList";
+import { useWindowSize } from "../../../../hooks/useWindowSize";
 
 interface HorizontalSectionProps {
   title: string;
@@ -11,9 +12,15 @@ interface HorizontalSectionProps {
 
 export const HorizontalSection: React.FC<HorizontalSectionProps> = (props) => {
   const { title, data } = props;
+  const windowSize = useWindowSize();
 
   return (
-    <Box sx={{ padding: "100px 0px" }}>
+    <Box
+      sx={{
+        padding: "100px 0px",
+        display: "flex",
+      }}
+    >
       <ImageCardList
         direction={"horizontal"}
         sectionTitle={title}

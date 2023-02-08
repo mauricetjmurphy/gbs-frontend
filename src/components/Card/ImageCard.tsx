@@ -4,6 +4,7 @@ import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router";
 
 import { type Section } from "../../features/home/types";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 interface ListImageCardProps {
   id: string;
@@ -19,6 +20,8 @@ export const ImageCard = ({
   body,
 }: ListImageCardProps) => {
   const navigate = useNavigate();
+  const { width } = useWindowSize();
+
   return (
     <Button
       onClick={() => {
@@ -32,6 +35,7 @@ export const ImageCard = ({
         "&:hover": {
           backgroundColor: "transparent",
         },
+        ".MuiButton-text": { padding: "0px" },
       }}
       disableRipple
     >

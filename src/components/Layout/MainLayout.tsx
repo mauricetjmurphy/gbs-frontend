@@ -9,7 +9,7 @@ interface MainLayoutProps {
 
 export const MainLayout = ({ children }: MainLayoutProps) => {
   return (
-    <main>
+    <main style={{ maxWidth: "100vw" }}>
       <MainNavigation text="test" />
       {children}
       <Footer />

@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 
 import { type Post } from "../../features/home/types";
+import { useWindowSize } from "../../hooks/useWindowSize";
 import { formatDate } from "../../utils/formatDate";
 
 interface MainImageCardProps {
@@ -11,6 +12,7 @@ interface MainImageCardProps {
 
 export const MainImageCard: React.FC<MainImageCardProps> = (props) => {
   const navigate = useNavigate();
+  const { width } = useWindowSize();
   const { data } = props;
   const post = data && data[0];
 
@@ -26,7 +28,7 @@ export const MainImageCard: React.FC<MainImageCardProps> = (props) => {
         width: "100%",
         display: "flex",
         flexDirection: "column",
-        padding: "0px",
+        padding: "10px",
         borderRadius: "25px",
         "&:hover": {
           backgroundColor: "transparent",
@@ -59,7 +61,7 @@ export const MainImageCard: React.FC<MainImageCardProps> = (props) => {
           variant="h1"
           component="h1"
           sx={{
-            fontSize: "64px",
+            fontSize: width > 600 ? "64px" : "42px",
             textAlign: "left",
             "&:hover": {
               textDecoration: "underline",

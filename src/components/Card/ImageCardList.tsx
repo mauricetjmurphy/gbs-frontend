@@ -2,6 +2,7 @@ import { Box, Divider, List, ListItem, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
 
 import { type Post } from "../../features/home/types";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 import { ImageCard } from "./ImageCard";
 
@@ -15,6 +16,7 @@ export const ImageCardList: React.FC<ImageCardListProps> = (
   props: ImageCardListProps
 ) => {
   const { data, sectionTitle, direction } = props;
+  const { width } = useWindowSize();
   // if (isLoading) return <h1>"Loading..."</h1>;
 
   // if (error) return <h1>"An error has occurred"</h1>;
@@ -23,8 +25,9 @@ export const ImageCardList: React.FC<ImageCardListProps> = (
     <ListItem
       key={nanoid()}
       sx={{
+        display: "flex",
         justifyContent: "center",
-        padding: direction === "vertical" ? "0px" : "0px 5px",
+        padding: direction === "vertical" ? "10px" : "0px 5px",
       }}
     >
       <ImageCard
@@ -82,8 +85,9 @@ export const ImageCardList: React.FC<ImageCardListProps> = (
             sx={{
               padding: "0px",
               display: "flex",
-              alignItems: "start",
-              flexDirection: "row",
+              flexDirection: width > 600 ? "row" : "column",
+              justifyContent: width > 600 ? "center" : "start",
+              alignItems: width > 600 ? "start" : "center",
             }}
           >
             {cards}

@@ -5,13 +5,13 @@ import { Box, Grid, Typography, TextField } from "@mui/material";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
 export const SignUp = () => {
-  const windowSize = useWindowSize();
+  const { width } = useWindowSize();
 
   return (
     <Grid
-      sx={
-        windowSize.width > 400 ? { padding: "0 100px" } : { padding: "0 20px" }
-      }
+      sx={{
+        padding: width > 400 ? "0 100px" : "0px",
+      }}
       direction="row"
       container
     >
