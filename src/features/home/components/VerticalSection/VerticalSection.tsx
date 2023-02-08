@@ -6,9 +6,9 @@ import { MainImageCard } from "../../../../components/Card/MainImageCard";
 import { TextCard } from "../../../../components/Card/TextCard";
 import { type Post } from "../../types";
 import { ImageCardList } from "../../../../components/Card/ImageCardList";
+import { useWindowSize } from "../../../../hooks/useWindowSize";
 
 import { verticalSectionStyles } from "./verticalSection.styles";
-import { useWindowSize } from "../../../../hooks/useWindowSize";
 
 interface VerticalSectionProps {
   direction?: "flip";
@@ -87,7 +87,7 @@ export const VerticalSection: React.FC<VerticalSectionProps> = (props) => {
           ".MuiGrid-item": { paddingLeft: width < 600 ? "0px" : "32px" },
         }}
       >
-        <Grid item md={2} sm={12} sx={{}}>
+        <Grid item md={2} sm={12} sx={{ display: "flex" }}>
           <ImageCardList
             direction={"vertical"}
             sectionTitle={"Top Stories"}

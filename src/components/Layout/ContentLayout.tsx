@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import React from "react";
-import { useWindowSize } from "../../hooks/useWindowSize";
 
+import { useWindowSize } from "../../hooks/useWindowSize";
 import { Head } from "../Head/Head";
 
 import { layoutStyles } from "./layout.styles";

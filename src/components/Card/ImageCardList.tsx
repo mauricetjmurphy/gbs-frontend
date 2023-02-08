@@ -27,6 +27,7 @@ export const ImageCardList: React.FC<ImageCardListProps> = (
       sx={{
         display: "flex",
         justifyContent: "center",
+        width: "100%",
         padding: direction === "vertical" ? "10px" : "0px 5px",
       }}
     >
@@ -48,13 +49,16 @@ export const ImageCardList: React.FC<ImageCardListProps> = (
             flexDirection: "column",
             justifyContent: "center",
             width: "100%",
+            padding: width > 600 ? "0px" : "0 10px",
           }}
         >
           <Typography variant={"h1"} component={"h1"}>
             {sectionTitle}
           </Typography>
 
-          <Divider sx={{ background: "#000", marginTop: "8px" }} />
+          <Divider
+            sx={{ background: "#000", marginTop: "8px", width: "100%" }}
+          />
 
           <List
             sx={{
