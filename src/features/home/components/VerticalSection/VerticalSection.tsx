@@ -36,7 +36,7 @@ const VerticalTitledList: React.FC<VerticalTitledListProps> = (props) => {
   return (
     <Box
       sx={{
-        padding: "0px 10px",
+        padding: "0px 20px",
         ...verticalSectionStyles.verticalTitledListContainer,
       }}
     >

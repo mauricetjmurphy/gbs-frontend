@@ -27,9 +27,8 @@ export const MainImageCard: React.FC<MainImageCardProps> = (props) => {
       sx={{
         width: "100%",
         display: "flex",
+        padding: "20px",
         flexDirection: "column",
-        padding: "10px",
-        borderRadius: "25px",
         "&:hover": {
           backgroundColor: "transparent",
         },
