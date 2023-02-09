@@ -45,7 +45,7 @@ export const SocialLinks: React.FC<SocialMediaProps> = (props) => {
               sx={{
                 ".MuiSvgIcon-root": {
                   width: "20px",
-                  color: "#000",
+                  color: "#5b5b5b",
                 },
               }}
               disableRipple

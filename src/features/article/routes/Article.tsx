@@ -4,12 +4,12 @@ import { useNavigate, useParams } from "react-router";
 import { Box, Button, Grid } from "@mui/material";
 
 import { ContentLayout, MainLayout } from "../../../components";
-import { type Post } from "../../home/types";
+import { Card } from "../../home/types";
 import { ArticleImage } from "../components/ArticleImage";
 import { ArticleList } from "../components/ArticleList";
-import { ImageCardList } from "../../../components/Card/ImageCardList";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { useWindowSize } from "../../../hooks/useWindowSize";
+import { BlogCardList } from "../../home/components/LatestArticles/BlogCardList";
 
 interface Props {}
 
@@ -18,7 +18,7 @@ export const Article = (props: Props) => {
   const navigate = useNavigate();
   const { width } = useWindowSize();
 
-  const { data } = useQuery<Post[], Error>(
+  const { data } = useQuery<Card[], Error>(
     ["posts"],
     async () =>
       await fetch("http://localhost:4000/posts").then(
@@ -27,7 +27,7 @@ export const Article = (props: Props) => {
     { cacheTime: 1000 * 60 * 120 }
   );
 
-  const article = data?.filter((item: Post) => item.id === id)[0];
+  const article = data?.filter((item: Card) => item.id === id)[0];
   const ImageCardListData = data?.slice(0, 5);
 
   return (
@@ -62,11 +62,7 @@ export const Article = (props: Props) => {
             xs={12}
             sx={{ padding: width > 600 ? "0px 50px" : "0px" }}
           >
-            <ImageCardList
-              direction="vertical"
-              data={ImageCardListData}
-              sectionTitle={"Top Stories"}
-            />
+            <BlogCardList data={ImageCardListData} listTitle={"Top Stories"} />
           </Grid>
         </Grid>
       </ContentLayout>

@@ -2,6 +2,6 @@ export const pageTitleStyles = {
   pageTitleContainer: {
     display: "flex",
     justifyContent: "center",
-    height: "80px",
+    padding: "20px 0px",
   },
 };

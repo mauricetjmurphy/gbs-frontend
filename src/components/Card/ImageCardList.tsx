@@ -1,27 +1,25 @@
 import { Box, Divider, Grid, List, ListItem, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
 
-import { type Post } from "../../features/home/types";
+import { Card } from "../../features/home/types";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
 import { ImageCard } from "./ImageCard";
 
 interface ImageCardListProps {
-  data: Post[] | undefined;
+  data: Card[] | undefined;
   sectionTitle: string;
   direction: string;
 }
 
-export const ImageCardList: React.FC<ImageCardListProps> = (
-  props: ImageCardListProps
-) => {
+export const ImageCardList: React.FC<ImageCardListProps> = (props) => {
   const { data, sectionTitle, direction } = props;
   const { width } = useWindowSize();
   // if (isLoading) return <h1>"Loading..."</h1>;
 
   // if (error) return <h1>"An error has occurred"</h1>;
 
-  const cards = data?.map((item: Post) => (
+  const cards = data?.map((item: Card) => (
     <Grid
       item
       key={nanoid()}
@@ -87,17 +85,18 @@ export const ImageCardList: React.FC<ImageCardListProps> = (
             {sectionTitle}
           </Typography>
 
-          <List
+          <Grid
+            container
+            direction={width > 600 ? "row" : "column"}
             sx={{
               padding: "0px",
-              display: "flex",
-              flexDirection: width > 600 ? "row" : "column",
+
               justifyContent: width > 600 ? "center" : "start",
               alignItems: width > 600 ? "start" : "center",
             }}
           >
             {cards}
-          </List>
+          </Grid>
         </Box>
       )}
     </>

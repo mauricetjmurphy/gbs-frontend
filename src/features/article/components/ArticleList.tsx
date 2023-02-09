@@ -1,12 +1,12 @@
 import { nanoid } from "nanoid";
 import React from "react";
 
-import { type Post } from "../../home/types";
+import { Card } from "../../home/types";
 
 import { ArticleSection } from "./ArticleSection";
 
 interface ArticleListProps {
-  article: Post | undefined;
+  article: Card | undefined;
 }
 
 interface Section {

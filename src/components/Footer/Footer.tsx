@@ -23,6 +23,9 @@ export const Footer = (props: Props) => {
 
   return (
     <Box sx={footerStyles.footerContainer}>
+      <Box sx={footerStyles.footerNewsLetterSection}>
+        <SignUp />
+      </Box>
       <Box
         sx={{
           padding: width > 600 ? "0 100px" : "0 20px",
@@ -35,7 +38,7 @@ export const Footer = (props: Props) => {
         >
           {links.map((item) => (
             <Grid
-              xs={12}
+              xs={3}
               md={2}
               item
               key={nanoid()}
@@ -53,9 +56,6 @@ export const Footer = (props: Props) => {
             </Grid>
           ))}
         </Grid>
-      </Box>
-      <Box sx={footerStyles.footerNewsLetterSection}>
-        <SignUp />
       </Box>
       <Box sx={footerStyles.footerSocialSection}>
         <Grid

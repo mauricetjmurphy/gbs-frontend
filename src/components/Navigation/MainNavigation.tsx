@@ -140,12 +140,7 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
 
 const SearchSection: React.FC<SearchProps> = (props) => {
   return (
-    <Grid
-      item
-      md={4}
-      xs={12}
-      style={{ padding: "20px", ...navigationStyles.searchContainer }}
-    >
+    <Grid item md={4} xs={12} style={{ ...navigationStyles.searchContainer }}>
       <Search>
         <SearchIconWrapper>
           <SearchIcon sx={{ width: "18px" }} />
@@ -162,9 +157,17 @@ const SearchSection: React.FC<SearchProps> = (props) => {
 
 const Title: React.FC<TitleProps> = (props) => {
   const { title } = props;
-  const windowSize = useWindowSize();
+  const { width } = useWindowSize();
   return (
-    <Grid item md={4} xs={12} style={navigationStyles.titleContainer}>
+    <Grid
+      item
+      md={4}
+      xs={12}
+      style={{
+        ...navigationStyles.titleContainer,
+        paddingTop: width > 600 ? "0px" : "20px",
+      }}
+    >
       <Typography
         variant={"h1"}
         component={"h1"}
@@ -230,7 +233,7 @@ export const MainNavigation: React.FC<MainNavigationProps> = (props) => {
         <Grid
           container
           style={{
-            padding: width > 600 ? "0 100px" : "0 50px",
+            padding: "20px 100px",
             ...navigationStyles.primaryNavSection,
           }}
         >

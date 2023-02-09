@@ -2,12 +2,12 @@ import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router";
 
-import { type Post } from "../../features/home/types";
+import { Card } from "../../features/home/types";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { formatDate } from "../../utils/formatDate";
 
 interface MainImageCardProps {
-  data: Post[] | undefined;
+  data: Card[] | undefined;
 }
 
 export const MainImageCard: React.FC<MainImageCardProps> = (props) => {

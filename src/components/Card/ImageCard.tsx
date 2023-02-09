@@ -9,7 +9,7 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 interface ListImageCardProps {
   id: string;
   title: string;
-  image_url: string;
+  image_url: string | undefined;
   body: Section[];
 }
 

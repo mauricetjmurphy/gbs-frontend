@@ -22,14 +22,15 @@ export const ContentLayout = ({
     <Box
       maxWidth={"100vw"}
       sx={{
-        padding: width > 600 ? "0 150px" : "0px 20px",
-        ...layoutStyles.contentlayoutContainer,
+        display: "flex",
+        flexDirection: "column",
+        height: "auto",
+        padding: width > 600 ? "0 100px" : "0px 20px",
+        background: "#faf5f5",
       }}
     >
-      <Box>
-        <Head title={title} description={description} />
-        {children}
-      </Box>
+      <Head title={title} description={description} />
+      {children}
     </Box>
   );
 };

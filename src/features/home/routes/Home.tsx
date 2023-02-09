@@ -4,24 +4,18 @@ import { useQuery } from "@tanstack/react-query";
 import { ContentLayout, MainLayout } from "../../../components";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { API_URL } from "../../../config";
-import { HorizontalSection } from "../components/HorizontalSection/HorizontalSection";
-import { VerticalSection } from "../components/VerticalSection/VerticalSection";
-import { type Post } from "../types";
+import { LatestArticles } from "../components/LatestArticles/LatestArticles";
+import { MostPopularArticles } from "../components/MostPopularArticles/MostPopularArticles";
+import { Card } from "../types";
 
 export const Home: React.FC = () => {
-  const { data } = useQuery<Post[], Error>(
+  const { data } = useQuery<Card[], Error>(
     ["posts"],
     async () =>
       await fetch(`${API_URL}/posts`).then(
         async (response) => await response.json()
       )
   );
-
-  console.log(data);
-
-  const verticalSectionData = data;
-
-  const horizontalSection = data?.slice(0, 5);
 
   return (
     <MainLayout>
@@ -32,8 +26,10 @@ export const Home: React.FC = () => {
         }
       >
         <PageTitle title={"Climate News"} />
-        <VerticalSection data={verticalSectionData} />
-        <HorizontalSection title="Top Stories" data={horizontalSection} />
+        <LatestArticles data={data} />
+        <MostPopularArticles listTitle="Top Stories" data={data} />
+        {/* <VerticalSection data={verticalSectionData} /> */}
+        {/* <HorizontalSection title="Top Stories" data={horizontalSection} /> */}
       </ContentLayout>
     </MainLayout>
   );
