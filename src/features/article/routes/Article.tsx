@@ -11,12 +11,12 @@ import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import { BlogCardList } from "../../home/components/LatestArticles/BlogCardList";
 
-interface Props {}
+interface ArticleProps {}
 
-export const Article = (props: Props) => {
+export const Article: React.FC<ArticleProps> = (props) => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const { width } = useWindowSize();
+  const navigate = useNavigate();
 
   const { data } = useQuery<Card[], Error>(
     ["posts"],
@@ -32,7 +32,7 @@ export const Article = (props: Props) => {
 
   return (
     <MainLayout>
-      <ContentLayout title={"Article Page"} description={article?.title}>
+      <ContentLayout title={article?.title} description={article?.body[0].text}>
         <PageTitle title={article?.category} />
         <Box sx={{ height: "60px", display: "flex", alignItems: "center" }}>
           <Button
@@ -51,7 +51,11 @@ export const Article = (props: Props) => {
             item
             md={8}
             xs={12}
-            sx={{ background: "#fff", padding: width > 600 ? "50px" : "20px" }}
+            sx={{
+              background: "#fff",
+              padding: width > 600 ? "50px" : "20px 10px",
+              marginBottom: "40px",
+            }}
           >
             <ArticleImage title={article?.title} image={article?.image_url} />
             <ArticleList article={article} />

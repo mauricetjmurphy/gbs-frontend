@@ -8,7 +8,7 @@ import { layoutStyles } from "./layout.styles";
 
 interface ContentLayoutProps {
   children: React.ReactElement | React.ReactElement[];
-  title: string;
+  title: string | undefined;
   description: string | undefined;
 }
 

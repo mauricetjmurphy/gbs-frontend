@@ -27,9 +27,7 @@ export const Home: React.FC = () => {
       >
         <PageTitle title={"Climate News"} />
         <LatestArticles data={data} />
-        <MostPopularArticles listTitle="Top Stories" data={data} />
-        {/* <VerticalSection data={verticalSectionData} /> */}
-        {/* <HorizontalSection title="Top Stories" data={horizontalSection} /> */}
+        <MostPopularArticles listTitle={"Top Stories"} data={data} />
       </ContentLayout>
     </MainLayout>
   );
