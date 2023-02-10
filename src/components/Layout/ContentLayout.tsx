@@ -27,6 +27,7 @@ export const ContentLayout = ({
         height: "auto",
         padding: width > 600 ? "0 100px" : "0px 20px",
         background: "#faf5f5",
+        minHeight: "100vh",
       }}
     >
       <Head title={title} description={description} />

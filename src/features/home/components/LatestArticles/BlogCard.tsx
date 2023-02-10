@@ -53,7 +53,8 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography variant={"body2"} component={"p"}>
-          {`${props.body[0].text.split(".")[0]}.`}
+          {`${props.body[0].text.split(".")[0]}.` +
+            `${props.body[0].text.split(".")[1]}.`}
         </Typography>
       </Box>
     </ListItemButton>

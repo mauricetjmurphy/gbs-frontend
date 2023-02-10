@@ -46,7 +46,12 @@ export const Article: React.FC<ArticleProps> = (props) => {
             Back to home
           </Button>
         </Box>
-        <Grid container sx={{ padding: "20px 0 50px 0" }}>
+        <Grid
+          container
+          sx={{
+            padding: "20px 0 50px 0",
+          }}
+        >
           <Grid
             item
             md={8}
@@ -64,7 +69,9 @@ export const Article: React.FC<ArticleProps> = (props) => {
             item
             md={4}
             xs={12}
-            sx={{ padding: width > 600 ? "0px 50px" : "0px" }}
+            sx={{
+              padding: width > 600 ? "0px 50px" : "0px",
+            }}
           >
             <BlogCardList data={ImageCardListData} listTitle={"Top Stories"} />
           </Grid>

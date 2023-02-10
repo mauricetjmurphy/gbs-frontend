@@ -86,8 +86,8 @@ interface NavigationItem {
 }
 
 const navigation = [
-  { name: "Urban", route: "/urban" },
   { name: "Climate change", route: "/climate-change" },
+  { name: "Green tech", route: "/urban" },
   { name: "Opinion", route: "/opinion" },
   { name: "Our Vision", route: "/vision" },
   { name: "All Articles", route: "/articles" },
@@ -117,21 +117,12 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
 
         {width > 600 &&
           navigation.map((item) => (
-            <ListItem style={navigationStyles.pageListItem} key={nanoid()}>
-              <Button
-                sx={{
-                  padding: "0px",
-                  color: "#000",
-                  "&:hover": {
-                    color: "#00000080",
-                    backgroundColor: "transparent",
-                  },
-                }}
-                disableRipple
-              >
-                {item.name}
-              </Button>
-            </ListItem>
+            <ListItemButton
+              style={navigationStyles.pageListItem}
+              key={nanoid()}
+            >
+              {item.name}
+            </ListItemButton>
           ))}
       </List>
     </Box>
@@ -228,7 +219,7 @@ export const MainNavigation: React.FC<MainNavigationProps> = (props) => {
           {drawer}
         </Drawer>
       </Box>
-      <Box style={{ overflow: "hidden" }}>
+      <Box>
         <PageNavigation handleDrawerToggle={handleDrawerToggle} />
         <Grid
           container

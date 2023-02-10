@@ -18,8 +18,7 @@ export const navigationStyles = {
   pageListItem: {
     display: "flex",
     justifyContent: "center",
-    minWidth: "180px",
-    padding: "0px",
+    padding: "0px 10px",
   },
   searchContainer: {
     display: "flex",
