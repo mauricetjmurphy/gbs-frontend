@@ -19,7 +19,7 @@ export const MostPopularCard: React.FC<MostPopularCardProps> = (props) => {
   return (
     <Grid
       item
-      md={2}
+      md={3}
       xs={12}
       onClick={() => {
         navigate(`/article/${props.id}`);

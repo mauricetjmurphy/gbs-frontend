@@ -162,7 +162,7 @@ const Title: React.FC<TitleProps> = (props) => {
       <Typography
         variant={"h1"}
         component={"h1"}
-        sx={{ fontSize: "30px", cursor: "pointer", textAlign: "center" }}
+        sx={{ fontSize: "42px", cursor: "pointer", textAlign: "center" }}
       >
         {title}
       </Typography>

@@ -10,6 +10,7 @@ import { ArticleList } from "../components/ArticleList";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import { BlogCardList } from "../../home/components/LatestArticles/BlogCardList";
+import { API_URL } from "../../../config";
 
 interface ArticleProps {}
 
@@ -21,7 +22,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
   const { data } = useQuery<Card[], Error>(
     ["posts"],
     async () =>
-      await fetch("http://localhost:4000/posts").then(
+      await fetch(`${API_URL}/articles`).then(
         async (response) => await response.json()
       ),
     { cacheTime: 1000 * 60 * 120 }

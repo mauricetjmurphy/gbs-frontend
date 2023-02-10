@@ -23,13 +23,14 @@ export const MostPopularArticles: React.FC<MostPopularArticlesProps> = (
       <ListHeading listTitle={props.listTitle} />
       <Grid
         container
+        wrap={"nowrap"}
         sx={{
           margin: "20px 0",
           padding: "0px",
           justifyContent: "center",
         }}
       >
-        {props.data?.slice(6, 11).map((item: Card) => (
+        {props.data?.slice(6, 10).map((item: Card) => (
           <MostPopularCard
             key={nanoid()}
             id={item.id}

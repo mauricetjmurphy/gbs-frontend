@@ -10,9 +10,9 @@ import { Card } from "../types";
 
 export const Home: React.FC = () => {
   const { data } = useQuery<Card[], Error>(
-    ["posts"],
+    ["articles"],
     async () =>
-      await fetch(`${API_URL}/posts`).then(
+      await fetch(`${API_URL}/articles`).then(
         async (response) => await response.json()
       )
   );

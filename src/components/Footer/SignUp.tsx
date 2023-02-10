@@ -1,11 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import { Box, Grid, Typography, TextField } from "@mui/material";
 
 import { useWindowSize } from "../../hooks/useWindowSize";
+import { API_URL } from "../../config";
 
 export const SignUp = () => {
   const { width } = useWindowSize();
+  const [emailAddress, setEmailAddress] = useState("");
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    try {
+      const response = await fetch(`${API_URL}/email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ emailAddress: emailAddress }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error submitting email: ${response.statusText}`);
+      }
+
+      console.log("Email submitted successfully");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <Grid
@@ -25,13 +49,16 @@ export const SignUp = () => {
           from InTheKnow.`}
         </Typography>
       </Grid>
+
       <Grid xs={12} md={4} item sx={{ padding: "20px" }}>
-        <form noValidate autoComplete="off">
+        <form noValidate autoComplete="off" onSubmit={handleSubmit}>
           <Box sx={{ display: "flex" }}>
             <TextField
               id="newsletter-email"
               label="Email"
               type="email"
+              value={emailAddress}
+              onChange={(event) => setEmailAddress(event.target.value)}
               variant="outlined"
               sx={{
                 marginLeft: "25px",
