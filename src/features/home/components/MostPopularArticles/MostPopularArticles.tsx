@@ -23,7 +23,7 @@ export const MostPopularArticles: React.FC<MostPopularArticlesProps> = (
       <ListHeading listTitle={props.listTitle} />
       <Grid
         container
-        wrap={"nowrap"}
+        wrap={width > 600 ? "nowrap" : "wrap"}
         sx={{
           margin: "20px 0",
           padding: "0px",
