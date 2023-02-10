@@ -28,13 +28,13 @@ export const Article: React.FC<ArticleProps> = (props) => {
     { cacheTime: 1000 * 60 * 120 }
   );
 
-  const article = data?.filter((item: Card) => item.id === id)[0];
+  const article = data?.filter((item: Card) => item.Id === id)[0];
   const ImageCardListData = data?.slice(0, 5);
 
   return (
     <MainLayout>
-      <ContentLayout title={article?.title} description={article?.body[0].text}>
-        <PageTitle title={article?.category} />
+      <ContentLayout title={article?.Title} description={article?.Body[0].text}>
+        <PageTitle title={article?.Category} />
         <Box sx={{ height: "60px", display: "flex", alignItems: "center" }}>
           <Button
             variant={"outlined"}
@@ -63,7 +63,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
               marginBottom: "40px",
             }}
           >
-            <ArticleImage title={article?.title} image={article?.image_url} />
+            <ArticleImage Title={article?.Title} Image={article?.Image_url} />
             <ArticleList article={article} />
           </Grid>
           <Grid

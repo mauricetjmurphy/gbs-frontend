@@ -8,29 +8,6 @@ import { BlogCardList } from "./BlogCardList";
 import { PostCardList } from "./PostCardList";
 import { HeadlineCard } from "./HeadlineCard";
 
-const testCards = [
-  {
-    id: "1",
-    image_url:
-      "https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014__340.jpg",
-    title: "title1",
-    category: "category1",
-    body: [],
-    author: "author1",
-    date: "date1",
-  },
-  {
-    id: "2",
-    image_url:
-      "https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg",
-    title: "title2",
-    category: "category2",
-    body: [],
-    author: "author2",
-    date: "date2",
-  },
-];
-
 interface LatestArticlesProps {
   data: Card[] | undefined;
 }
@@ -52,10 +29,10 @@ export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
       <Grid md={6} xs={12} item sx={{}}>
         {props.data && (
           <HeadlineCard
-            id={props.data[0].id}
-            title={props.data[0].title}
-            image_url={props.data[0].image_url}
-            body={props.data[0].body}
+            id={props.data[0].Id}
+            title={props.data[0].Title}
+            image_url={props.data[0].Image_url}
+            body={props.data[0].Body}
           />
         )}
       </Grid>

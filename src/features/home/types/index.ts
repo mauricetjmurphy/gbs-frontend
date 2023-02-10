@@ -1,11 +1,11 @@
 export interface Card {
-  id: string;
-  image_url?: string;
-  title: string;
-  category: string;
-  body: Section[];
-  author: string;
-  date: string;
+  Id: string;
+  Image_url?: string;
+  Title: string;
+  Category: string;
+  Body: Section[];
+  Author: string;
+  Date: string;
 }
 
 export interface Section {

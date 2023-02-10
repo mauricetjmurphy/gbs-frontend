@@ -1,5 +1,5 @@
-import { nanoid } from "nanoid";
 import React from "react";
+import { nanoid } from "nanoid";
 
 import { Card } from "../../home/types";
 
@@ -17,7 +17,7 @@ interface Section {
 export const ArticleList = ({ article }: ArticleListProps) => {
   return (
     <>
-      {article?.body.map((item: Section) => {
+      {article?.Body.map((item: Section) => {
         return (
           <ArticleSection key={nanoid()} title={item.title} text={item.text} />
         );

@@ -5,10 +5,10 @@ import { ListItemButton, Typography, Box } from "@mui/material";
 import { Section } from "../../types";
 
 interface BlogCardProps {
-  id: string;
-  title: string;
-  image_url: string | undefined;
-  body: Section[];
+  Id: string;
+  Title: string;
+  Image_url: string | undefined;
+  Body: Section[];
 }
 
 export const BlogCard: React.FC<BlogCardProps> = (props) => {
@@ -18,7 +18,7 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
     <ListItemButton
       disableRipple
       onClick={() => {
-        navigate(`/article/${props.id}`);
+        navigate(`/article/${props.Id}`);
       }}
       sx={{
         padding: "20px 0px",
@@ -32,8 +32,8 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
     >
       <Box>
         <img
-          src={props.image_url}
-          alt={props.title}
+          src={props.Image_url}
+          alt={props.Title}
           style={{ width: "100%" }}
         />
       </Box>
@@ -50,11 +50,11 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
             },
           }}
         >
-          {props.title}
+          {props.Title}
         </Typography>
         <Typography variant={"body2"} component={"p"}>
-          {`${props.body[0].text.split(".")[0]}.` +
-            `${props.body[0].text.split(".")[1]}.`}
+          {`${props.Body[0].text.split(".")[0]}.` +
+            `${props.Body[0].text.split(".")[1]}.`}
         </Typography>
       </Box>
     </ListItemButton>

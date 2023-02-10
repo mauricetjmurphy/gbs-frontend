@@ -14,10 +14,10 @@ import { Section } from "../../types";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 
 interface PostCardProps {
-  id: string;
-  title: string;
-  image_url: string | undefined;
-  body: Section[];
+  Id: string;
+  Title: string;
+  Image_url: string | undefined;
+  Body: Section[];
 }
 
 export const PostCard: React.FC<PostCardProps> = (props) => {
@@ -28,7 +28,7 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
     <ListItemButton
       disableRipple
       onClick={() => {
-        navigate(`/article/${props.id}`);
+        navigate(`/article/${props.Id}`);
       }}
       sx={{
         padding: "20px 0px",
@@ -74,10 +74,10 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
           }}
           gutterBottom
         >
-          {props.title}
+          {props.Title}
         </Typography>
         <Typography variant={"body2"} component={"p"} sx={{}}>
-          {props.body && `${props.body[0].text.split(".")[0]}.`}
+          {props.Body && `${props.Body[0].text.split(".")[0]}.`}
         </Typography>
       </ListItemText>
     </ListItemButton>

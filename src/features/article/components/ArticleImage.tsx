@@ -2,11 +2,11 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 
 interface ArticleImageProps {
-  title: string | undefined;
-  image: string | undefined;
+  Title: string | undefined;
+  Image: string | undefined;
 }
 
-export const ArticleImage = ({ title, image }: ArticleImageProps) => {
+export const ArticleImage = ({ Title, Image }: ArticleImageProps) => {
   return (
     <Box sx={{ paddingBottom: "50px" }}>
       <Typography
@@ -15,10 +15,10 @@ export const ArticleImage = ({ title, image }: ArticleImageProps) => {
         gutterBottom
         sx={{ fontSize: "42px", fontWeight: 500, paddingBottom: "20px" }}
       >
-        {title}
+        {Title}
       </Typography>
       <Box>
-        <img style={{ width: "100%" }} src={image} alt={title} />
+        <img style={{ width: "100%" }} src={Image} alt={Title} />
       </Box>
     </Box>
   );
