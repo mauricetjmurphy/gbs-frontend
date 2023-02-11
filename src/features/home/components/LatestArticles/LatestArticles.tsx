@@ -33,6 +33,7 @@ export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
             title={props.data[0].Title}
             image_url={props.data[0].Image_url}
             body={props.data[0].Body}
+            date={props.data[0].Date}
           />
         )}
       </Grid>

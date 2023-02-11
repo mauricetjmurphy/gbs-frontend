@@ -23,10 +23,12 @@ export const PostCardList: React.FC<PostCardListProps> = (props) => {
         {props.data?.slice(4, 6).map((item) => (
           <PostCard
             key={nanoid()}
-            Id={item.Id}
-            Title={item.Title}
-            Image_url={item.Image_url}
-            Body={item.Body}
+            id={item.Id}
+            title={item.Title}
+            image_url={item.Image_url}
+            body={item.Body}
+            author={item.Author}
+            date={item.Date}
           />
         ))}
       </List>

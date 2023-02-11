@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid, List, ListItemButton } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { nanoid } from "nanoid";
 
 import { Card } from "../../types";

@@ -58,8 +58,8 @@ export const MostPopularCard: React.FC<MostPopularCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography variant={"body2"} component={"p"}>
-          {`${props.body[0].text.split(".")[0]}.` +
-            `${props.body[0].text.split(".")[1]}.`}
+          {`${props.body[0].text[0].split(".")[0]}.` +
+            `${props.body[0].text[0].split(".")[1]}.`}
         </Typography>
       </Box>
     </Grid>

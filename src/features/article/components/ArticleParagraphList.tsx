@@ -11,16 +11,14 @@ interface ArticleListProps {
 
 interface Section {
   title: string;
-  text: string;
+  text: string[];
 }
 
-export const ArticleList = ({ article }: ArticleListProps) => {
+export const ArticleParagraphList: React.FC<ArticleListProps> = (props) => {
   return (
     <>
-      {article?.Body.map((item: Section) => {
-        return (
-          <ArticleSection key={nanoid()} title={item.title} text={item.text} />
-        );
+      {props.article?.Body[0].text.map((item) => {
+        return <ArticleSection key={nanoid()} text={item} />;
       })}
     </>
   );

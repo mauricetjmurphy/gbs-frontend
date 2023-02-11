@@ -12,12 +12,15 @@ import ImageIcon from "@mui/icons-material/Image";
 
 import { Section } from "../../types";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
+import { formatDate } from "../../../../utils/formatDate";
 
 interface PostCardProps {
-  Id: string;
-  Title: string;
-  Image_url: string | undefined;
-  Body: Section[];
+  id: string;
+  title: string;
+  image_url: string | undefined;
+  body: Section[];
+  author: string;
+  date: string;
 }
 
 export const PostCard: React.FC<PostCardProps> = (props) => {
@@ -28,7 +31,7 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
     <ListItemButton
       disableRipple
       onClick={() => {
-        navigate(`/article/${props.Id}`);
+        navigate(`/article/${props.id}`);
       }}
       sx={{
         padding: "20px 0px",
@@ -55,10 +58,10 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
         </ListItemAvatar>
         <ListItemText>
           <Typography variant="h6" component={"h1"}>
-            Admin
+            {props.author}
           </Typography>
           <Typography variant="h6" component={"h2"}>
-            Dec 15, 2022
+            {formatDate(props.date)}
           </Typography>
         </ListItemText>
       </Box>
@@ -74,10 +77,10 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
           }}
           gutterBottom
         >
-          {props.Title}
+          {props.title}
         </Typography>
         <Typography variant={"body2"} component={"p"} sx={{}}>
-          {props.Body && `${props.Body[0].text.split(".")[0]}.`}
+          {props.body && `${props.body[0].text[0].split(".")[0]}.`}
         </Typography>
       </ListItemText>
     </ListItemButton>

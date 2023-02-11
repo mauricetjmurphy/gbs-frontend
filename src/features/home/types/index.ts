@@ -10,5 +10,5 @@ export interface Card {
 
 export interface Section {
   title: string;
-  text: string;
+  text: string[];
 }

@@ -1,12 +1,15 @@
 import * as React from "react";
 import { useQuery } from "@tanstack/react-query";
+// import { firstValueFrom, from, Observable } from "rxjs";
+// import { ajax, AjaxResponse } from "rxjs/ajax";
 import { useNavigate, useParams } from "react-router";
 import { Box, Button, Grid } from "@mui/material";
 
 import { ContentLayout, MainLayout } from "../../../components";
 import { Card } from "../../home/types";
+import { ArticleTitle } from "../components/ArticleTitle";
 import { ArticleImage } from "../components/ArticleImage";
-import { ArticleList } from "../components/ArticleList";
+import { ArticleParagraphList } from "../components/ArticleParagraphList";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import { BlogCardList } from "../../home/components/LatestArticles/BlogCardList";
@@ -14,26 +17,46 @@ import { API_URL } from "../../../config";
 
 interface ArticleProps {}
 
+// async function getArticles(): Promise<Card[]> {
+//   const response = await firstValueFrom(
+//     from(ajax.getJSON(`${API_URL}/articles`))
+//   );
+//   return response as Card[];
+// }
+
 export const Article: React.FC<ArticleProps> = (props) => {
   const { id } = useParams();
   const { width } = useWindowSize();
   const navigate = useNavigate();
 
-  const { data } = useQuery<Card[], Error>(
-    ["posts"],
+  const { data, isLoading, isError } = useQuery<Card[], Error>(
+    ["articles"],
     async () =>
       await fetch(`${API_URL}/articles`).then(
         async (response) => await response.json()
       ),
-    { cacheTime: 1000 * 60 * 120 }
+    {
+      staleTime: 1000 * 60 * 60 * 24 * 7, // cache for a week
+    }
   );
 
-  const article = data?.filter((item: Card) => item.Id === id)[0];
+  const article = data?.find((item: Card) => item.Id === id);
   const ImageCardListData = data?.slice(0, 5);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Error!</p>;
+  }
 
   return (
     <MainLayout>
-      <ContentLayout title={article?.Title} description={article?.Body[0].text}>
+      <ContentLayout
+        title={article?.Title}
+        description={article?.Body[0].text[0]}
+      >
         <PageTitle title={article?.Category} />
         <Box sx={{ height: "60px", display: "flex", alignItems: "center" }}>
           <Button
@@ -63,8 +86,9 @@ export const Article: React.FC<ArticleProps> = (props) => {
               marginBottom: "40px",
             }}
           >
-            <ArticleImage Title={article?.Title} Image={article?.Image_url} />
-            <ArticleList article={article} />
+            <ArticleTitle title={article?.Title} />
+            <ArticleImage title={article?.Title} image={article?.Image_url} />
+            <ArticleParagraphList article={article} />
           </Grid>
           <Grid
             item

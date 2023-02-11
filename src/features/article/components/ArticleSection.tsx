@@ -2,25 +2,17 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 
 interface ArticleTextParaProps {
-  title: string;
   text: string;
 }
 
-export const ArticleSection = ({ title, text }: ArticleTextParaProps) => {
+export const ArticleSection: React.FC<ArticleTextParaProps> = (props) => {
   return (
-    <Box sx={{ paddingBottom: "50px" }}>
-      <Typography
-        variant="h1"
-        component={"h1"}
-        sx={{ fontSize: "22px", marginBottom: "20px" }}
-      >
-        {title}
-      </Typography>
+    <Box sx={{ paddingBottom: "30px" }}>
       <Typography
         variant="body2"
         sx={{ fontSize: "15px", letterSpacing: ".5px", color: "#292929" }}
       >
-        {text}
+        {props.text}
       </Typography>
     </Box>
   );
