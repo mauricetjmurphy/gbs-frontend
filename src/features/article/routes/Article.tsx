@@ -14,6 +14,7 @@ import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import { BlogCardList } from "../../home/components/LatestArticles/BlogCardList";
 import { API_URL } from "../../../config";
+import { Spinner } from "../../../components/Spinner/Spinner";
 
 interface ArticleProps {}
 
@@ -44,7 +45,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
   const ImageCardListData = data?.slice(0, 5);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Spinner />;
   }
 
   if (isError) {

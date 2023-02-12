@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { ListItemButton, Typography, Box } from "@mui/material";
 
 import { Section } from "../../types";
+import { getRandomNumber } from "../../../../utils/getRandomNumber";
 
 interface BlogCardProps {
   Id: string;
@@ -32,7 +33,7 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
     >
       <Box>
         <img
-          src={props.Image_url}
+          src={`https://d1rifiwqqas523.cloudfront.net/0${getRandomNumber()}.jpg`}
           alt={props.Title}
           style={{ width: "100%" }}
         />

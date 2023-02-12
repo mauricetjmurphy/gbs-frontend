@@ -5,6 +5,8 @@ import { Typography, Box, Button } from "@mui/material";
 import { Section } from "../../types";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { formatDate } from "../../../../utils/formatDate";
+import { BUCKET_URL } from "../../../../config";
+import { getRandomNumber } from "../../../../utils/getRandomNumber";
 
 interface HeadlineCardProps {
   id: string | undefined;
@@ -37,7 +39,7 @@ export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
     >
       <Box sx={{ width: "100%" }}>
         <img
-          src={props.image_url}
+          src={`https://d1rifiwqqas523.cloudfront.net/0${getRandomNumber()}.jpg`}
           alt={props.title}
           style={{ width: "100%" }}
         />

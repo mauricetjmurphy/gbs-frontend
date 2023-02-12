@@ -4,6 +4,7 @@ import { Typography, Box, Grid } from "@mui/material";
 
 import { Section } from "../../types";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
+import { getRandomNumber } from "../../../../utils/getRandomNumber";
 
 interface MostPopularCardProps {
   id: string;
@@ -37,7 +38,7 @@ export const MostPopularCard: React.FC<MostPopularCardProps> = (props) => {
     >
       <Box>
         <img
-          src={props.image_url}
+          src={`https://d1rifiwqqas523.cloudfront.net/0${getRandomNumber()}.jpg`}
           alt={props.title}
           style={{ width: "100%" }}
         />
