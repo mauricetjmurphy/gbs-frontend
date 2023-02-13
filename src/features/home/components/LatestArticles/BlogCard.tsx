@@ -6,10 +6,10 @@ import { Section } from "../../types";
 import { getRandomNumber } from "../../../../utils/getRandomNumber";
 
 interface BlogCardProps {
-  Id: string;
-  Title: string;
-  Image_url: string | undefined;
-  Body: Section[];
+  id: string;
+  title: string;
+  image_url: string | undefined;
+  body: Section[];
 }
 
 export const BlogCard: React.FC<BlogCardProps> = (props) => {
@@ -19,7 +19,7 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
     <ListItemButton
       disableRipple
       onClick={() => {
-        navigate(`/article/${props.Id}`);
+        navigate(`/article/${props.id}`);
       }}
       sx={{
         padding: "20px 0px",
@@ -33,8 +33,8 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
     >
       <Box>
         <img
-          src={`https://d1rifiwqqas523.cloudfront.net/0${getRandomNumber()}.jpg`}
-          alt={props.Title}
+          src={`/images/${props.image_url}`}
+          alt={props.title}
           style={{ width: "100%" }}
         />
       </Box>
@@ -51,11 +51,11 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
             },
           }}
         >
-          {props.Title}
+          {props.title}
         </Typography>
         <Typography variant={"body2"} component={"p"}>
-          {`${props.Body[0].text[0].split(".")[0]}.` +
-            `${props.Body[0].text[0].split(".")[1]}.`}
+          {`${props.body[0].text[0].split(".")[0]}.` +
+            `${props.body[0].text[0].split(".")[1]}.`}
         </Typography>
       </Box>
     </ListItemButton>

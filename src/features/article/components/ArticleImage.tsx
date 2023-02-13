@@ -1,5 +1,7 @@
-import { Box, Typography } from "@mui/material";
 import React from "react";
+import { Box } from "@mui/material";
+
+import { BUCKET_URL } from "../../../config";
 import { getRandomNumber } from "../../../utils/getRandomNumber";
 
 interface ArticleImageProps {
@@ -12,7 +14,7 @@ export const ArticleImage: React.FC<ArticleImageProps> = (props) => {
     <Box sx={{ paddingBottom: "20px" }}>
       <img
         style={{ width: "100%" }}
-        src={`https://d1rifiwqqas523.cloudfront.net/0${getRandomNumber()}.jpg`}
+        src={`/images/${props.image}`}
         alt={props.title}
       />
     </Box>

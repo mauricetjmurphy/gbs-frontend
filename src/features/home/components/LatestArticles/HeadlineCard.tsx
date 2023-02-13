@@ -39,7 +39,7 @@ export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
     >
       <Box sx={{ width: "100%" }}>
         <img
-          src={`https://d1rifiwqqas523.cloudfront.net/0${getRandomNumber()}.jpg`}
+          src={`/images/${props.image_url}`}
           alt={props.title}
           style={{ width: "100%" }}
         />
