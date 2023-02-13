@@ -17,37 +17,6 @@ interface S3Image {
 }
 
 export const Home: React.FC = () => {
-  // const [images, setImages] = useState<S3Image[]>([]);
-
-  // useEffect(() => {
-  //   const bucketUrl = "https://d1rifiwqqas523.cloudfront.net/01.jpg";
-
-  //   fetch(bucketUrl)
-  //     .then((response) => response.text())
-  //     .then((data) => {
-  //       const parser = new DOMParser();
-  //       const xmlDoc = parser.parseFromString(data, "text/xml");
-
-  //       const s3Images = Array.from(
-  //         xmlDoc.getElementsByTagName("Contents")
-  //       ).map((node) => {
-  //         const key = node.getElementsByTagName("Key")[0].textContent;
-
-  //         return {
-  //           key,
-  //           imageUrl: `${bucketUrl}${key}`,
-  //         };
-  //       });
-
-  //       setImages(s3Images);
-  //     })
-  //     .catch((err) => console.error(err));
-  // }, []);
-
-  // useEffect(() => {
-  //   console.info({ images });
-  // }, [images]);
-
   const {
     data,
     isLoading: artiiclesIsLoading,
