@@ -4,6 +4,20 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
 
+declare const process: {
+  env: {
+    NODE_ENV: "development" | "staging" | "production";
+  };
+};
+
+if (process.env.NODE_ENV === "development") {
+  require("dotenv").config({ path: ".env.development" });
+} else if (process.env.NODE_ENV === "staging") {
+  require("dotenv").config({ path: ".env.staging" });
+} else if (process.env.NODE_ENV === "production") {
+  require("dotenv").config({ path: ".env.production" });
+}
+
 const container = document.getElementById("root");
 
 if (!container) {

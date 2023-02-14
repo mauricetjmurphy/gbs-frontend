@@ -1,17 +1,57 @@
+# version: 0.2
+
+# env:
+#   variables:
+#     S3_BUCKET_NAME: gbs-blog-dev-web
+
+# phases:
+#   pre_build:
+#     commands:
+#       - yarn install
+#       - build:prod
+#       - yarn run build
+#   build:
+#     commands:
+#       - aws s3 sync build/ s3://$S3_BUCKET_NAME/
+#       - aws cloudfront create-invalidation --distribution-id "E3K2LH4M35U8R" --paths '/*'
+
 version: 0.2
 
 env:
   variables:
-    S3_BUCKET_NAME: gbs-blog-dev-web
+    S3_BUCKET_DEV: gbs-blog-dev-web
+    S3_BUCKET_STAGING: gbs-blog-stg-web
+    S3_BUCKET_PROD: gbs-blog-prod-web
 
 phases:
   pre_build:
     commands:
+      - echo Installing dependencies...
       - yarn install
-      - rm -f .env*
-      - cp .env.production .env
-      - yarn run build
   build:
     commands:
-      - aws s3 sync build/ s3://$S3_BUCKET_NAME/
+      - if [ "$GITHUB_REF" = "refs/heads/dev" ]; then
+        echo "Loading .env.development file...";
+        cp .env.development .env;
+        elif [ "$GITHUB_REF" = "refs/heads/stg" ]; then
+        echo "Loading .env.staging file...";
+        cp .env.staging .env;
+        elif [ "$GITHUB_REF" = "refs/heads/master" ]; then
+        echo "Loading .env.production file...";
+        cp .env.production .env;
+        fi
+      - echo Building the React app...
+      - yarn build
+      - echo Deploying the React app to S3...
+      - if [ "$GITHUB_REF" = "refs/heads/dev" ]; then
+        ENVIRONMENT=DEV;
+        S3_BUCKET=$S3_BUCKET_DEV;
+        elif [ "$GITHUB_REF" = "refs/heads/stg" ]; then
+        ENVIRONMENT=STAGING;
+        S3_BUCKET=$S3_BUCKET_STAGING;
+        elif [ "$GITHUB_REF" = "refs/heads/master" ]; then
+        ENVIRONMENT=PROD;
+        S3_BUCKET=$S3_BUCKET_PROD;
+        fi
+      - aws s3 sync build/ "s3://$S3_BUCKET" --delete
       - aws cloudfront create-invalidation --distribution-id "E3K2LH4M35U8R" --paths '/*'
