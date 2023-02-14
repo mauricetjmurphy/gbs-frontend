@@ -8,8 +8,7 @@ phases:
   pre_build:
     commands:
       - yarn install
-      - rm -f .env*
-      - cp .env.production .env
+      - build:prod
       - yarn run build
   build:
     commands:
