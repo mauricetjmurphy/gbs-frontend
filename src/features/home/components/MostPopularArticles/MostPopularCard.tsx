@@ -4,7 +4,6 @@ import { Typography, Box, Grid } from "@mui/material";
 
 import { Section } from "../../types";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
-import { getRandomNumber } from "../../../../utils/getRandomNumber";
 
 interface MostPopularCardProps {
   id: string;

@@ -6,7 +6,6 @@ import { Section } from "../../types";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { formatDate } from "../../../../utils/formatDate";
 import { BUCKET_URL } from "../../../../config";
-import { getRandomNumber } from "../../../../utils/getRandomNumber";
 
 interface HeadlineCardProps {
   id: string | undefined;

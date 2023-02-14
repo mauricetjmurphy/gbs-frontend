@@ -3,7 +3,6 @@ import { useNavigate } from "react-router";
 import { ListItemButton, Typography, Box } from "@mui/material";
 
 import { Section } from "../../types";
-import { getRandomNumber } from "../../../../utils/getRandomNumber";
 
 interface BlogCardProps {
   id: string;

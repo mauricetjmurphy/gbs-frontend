@@ -2,7 +2,6 @@ import React from "react";
 import { Box } from "@mui/material";
 
 import { BUCKET_URL } from "../../../config";
-import { getRandomNumber } from "../../../utils/getRandomNumber";
 
 interface ArticleImageProps {
   title: string | undefined;

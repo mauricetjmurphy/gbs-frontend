@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    S3_BUCKET_NAME: <your-bucket-name>
+    S3_BUCKET_NAME: gbs-blog-dev-web
 
 phases:
   pre_build:

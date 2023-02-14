@@ -18,13 +18,6 @@ import { Spinner } from "../../../components/Spinner/Spinner";
 
 interface ArticleProps {}
 
-// async function getArticles(): Promise<Card[]> {
-//   const response = await firstValueFrom(
-//     from(ajax.getJSON(`${API_URL}/articles`))
-//   );
-//   return response as Card[];
-// }
-
 export const Article: React.FC<ArticleProps> = (props) => {
   const { id } = useParams();
   const { width } = useWindowSize();
