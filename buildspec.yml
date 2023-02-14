@@ -57,5 +57,7 @@ phases:
         ENVIRONMENT=PROD;
         S3_BUCKET=$S3_BUCKET_PROD;
         fi
+      - echo "Environment: $ENVIRONMENT"
+      - echo "S3 Bucket: $S3_BUCKET"
       - aws s3 sync build/ "s3://$S3_BUCKET" --delete
       - aws cloudfront create-invalidation --distribution-id "E3K2LH4M35U8R" --paths '/*'
