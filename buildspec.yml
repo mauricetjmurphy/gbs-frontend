@@ -47,5 +47,6 @@ phases:
       - yarn build:$ENVIRONMENT
   post_build:
     commands:
+      - echo "$S3_BUCKET_NAME"
       - aws s3 sync build/ s3://$S3_BUCKET_NAME/
       - aws cloudfront create-invalidation --distribution-id "E1D0I1EMJ4O77T" --paths '/*'
