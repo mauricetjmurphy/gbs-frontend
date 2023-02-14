@@ -43,6 +43,7 @@ phases:
       - yarn install
   build:
     commands:
+      - echo "$ENVIRONMENT"
       - yarn build:$ENVIRONMENT
   post_build:
     commands:
