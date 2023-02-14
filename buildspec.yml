@@ -28,7 +28,7 @@ phases:
     commands:
       - echo Installing dependencies...
       - yarn install
-  build:
+  set_env:
     commands:
       - if [ "$GITHUB_REF" = "refs/heads/dev" ]; then
         echo "Loading .env.development file...";
@@ -40,8 +40,12 @@ phases:
         echo "Loading .env.production file...";
         cp .env.production .env;
         fi
+  build:
+    commands:
       - echo Building the React app...
       - yarn build
+  deploy_to_s3:
+    commands:
       - echo Deploying the React app to S3...
       - if [ "$GITHUB_REF" = "refs/heads/dev" ]; then
         ENVIRONMENT=DEV;
@@ -54,4 +58,6 @@ phases:
         S3_BUCKET=$S3_BUCKET_PROD;
         fi
       - aws s3 sync build/ "s3://$S3_BUCKET" --delete
+  invalidateclear:
+    commands:
       - aws cloudfront create-invalidation --distribution-id "E3K2LH4M35U8R" --paths '/*'
