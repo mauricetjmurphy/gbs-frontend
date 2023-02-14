@@ -35,7 +35,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "build:dev": "cross-env $(cat .env.development) react-scripts build",
-    "build:staging": "cross-env $(cat .env.staging) react-scripts build",
+    "build:stg": "cross-env $(cat .env.staging) react-scripts build",
     "build:prod": "cross-env $(cat .env.production) react-scripts build",
     "lint": "eslint --fix --ext .js,.jsx,.ts,.tsx ./src --cache",
     "test": "react-scripts test",

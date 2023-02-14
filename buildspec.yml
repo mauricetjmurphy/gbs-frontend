@@ -1,8 +1,39 @@
+# version: 0.2
+
+# env:
+#   variables:
+#     S3_BUCKET_NAME: gbs-blog-dev-web
+
+# phases:
+#   pre_build:
+#     commands:
+#       - export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+#       - export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+#       - yarn install
+#   build:
+#     commands:
+#       - yarn build:prod
+#   post_build:
+#     commands:
+#       - aws s3 sync build/ s3://$S3_BUCKET_NAME/
+#       - aws cloudfront create-invalidation --distribution-id "E1D0I1EMJ4O77T" --paths '/*'
+
 version: 0.2
 
 env:
-  variables:
-    S3_BUCKET_NAME: gbs-blog-dev-web
+  branches:
+    dev:
+      variables:
+        S3_BUCKET_NAME: gbs-blog-dev-web
+        ENVIRONMENT: dev
+    stg:
+      variables:
+        S3_BUCKET_NAME: gbs-blog-stg-web
+        ENVIRONMENT: stg
+    master:
+      variables:
+        S3_BUCKET_NAME: gbs-blog-prod-web
+        ENVIRONMENT: prod
 
 phases:
   pre_build:
@@ -12,58 +43,8 @@ phases:
       - yarn install
   build:
     commands:
-      - yarn build:prod
+      - yarn build:$ENVIRONMENT
   post_build:
     commands:
       - aws s3 sync build/ s3://$S3_BUCKET_NAME/
       - aws cloudfront create-invalidation --distribution-id "E1D0I1EMJ4O77T" --paths '/*'
-# version: 0.2
-
-# env:
-#   variables:
-#     S3_BUCKET_DEV: gbs-blog-dev-web
-#     S3_BUCKET_STAGING: gbs-blog-stg-web
-#     S3_BUCKET_PROD: gbs-blog-prod-web
-#   plaintext: |
-#     export S3_BUCKET_DEV=$S3_BUCKET_DEV
-#     export S3_BUCKET_STAGING=$S3_BUCKET_STAGING
-#     export S3_BUCKET_PROD=$S3_BUCKET_PROD
-
-# phases:
-#   install:
-#     commands:
-#       - echo Installing dependencies...
-#       - yarn install
-#   pre_build:
-#     commands:
-#       - if [ "$GITHUB_REF" = "refs/heads/dev" ]; then
-#         echo "Loading .env.development file...";
-#         cp .env.development .env;
-#         elif [ "$GITHUB_REF" = "refs/heads/stg" ]; then
-#         echo "Loading .env.staging file...";
-#         cp .env.staging .env;
-#         elif [ "$GITHUB_REF" = "refs/heads/master" ]; then
-#         echo "Loading .env.production file...";
-#         cp .env.production .env;
-#         fi
-#   build:
-#     commands:
-#       - echo Building the React app...
-#       - yarn build
-#   post_build:
-#     commands:
-#       - echo Deploying the React app to S3...
-#       - if [ "$GITHUB_REF" = "refs/heads/dev" ]; then
-#         ENVIRONMENT=DEV;
-#         S3_BUCKET=$S3_BUCKET_DEV;
-#         elif [ "$GITHUB_REF" = "refs/heads/stg" ]; then
-#         ENVIRONMENT=STAGING;
-#         S3_BUCKET=$S3_BUCKET_STAGING;
-#         elif [ "$GITHUB_REF" = "refs/heads/master" ]; then
-#         ENVIRONMENT=PROD;
-#         S3_BUCKET=$S3_BUCKET_PROD;
-#         fi
-#       - echo "Environment: $ENVIRONMENT"
-#       - echo "S3 Bucket: $S3_BUCKET"
-#       - aws s3 sync build/ "s3://$S3_BUCKET" --delete
-#       - aws cloudfront create-invalidation --distribution-id "E3K2LH4M35U8R" --paths '/*'
