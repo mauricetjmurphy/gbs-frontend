@@ -1,7 +1,5 @@
 export const navigationStyles = {
   primaryNavSection: {
-    height: 100,
-    padding: "0 100px",
     background: "#faf5f5",
   },
   secondaryNavSection: {
@@ -10,19 +8,17 @@ export const navigationStyles = {
     height: 50,
     padding: "0 30px",
     display: "flex",
-    justifyContent: "center",
   },
   pageLinkList: {
     padding: 0,
     height: "50px",
     display: "flex",
-    justifyContent: "space-between",
+    justifyContent: "center",
   },
   pageListItem: {
     display: "flex",
     justifyContent: "center",
-    minWidth: "180px",
-    padding: "0px",
+    padding: "0px 10px",
   },
   searchContainer: {
     display: "flex",
@@ -36,7 +32,7 @@ export const navigationStyles = {
   },
   socialContainer: {
     display: "flex",
-    justifyContent: "end",
+
     alignItems: "center",
   },
   socialLinkList: {

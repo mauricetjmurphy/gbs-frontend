@@ -6,6 +6,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 
 import { navigationStyles } from "../Navigation/navigation.styles";
+import { useWindowSize } from "../../hooks/useWindowSize";
 
 interface SocialNavigationItem {
   name: string;
@@ -22,8 +23,17 @@ const socialLinks = [
 ].filter(Boolean) as SocialNavigationItem[];
 
 export const SocialLinks: React.FC<SocialMediaProps> = (props) => {
+  const { width } = useWindowSize();
   return (
-    <Grid item md={4} xs={12} style={navigationStyles.socialContainer}>
+    <Grid
+      item
+      md={4}
+      xs={12}
+      style={{
+        justifyContent: width > 600 ? "end" : "center",
+        ...navigationStyles.socialContainer,
+      }}
+    >
       <List style={navigationStyles.socialLinkList}>
         {socialLinks.map((item) => (
           <ListItem key={nanoid()} style={navigationStyles.socialListItem}>
@@ -35,7 +45,7 @@ export const SocialLinks: React.FC<SocialMediaProps> = (props) => {
               sx={{
                 ".MuiSvgIcon-root": {
                   width: "20px",
-                  color: "#000",
+                  color: "#5b5b5b",
                 },
               }}
               disableRipple

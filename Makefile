@@ -20,14 +20,13 @@ run-tests:
 	yarn test
 
 deploy-dev: build-dev
-	aws s3 sync --delete build/ s3://gpt-blog-dev-web
+	aws s3 sync --delete build/ s3://gbs-blog-dev-web
+	aws cloudfront create-invalidation --distribution-id "E1D0I1EMJ4O77T" --paths '/*'
 
 deploy-stg: build-stg
 	aws s3 sync --delete build/ s3://gpt-blog-stg-web
-
-deploy-dr: build-dr
-	aws s3 sync --delete build/ s3://gpt-blog-dr-web
+	aws cloudfront create-invalidation --distribution-id "" --paths '/*'
 
 deploy-prod: build-prod
 	aws s3 sync --delete build/ s3://sgpt-blog-prod-web
-	aws cloudfront create-invalidation --distribution-id "E1CUYQLHXWMCYY" --paths '/*'
+	aws cloudfront create-invalidation --distribution-id "" --paths '/*'

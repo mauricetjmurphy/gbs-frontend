@@ -1,27 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+// import { firstValueFrom, from } from "rxjs";
+// import { ajax } from "rxjs/ajax";
 import { useQuery } from "@tanstack/react-query";
 
 import { ContentLayout, MainLayout } from "../../../components";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { API_URL } from "../../../config";
-import { HorizontalSection } from "../components/HorizontalSection/HorizontalSection";
-import { VerticalSection } from "../components/VerticalSection/VerticalSection";
-import { type Post } from "../types";
+import { LatestArticles } from "../components/LatestArticles/LatestArticles";
+import { MostPopularArticles } from "../components/MostPopularArticles/MostPopularArticles";
+import { Card } from "../types";
+import { Spinner } from "../../../components/Spinner/Spinner";
+
+interface S3Image {
+  key: string | null;
+  imageUrl: string | null;
+}
 
 export const Home: React.FC = () => {
-  const { data } = useQuery<Post[], Error>(
-    ["posts"],
+  const {
+    data,
+    isLoading: artiiclesIsLoading,
+    isError,
+  } = useQuery<Card[], Error>(
+    ["articles"],
     async () =>
-      await fetch(`${API_URL}/posts`).then(
+      await fetch(`${API_URL}/articles`).then(
         async (response) => await response.json()
-      )
+      ),
+    {
+      staleTime: 1000 * 60 * 60 * 24 * 7, // cache for a week
+    }
   );
 
-  console.log(data);
+  console.info(data);
 
-  const verticalSectionData = data;
+  if (artiiclesIsLoading) {
+    return <Spinner />;
+  }
 
-  const horizontalSection = data?.slice(0, 5);
+  if (isError) {
+    return <p>Error!</p>;
+  }
 
   return (
     <MainLayout>
@@ -32,8 +51,8 @@ export const Home: React.FC = () => {
         }
       >
         <PageTitle title={"Climate News"} />
-        <VerticalSection data={verticalSectionData} />
-        <HorizontalSection title="Top Stories" data={horizontalSection} />
+        <LatestArticles data={data} />
+        <MostPopularArticles listTitle={"Green Technology"} data={data} />
       </ContentLayout>
     </MainLayout>
   );

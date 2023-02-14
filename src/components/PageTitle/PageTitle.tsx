@@ -11,7 +11,7 @@ export const PageTitle: React.FC<PageTitleProps> = (props) => {
   const { title } = props;
   return (
     <Box style={pageTitleStyles.pageTitleContainer}>
-      <Typography variant={"h2"} component={"h2"} sx={{ fontSize: "48px" }}>
+      <Typography variant={"h2"} component={"h2"} sx={{ fontSize: "30px" }}>
         {title}
       </Typography>
     </Box>

@@ -1,14 +1,14 @@
-export interface Section {
-  title: string;
-  text: string;
+export interface Card {
+  Id: string;
+  Image_url?: string;
+  Title: string;
+  Category: string;
+  Body: Section[];
+  Author: string;
+  Date: string;
 }
 
-export interface Post {
-  id: string;
-  image_url: string;
+export interface Section {
   title: string;
-  category: string;
-  body: Section[];
-  author: string;
-  date: string;
+  text: string[];
 }
