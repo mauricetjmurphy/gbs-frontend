@@ -22,6 +22,9 @@ env:
     S3_BUCKET_DEV: gbs-blog-dev-web
     S3_BUCKET_STAGING: gbs-blog-stg-web
     S3_BUCKET_PROD: gbs-blog-prod-web
+  plaintext: export S3_BUCKET_DEV=$S3_BUCKET_DEV
+    export S3_BUCKET_STAGING=$S3_BUCKET_STAGING
+    export S3_BUCKET_PROD=$S3_BUCKET_PROD
 
 phases:
   install:
