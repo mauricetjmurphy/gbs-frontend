@@ -43,6 +43,7 @@ export const SocialLinks: React.FC<SocialMediaProps> = (props) => {
               rel="noreferrer"
               target="_blank"
               sx={{
+                padding: "0px",
                 ".MuiSvgIcon-root": {
                   width: "20px",
                   color: "#5b5b5b",

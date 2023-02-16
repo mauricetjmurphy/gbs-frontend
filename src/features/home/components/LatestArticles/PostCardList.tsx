@@ -17,10 +17,12 @@ export const PostCardList: React.FC<PostCardListProps> = (props) => {
   const { width } = useWindowSize();
 
   return (
-    <Box sx={{ padding: width > 600 ? "0 10px" : "20px 10px" }}>
+    <Box sx={{ padding: width < 600 ? "20px 10px" : "0px 10px" }}>
       <ListHeading listTitle={props.listTitle} />
-      <List disablePadding sx={{ display: "flex", flexDirection: "column" }}>
-        {props.data?.slice(4, 6).map((item) => (
+      <List
+        sx={{ display: "flex", flexDirection: "column", padding: "10px 0px" }}
+      >
+        {props.data?.slice(4, 7).map((item) => (
           <PostCard
             key={nanoid()}
             id={item.Id}

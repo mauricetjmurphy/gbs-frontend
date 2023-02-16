@@ -8,6 +8,8 @@ export const navigationStyles = {
     height: 50,
     padding: "0 30px",
     display: "flex",
+    borderBottom: "1px solid #000",
+    borderTop: "1px solid #000",
   },
   pageLinkList: {
     padding: 0,
@@ -42,6 +44,6 @@ export const navigationStyles = {
   socialListItem: {
     display: "flex",
     justifyContent: "center",
-    padding: "0px",
+    padding: "0px 10px",
   },
 };

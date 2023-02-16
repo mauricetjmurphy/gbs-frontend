@@ -20,10 +20,10 @@ export const BlogCardList: React.FC<BlogCardListProps> = (props) => {
     <Box sx={{ padding: width > 600 ? "0 10px" : "0px" }}>
       <ListHeading listTitle={props.listTitle} />
       <List
-        disablePadding
         sx={{
           display: "flex",
           flexDirection: "column",
+          padding: "10px 0px",
         }}
       >
         {props.data?.map((item: Card) => (

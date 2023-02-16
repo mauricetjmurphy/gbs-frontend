@@ -63,7 +63,6 @@
   "devDependencies": {
     "@typescript-eslint/parser": "^5.50.0",
     "cross-env": "^7.0.3",
-    "dotenv-webpack": "^8.0.1",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.6.0",
     "eslint-import-resolver-typescript": "^3.5.3",

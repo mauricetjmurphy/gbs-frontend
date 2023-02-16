@@ -15,6 +15,7 @@ import { useWindowSize } from "../../../hooks/useWindowSize";
 import { BlogCardList } from "../../home/components/LatestArticles/BlogCardList";
 import { API_URL } from "../../../config";
 import { Spinner } from "../../../components/Spinner/Spinner";
+import BackButton from "../components/BackButton";
 
 interface ArticleProps {}
 
@@ -52,18 +53,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
         description={article?.Body[0].text[0]}
       >
         <PageTitle title={article?.Category} />
-        <Box sx={{ height: "60px", display: "flex", alignItems: "center" }}>
-          <Button
-            variant={"outlined"}
-            onClick={() => {
-              navigate("/");
-            }}
-            size={"small"}
-            color={"inherit"}
-          >
-            Back to home
-          </Button>
-        </Box>
+        <BackButton />
         <Grid
           container
           sx={{

@@ -11,7 +11,13 @@ export const ListHeading: React.FC<ListHeadingProps> = (props) => {
       <Typography variant={"h1"} component={"h1"}>
         {props.listTitle}
       </Typography>
-      <Divider sx={{ background: "#000", marginTop: "8px", width: "100%" }} />
+      <Divider
+        sx={{
+          background: "#000",
+          marginTop: "8px",
+          width: "100%",
+        }}
+      />
     </>
   );
 };

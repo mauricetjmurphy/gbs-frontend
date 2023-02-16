@@ -3,13 +3,11 @@ import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import {
   Box,
-  Button,
   Grid,
   List,
   ListItem,
   Typography,
   Drawer,
-  Divider,
   ListItemButton,
   ListItemText,
   IconButton,
@@ -17,6 +15,7 @@ import {
 import { nanoid } from "nanoid";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useNavigate } from "react-router";
 
 import { SocialLinks } from "../SocialMedia/SocialLinks";
 import { useWindowSize } from "../../hooks/useWindowSize";
@@ -86,14 +85,15 @@ interface NavigationItem {
 }
 
 const navigation = [
-  { name: "Climate change", route: "/climate-change" },
-  { name: "Green tech", route: "/urban" },
-  { name: "Opinion", route: "/opinion" },
-  { name: "Our Vision", route: "/vision" },
-  { name: "All Articles", route: "/articles" },
+  // { name: "Climate change", route: "/climate-change" },
+  // { name: "Green tech", route: "/green-tech" },
+  // { name: "Opinion", route: "/opinion" },
+  { name: "Our Vision", route: "/about" },
+  // { name: "All Articles", route: "/articles" },
 ].filter(Boolean) as NavigationItem[];
 
 const PageNavigation: React.FC<PageNavigationProps> = (props) => {
+  const navigate = useNavigate();
   const { width } = useWindowSize();
   return (
     <Box
@@ -120,6 +120,7 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
             <ListItemButton
               style={navigationStyles.pageListItem}
               key={nanoid()}
+              onClick={() => navigate(item.route)}
             >
               {item.name}
             </ListItemButton>
@@ -147,8 +148,8 @@ const SearchSection: React.FC<SearchProps> = (props) => {
 };
 
 const Title: React.FC<TitleProps> = (props) => {
-  const { title } = props;
   const { width } = useWindowSize();
+  const navigate = useNavigate();
   return (
     <Grid
       item
@@ -162,9 +163,10 @@ const Title: React.FC<TitleProps> = (props) => {
       <Typography
         variant={"h1"}
         component={"h1"}
+        onClick={() => navigate("/")}
         sx={{ fontSize: "42px", cursor: "pointer", textAlign: "center" }}
       >
-        {title}
+        {props.title}
       </Typography>
     </Grid>
   );

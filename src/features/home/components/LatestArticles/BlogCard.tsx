@@ -21,7 +21,7 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
         navigate(`/article/${props.id}`);
       }}
       sx={{
-        padding: "20px 0px",
+        padding: "10px 0px",
         margin: "0px",
         display: "flex",
         flexDirection: "column",

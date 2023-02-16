@@ -8,7 +8,7 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import ImageIcon from "@mui/icons-material/Image";
+import PersonIcon from "@mui/icons-material/Person";
 
 import { Section } from "../../types";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
@@ -34,7 +34,7 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
         navigate(`/article/${props.id}`);
       }}
       sx={{
-        padding: "20px 0px",
+        padding: "10px 0px",
         margin: "0px",
         display: "flex",
         flexDirection: "column",
@@ -51,9 +51,16 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
           paddingBottom: "10px",
         }}
       >
-        <ListItemAvatar sx={{}}>
-          <Avatar sx={{}}>
-            <ImageIcon />
+        <ListItemAvatar
+          sx={{
+            display: "flex",
+            justifyContent: "start",
+            alignItems: "center",
+            minWidth: 50,
+          }}
+        >
+          <Avatar sx={{ width: "35px", height: "35px" }}>
+            <PersonIcon />
           </Avatar>
         </ListItemAvatar>
         <ListItemText>
