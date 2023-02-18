@@ -19,12 +19,16 @@ const UnderConstruction = (props: Props) => {
       }}
     >
       <>
-        <Typography variant={"h1"} component={"h1"}>
+        <Typography
+          sx={{ textAlign: "center", padding: "20px 0px" }}
+          variant={"h1"}
+          component={"h1"}
+        >
           Sorry, this page is under construction
         </Typography>
         <Button
           color="inherit"
-          sx={{ marginTop: "20px" }}
+          sx={{ textAlign: "center" }}
           variant="outlined"
           onClick={() => navigate("/")}
         >

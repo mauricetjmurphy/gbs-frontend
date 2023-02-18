@@ -10,6 +10,7 @@ export const LegalTitle: React.FC<LegalTitleProps> = (props) => {
     <Box
       sx={{
         height: "250px",
+        width: "100vw",
         background: "#ffb67c",
         display: "flex",
         justifyContent: "center",
@@ -18,7 +19,11 @@ export const LegalTitle: React.FC<LegalTitleProps> = (props) => {
         borderTop: "1px solid #000",
       }}
     >
-      <Typography variant={"h1"} component={"h1"} sx={{ fontSize: "62px" }}>
+      <Typography
+        variant={"h1"}
+        component={"h1"}
+        sx={{ fontSize: "62px", textAlign: "center" }}
+      >
         {props.title}
       </Typography>
     </Box>

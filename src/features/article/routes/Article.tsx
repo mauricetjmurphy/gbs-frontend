@@ -57,7 +57,7 @@ export const Article: React.FC<ArticleProps> = (props) => {
         <Grid
           container
           sx={{
-            padding: "20px 0 50px 0",
+            paddingBottom: "50px",
           }}
         >
           <Grid

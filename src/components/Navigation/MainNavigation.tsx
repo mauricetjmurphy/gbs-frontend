@@ -88,7 +88,7 @@ const navigation = [
   // { name: "Climate change", route: "/climate-change" },
   // { name: "Green tech", route: "/green-tech" },
   // { name: "Opinion", route: "/opinion" },
-  { name: "Our Vision", route: "/about" },
+  { name: "Our Vision", route: "/vision" },
   // { name: "All Articles", route: "/articles" },
 ].filter(Boolean) as NavigationItem[];
 
@@ -175,6 +175,7 @@ const Title: React.FC<TitleProps> = (props) => {
 export const MainNavigation: React.FC<MainNavigationProps> = (props) => {
   const { width } = useWindowSize();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -185,7 +186,10 @@ export const MainNavigation: React.FC<MainNavigationProps> = (props) => {
       <List>
         {navigation.map((item) => (
           <ListItem key={nanoid()} disablePadding>
-            <ListItemButton sx={{ textAlign: "center" }}>
+            <ListItemButton
+              onClick={() => navigate(item.route)}
+              sx={{ textAlign: "center" }}
+            >
               <ListItemText primary={item.name} />
             </ListItemButton>
           </ListItem>
@@ -226,13 +230,16 @@ export const MainNavigation: React.FC<MainNavigationProps> = (props) => {
         <Grid
           container
           style={{
-            padding: "20px 100px",
+            padding: width > 600 ? "20px 100px" : "20px",
             ...navigationStyles.primaryNavSection,
           }}
         >
           <SearchSection />
           <Title title={"Never Too Late"} />
-          <SocialLinks />
+          <SocialLinks
+            position={width < 600 ? "center" : "end"}
+            color="#ffb67c"
+          />
         </Grid>
       </Box>
     </>

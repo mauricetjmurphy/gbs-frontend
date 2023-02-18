@@ -14,7 +14,10 @@ interface SocialNavigationItem {
   icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
 }
 
-interface SocialMediaProps {}
+interface SocialMediaProps {
+  color: string;
+  position: string;
+}
 
 const socialLinks = [
   { name: "Instagram", to: "https://www.instagram.com/", icon: InstagramIcon },
@@ -30,7 +33,8 @@ export const SocialLinks: React.FC<SocialMediaProps> = (props) => {
       md={4}
       xs={12}
       style={{
-        justifyContent: width > 600 ? "end" : "center",
+        padding: width < 600 ? "15px 0px" : "0px",
+        justifyContent: props.position,
         ...navigationStyles.socialContainer,
       }}
     >
@@ -46,7 +50,7 @@ export const SocialLinks: React.FC<SocialMediaProps> = (props) => {
                 padding: "0px",
                 ".MuiSvgIcon-root": {
                   width: "20px",
-                  color: "#5b5b5b",
+                  color: width < 600 ? props.color : "#000",
                 },
               }}
               disableRipple

@@ -21,9 +21,8 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
         navigate(`/article/${props.id}`);
       }}
       sx={{
-        padding: "10px 0px",
-        margin: "0px",
         display: "flex",
+        padding: "0px",
         flexDirection: "column",
         "&:hover": {
           backgroundColor: "transparent",
@@ -37,14 +36,15 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
           style={{ width: "100%" }}
         />
       </Box>
-      <Box sx={{ textAlign: "left", width: "100%" }}>
+      <Box
+        sx={{ textAlign: "left", width: "100%", padding: "10px 0px 20px 0px" }}
+      >
         <Typography
           variant="h1"
           component="h1"
           color="#000"
           gutterBottom
           sx={{
-            paddingTop: "20px",
             "&:hover": {
               textDecoration: "underline",
             },
@@ -52,7 +52,7 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
         >
           {props.title}
         </Typography>
-        <Typography variant={"body2"} component={"p"}>
+        <Typography sx={{}} variant={"body2"} component={"p"}>
           {`${props.body[0].text[0].split(".")[0]}.` +
             `${props.body[0].text[0].split(".")[1]}.`}
         </Typography>

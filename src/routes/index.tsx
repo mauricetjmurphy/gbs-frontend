@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import { About } from "../features/about/routes/About";
+import { Vision } from "../features/vision/routes/Vision";
 import { Admin } from "../features/admin/routes/Admin";
 import { Article } from "../features/article";
 // import { Login } from "../features/auth/routes/Login";
@@ -17,7 +17,7 @@ export const AppRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/about" element={<About />} />
+      <Route path="/vision" element={<Vision />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/article/:id" element={<Article />} />
       {/* <Route path="/login" element={<Login />} />

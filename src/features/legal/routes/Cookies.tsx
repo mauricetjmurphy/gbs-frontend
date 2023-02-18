@@ -1,14 +1,19 @@
 import React from "react";
 
 import { ContentLayout } from "../../../components";
-import UnderConstruction from "../../../components/UnderConstruction/UnderConstruction";
+import { cookiesPolicyData } from "../../../data/cookiesPolicyData";
+import { LegalTitle } from "../components/LegalTitle";
+import { ParagraphList } from "../components/ParagraphList";
 
-type Props = {};
+interface CookiesProps {}
 
-export const Cookies = (props: Props) => {
+export const Cookies: React.FC<CookiesProps> = (props) => {
   return (
-    <ContentLayout title={"Cookies Policy Page"} description={""}>
-      <UnderConstruction />
-    </ContentLayout>
+    <>
+      <LegalTitle title={"Cookies Policy"} />
+      <ContentLayout title={"Cookies Policy Page"} description={""}>
+        <ParagraphList data={cookiesPolicyData} />
+      </ContentLayout>
+    </>
   );
 };

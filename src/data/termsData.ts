@@ -1,5 +1,5 @@
 export const termsData = {
-  Introduction: `Welcome to our environmental blog website! Before using our website, please read and agree to the following terms of service:`,
+  untitled_para_1: `Welcome to our environmental blog website! Before using our website, please read and agree to the following terms of service:`,
 
   Acceptance_of_Terms: `By accessing or using our website, you agree to these terms of service, which may be updated from time to time without notice. Your continued use of the website constitutes your acceptance of any changes made to these terms. `,
 
@@ -19,5 +19,5 @@ export const termsData = {
 
   Entire_Agreement: `These terms of service constitute the entire agreement between you and our website regarding your use of the website and supersede all prior agreements and understandings.`,
 
-  Conclusion: `If you have any questions or concerns about these terms of service, please contact us.`,
+  untitled_para_2: `If you have any questions or concerns about these terms of service, please contact us.`,
 };

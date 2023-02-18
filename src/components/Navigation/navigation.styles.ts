@@ -43,7 +43,8 @@ export const navigationStyles = {
   },
   socialListItem: {
     display: "flex",
-    justifyContent: "center",
-    padding: "0px 10px",
+    justifyContent: "space-between",
+    padding: "0px",
+    minWidth: "30px",
   },
 };

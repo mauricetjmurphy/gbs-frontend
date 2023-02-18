@@ -1,6 +1,7 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, List, ListItem, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
+
 import BackButton from "../../article/components/BackButton";
 
 interface ParagraphListProps {
@@ -21,17 +22,33 @@ export const ParagraphList: React.FC<ParagraphListProps> = (props) => {
               component={"h1"}
               sx={{ fontWeight: "bold" }}
             >
-              {index != 0 &&
-                index != Number(dataEntries.length - 1) &&
+              {!key.replace(/_/g, " ").includes("untitled") &&
                 key.replace(/_/g, " ")}
             </Typography>
-            <Typography
-              sx={{ fontSize: "16px" }}
-              variant={"body1"}
-              component={"p"}
-            >
-              {value}
-            </Typography>
+
+            {!key.replace(/_/g, " ").includes("untitled list") && (
+              <Typography
+                sx={{ fontSize: "16px" }}
+                variant={"body1"}
+                component={"p"}
+              >
+                {value}
+              </Typography>
+            )}
+
+            {key.replace(/_/g, " ").includes("untitled list") && (
+              <List>
+                {props.data[key].map((item: string) => (
+                  <Typography
+                    sx={{ fontSize: "16px" }}
+                    variant={"body1"}
+                    component={"p"}
+                    gutterBottom
+                  >{`• ${item}`}</Typography>
+                ))}
+                <ListItem></ListItem>
+              </List>
+            )}
           </Box>
         );
       })}

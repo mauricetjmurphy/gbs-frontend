@@ -1,14 +1,19 @@
 import React from "react";
 
 import { ContentLayout } from "../../../components";
-import UnderConstruction from "../../../components/UnderConstruction/UnderConstruction";
+import { privacyPolicyData } from "../../../data/privacyPolicyData";
+import { LegalTitle } from "../components/LegalTitle";
+import { ParagraphList } from "../components/ParagraphList";
 
-type Props = {};
+interface PrivacyProps {}
 
-export const Privacy = (props: Props) => {
+export const Privacy: React.FC<PrivacyProps> = (props) => {
   return (
-    <ContentLayout title={"Privacy Policy Page"} description={""}>
-      <UnderConstruction />
-    </ContentLayout>
+    <>
+      <LegalTitle title={"Privacy Policy"} />
+      <ContentLayout title={"Privacy Policy Page"} description={""}>
+        <ParagraphList data={privacyPolicyData} />
+      </ContentLayout>
+    </>
   );
 };

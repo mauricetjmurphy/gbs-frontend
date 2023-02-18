@@ -67,12 +67,15 @@ export const Footer = (props: Props) => {
         >
           <Grid xs={12} md={8} item>
             <Typography sx={{ fontSize: "14px", color: "#4B5563" }}>
-              Copyright © 2023 Gemtech Solutions, Inc. All rights reserved.
+              Copyright © 2023 Gemtech Solutions, Ltd. All rights reserved.
               Gemtech Solutions® and its related marks are registered trademarks
               of Gemtech Solutions LTD.
             </Typography>
           </Grid>
-          <SocialLinks />
+          <SocialLinks
+            position={width < 600 ? "center" : "end"}
+            color="#4B5563"
+          />
         </Grid>
       </Box>
     </Box>

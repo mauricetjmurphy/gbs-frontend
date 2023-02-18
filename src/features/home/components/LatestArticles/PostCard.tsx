@@ -34,9 +34,8 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
         navigate(`/article/${props.id}`);
       }}
       sx={{
-        padding: "10px 0px",
-        margin: "0px",
         display: "flex",
+        padding: "0px",
         flexDirection: "column",
         "&:hover": {
           backgroundColor: "transparent",
@@ -48,7 +47,6 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
           display: "flex",
           justifyContent: "start",
           width: "100%",
-          paddingBottom: "10px",
         }}
       >
         <ListItemAvatar
@@ -72,7 +70,9 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
           </Typography>
         </ListItemText>
       </Box>
-      <ListItemText sx={{ textAlign: "left", width: "100%" }}>
+      <Box
+        sx={{ textAlign: "left", width: "100%", padding: "10px 0px 20px 0px" }}
+      >
         <Typography
           variant="h1"
           component="h1"
@@ -89,7 +89,7 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
         <Typography variant={"body2"} component={"p"} sx={{}}>
           {props.body && `${props.body[0].text[0].split(".")[0]}.`}
         </Typography>
-      </ListItemText>
+      </Box>
     </ListItemButton>
   );
 };
