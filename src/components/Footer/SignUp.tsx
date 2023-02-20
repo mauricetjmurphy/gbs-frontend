@@ -4,7 +4,6 @@ import {
   Box,
   Grid,
   Typography,
-  TextField,
   Dialog,
   DialogActions,
   DialogContent,
@@ -13,7 +12,7 @@ import {
 } from "@mui/material";
 
 import { useWindowSize } from "../../hooks/useWindowSize";
-import { API_URL } from "../../config";
+
 import { SignUpForm } from "./SignUpForm";
 
 interface AlertDialogProps {
@@ -28,15 +27,26 @@ const AlertDialog: React.FC<AlertDialogProps> = (props) => {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">Congratulations!</DialogTitle>
+      <DialogTitle id="alert-dialog-title">
+        <Typography variant="h1" component={"h1"}>
+          Congratulations!
+        </Typography>
+      </DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          You have successfully signed up for our newsletter. Thank you for
-          joining our community!
+          <Typography sx={{ fontSize: "16px" }} variant="body2" component={"p"}>
+            You have successfully signed up for our newsletter. Thank you for
+            joining our community!
+          </Typography>
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => props.setOpen(false)} autoFocus>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => props.setOpen(false)}
+          autoFocus
+        >
           Close
         </Button>
       </DialogActions>
@@ -46,25 +56,7 @@ const AlertDialog: React.FC<AlertDialogProps> = (props) => {
 
 export const SignUp: React.FC = () => {
   const { width } = useWindowSize();
-  const [email, setEmail] = useState("");
   const [open, setOpen] = useState(false);
-
-  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-  //   console.log("clicked");
-  //   event.preventDefault();
-
-  //   fetch(`${API_URL}/signup`, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ emailAddress }),
-  //   })
-  //     .then((response) => response.json())
-  //     .then((result) => {
-  //       console.log(result.message);
-  //       setEmailAddress("");
-  //     })
-  //     .catch((error) => console.error(error));
-  // };
 
   return (
     <>
@@ -92,36 +84,6 @@ export const SignUp: React.FC = () => {
         </Grid>
 
         <Grid xs={12} md={4} item sx={{ padding: "20px" }}>
-          {/* <form onSubmit={handleSubmit}>
-            <Box sx={{ display: "flex" }}>
-              <TextField
-                id="newsletter-email"
-                label="Email"
-                type="email"
-                value={email}
-                onChange={(event) => setEmail(event.target.value.toLowerCase())}
-                variant="outlined"
-                sx={{
-                  marginLeft: "25px",
-                  width: "70%",
-                  "&.MuiFormControl-root": {
-                    margin: "0 15px 0 0",
-                  },
-                }}
-              />
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                style={{
-                  height: "56px",
-                  width: "30%",
-                }}
-              >
-                Sign Up
-              </Button>
-            </Box>
-          </form> */}
           <SignUpForm setOpen={setOpen} />
           <Box sx={{ paddingTop: "20px" }}>
             <Typography
