@@ -26,8 +26,8 @@ export const footerStyles = {
 };
 
 export const signUpFormStyles = {
-  form: { display: "flex" },
-  conatainer: {},
+  form: { display: "flex", flexDirection: "column" },
+  conatainer: { display: "flex", alignItems: "center" },
   inputField: {
     padding: "14px 14px",
     marginRight: "10px",
@@ -35,7 +35,7 @@ export const signUpFormStyles = {
     border: BORDER_BOTTOM,
     borderRadius: "4px",
     fontWeight: 500,
-    fontSize: "0.875rem",
+    fontSize: "14px",
     lineHeight: "1.75",
   },
   signUpButton: {

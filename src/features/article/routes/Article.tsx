@@ -71,7 +71,10 @@ export const Article: React.FC<ArticleProps> = (props) => {
             }}
           >
             <ArticleTitle title={article?.Title} />
-            <ArticleImage title={article?.Title} image={article?.Image_url} />
+            <ArticleImage
+              title={article?.Title}
+              image_url={article?.Image_url}
+            />
             <ArticleParagraphList article={article} />
           </Grid>
           <Grid

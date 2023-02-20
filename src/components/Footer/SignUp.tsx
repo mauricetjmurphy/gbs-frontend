@@ -84,7 +84,7 @@ export const SignUp: React.FC = () => {
         </Grid>
 
         <Grid xs={12} md={4} item sx={{ padding: "20px" }}>
-          <SignUpForm setOpen={setOpen} />
+          <SignUpForm open={open} setOpen={setOpen} />
           <Box sx={{ paddingTop: "20px" }}>
             <Typography
               sx={{ fontSize: "14px", color: "#4B5563" }}

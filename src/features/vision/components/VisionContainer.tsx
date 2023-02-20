@@ -29,7 +29,19 @@ export const VisionContainer: React.FC<VisionProps> = (props) => {
         md={6}
       >
         <Box>
-          <img style={{ width: "100%" }} src={"/images/vision.webp"} alt="" />
+          <img
+            srcSet={`/images/vision-small.webp 640w,
+                     /images/vision-medium.webp 960w, 
+                     /images/vision-large.webp 1280w, 
+                     /images/vision-xl.webp 1920w`}
+            sizes={`(max-width: 600px) 640px,
+                    (max-width: 960px) 960px,
+                    (max-width: 1280px) 1280px, 
+                    1920px`}
+            src={`/images/vision-xl.jpg`}
+            alt={"Team photo"}
+            style={{ width: "100%" }}
+          />
         </Box>
       </Grid>
       <Grid

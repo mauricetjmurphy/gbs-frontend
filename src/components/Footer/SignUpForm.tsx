@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button } from "@mui/material";
@@ -9,6 +9,7 @@ import { signUpFormStyles } from "./footer.styles";
 
 interface SignUpFormProps {
   setOpen: (value: boolean) => void;
+  open: boolean;
 }
 
 const initialValues = {
@@ -19,19 +20,21 @@ const validationSchema = Yup.object({
   email: Yup.string().email("Invalid email format").required("Required"),
 });
 
-export const SignUpForm: React.FC<SignUpFormProps> = ({ setOpen }) => {
+export const SignUpForm: React.FC<SignUpFormProps> = ({ setOpen, open }) => {
+  const [buttonDisabled, setButtonDisabled] = useState(false);
   const formik = useFormik({
     initialValues,
     onSubmit: (values: any) => {
+      setButtonDisabled(true);
       fetch(`${API_URL}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email: values.email.toLowerCase() }),
       })
-        .then((response) => response.json())
         .then(() => {
           setOpen(true);
           formik.resetForm();
+          setButtonDisabled(false);
         })
         .catch((error) => console.error(error));
     },
@@ -39,7 +42,10 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ setOpen }) => {
   });
 
   return (
-    <form style={signUpFormStyles.form} onSubmit={formik.handleSubmit}>
+    <form
+      style={{ display: "flex", flexDirection: "column" }}
+      onSubmit={formik.handleSubmit}
+    >
       <div style={signUpFormStyles.conatainer}>
         <input
           style={signUpFormStyles.inputField}
@@ -50,19 +56,21 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ setOpen }) => {
           onBlur={formik.handleBlur}
           value={formik.values.email}
         />
-        {formik.touched.email && formik.errors.email ? (
-          <div style={signUpFormStyles.error}>{formik.errors.email}</div>
-        ) : null}
+
+        <Button
+          color="primary"
+          variant="contained"
+          style={signUpFormStyles.signUpButton}
+          type="submit"
+          disabled={buttonDisabled}
+        >
+          Sign Up
+        </Button>
       </div>
 
-      <Button
-        color="primary"
-        variant="contained"
-        style={signUpFormStyles.signUpButton}
-        type="submit"
-      >
-        Sign Up
-      </Button>
+      {formik.touched.email && formik.errors.email ? (
+        <div style={signUpFormStyles.error}>{formik.errors.email}</div>
+      ) : null}
     </form>
   );
 };
