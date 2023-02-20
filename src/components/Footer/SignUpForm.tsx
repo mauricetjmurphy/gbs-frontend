@@ -26,7 +26,7 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ setOpen }) => {
       fetch(`${API_URL}/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: values.email }),
+        body: JSON.stringify({ email: values.email.toLowerCase() }),
       })
         .then((response) => response.json())
         .then(() => {
@@ -48,7 +48,7 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ setOpen }) => {
           name="email"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
-          value={formik.values.email.toLowerCase()}
+          value={formik.values.email}
         />
         {formik.touched.email && formik.errors.email ? (
           <div style={signUpFormStyles.error}>{formik.errors.email}</div>

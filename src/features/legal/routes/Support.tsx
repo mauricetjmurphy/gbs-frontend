@@ -2,8 +2,7 @@ import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 
 import { ContentLayout, MainLayout } from "../../../components";
-import UnderConstruction from "../../../components/UnderConstruction/UnderConstruction";
-import ContactForm from "../components/ContactForm";
+import { ContactForm } from "../components/ContactForm";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import { SocialLinks } from "../../../components/SocialMedia/SocialLinks";
 
