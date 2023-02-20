@@ -27,7 +27,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
           type="text"
           name=""
           id=""
-          placeholder="First Name"
+          placeholder="First Name*"
         />
         <input
           style={{
@@ -38,7 +38,7 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
           type="text"
           name=""
           id=""
-          placeholder="First Name"
+          placeholder="Last Name*"
         />
       </Box>
       <Box
@@ -50,24 +50,13 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
       >
         <input
           style={{
-            minWidth: width > 600 ? "200px" : "0",
+            minWidth: width > 600 ? "440px" : "0",
             ...contactFormStyles.inputField,
           }}
           type="text"
           name=""
           id=""
-          placeholder="Email"
-        />
-        <input
-          style={{
-            minWidth: width > 600 ? "200px" : "0",
-            marginTop: width < 600 ? "10px" : "0px",
-            ...contactFormStyles.inputField,
-          }}
-          type="text"
-          name=""
-          id=""
-          placeholder="Phone"
+          placeholder="Email*"
         />
       </Box>
       <Box
@@ -89,7 +78,9 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
           placeholder="Message..."
         ></textarea>
       </Box>
-      <Button variant="contained">Submit</Button>
+      <Button color={"inherit"} variant="contained">
+        Submit
+      </Button>
     </form>
   );
 };

@@ -24,3 +24,24 @@ export const footerStyles = {
     alignItems: "center",
   },
 };
+
+export const signUpFormStyles = {
+  form: { display: "flex" },
+  conatainer: {},
+  inputField: {
+    padding: "14px 14px",
+    marginRight: "10px",
+    minWidth: "220px",
+    border: BORDER_BOTTOM,
+    borderRadius: "4px",
+    fontWeight: 500,
+    fontSize: "0.875rem",
+    lineHeight: "1.75",
+  },
+  signUpButton: {
+    maxHeight: "49.5px",
+    padding: "16.5px 14px",
+    fontSize: "16px",
+  },
+  error: { fontSize: "13px", color: "#f41f1f", padding: "4px" },
+};

@@ -23,13 +23,23 @@ export const Support: React.FC<SupportProps> = (props) => {
             margin: "50px 0px",
           }}
         >
-          <Grid sx={{ padding: "30px" }} item xs={12} md={6}>
+          <Grid
+            sx={{ padding: width < 600 ? "10px" : "30px" }}
+            item
+            xs={12}
+            md={6}
+          >
             <Typography variant="h1" component="h1">
               Contact Us
             </Typography>
             <ContactForm />
           </Grid>
-          <Grid sx={{ padding: "30px" }} item xs={12} md={6}>
+          <Grid
+            sx={{ padding: width < 600 ? "10px" : "30px" }}
+            item
+            xs={12}
+            md={6}
+          >
             <Box sx={{ paddingBottom: "30px" }}>
               <Typography variant="h1" component={"h1"} gutterBottom>
                 Contact Information

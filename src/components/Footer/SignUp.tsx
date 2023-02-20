@@ -1,84 +1,128 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
-import { Box, Grid, Typography, TextField } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Typography,
+  TextField,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+} from "@mui/material";
 
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { API_URL } from "../../config";
+import { SignUpForm } from "./SignUpForm";
 
-export const SignUp = () => {
+interface AlertDialogProps {
+  open: boolean;
+  setOpen: (value: boolean) => void;
+}
+
+const AlertDialog: React.FC<AlertDialogProps> = (props) => {
+  return (
+    <Dialog
+      open={props.open}
+      aria-labelledby="alert-dialog-title"
+      aria-describedby="alert-dialog-description"
+    >
+      <DialogTitle id="alert-dialog-title">Congratulations!</DialogTitle>
+      <DialogContent>
+        <DialogContentText id="alert-dialog-description">
+          You have successfully signed up for our newsletter. Thank you for
+          joining our community!
+        </DialogContentText>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={() => props.setOpen(false)} autoFocus>
+          Close
+        </Button>
+      </DialogActions>
+    </Dialog>
+  );
+};
+
+export const SignUp: React.FC = () => {
   const { width } = useWindowSize();
-  const [emailAddress, setEmailAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [open, setOpen] = useState(false);
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  // const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  //   console.log("clicked");
+  //   event.preventDefault();
 
-    try {
-      const response = await fetch(`${API_URL}/email`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ emailAddress: emailAddress }),
-      });
-
-      if (!response.ok) {
-        throw new Error(`Error submitting email: ${response.statusText}`);
-      }
-
-      console.log("Email submitted successfully");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //   fetch(`${API_URL}/signup`, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ emailAddress }),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((result) => {
+  //       console.log(result.message);
+  //       setEmailAddress("");
+  //     })
+  //     .catch((error) => console.error(error));
+  // };
 
   return (
-    <Grid
-      sx={{
-        padding: width > 600 ? "0 100px" : "0px",
-      }}
-      direction="row"
-      container
-    >
-      <Grid xs={12} md={8} item sx={{ padding: "20px" }}>
-        <Typography gutterBottom sx={{ fontWeight: "bold" }} variant={"body1"}>
-          Sign up for our free monthly newsletter
-        </Typography>
-        <Typography variant="body2">
-          {`We'll be in your inbox every Saturday morning with all the day’s top
+    <>
+      <AlertDialog setOpen={setOpen} open={open} />
+      <Grid
+        sx={{
+          padding: width > 600 ? "0 100px" : "0px",
+        }}
+        direction="row"
+        container
+      >
+        <Grid xs={12} md={8} item sx={{ padding: "20px" }}>
+          <Typography
+            gutterBottom
+            sx={{ fontWeight: "bold" }}
+            variant={"body1"}
+          >
+            Sign up for our free monthly newsletter
+          </Typography>
+          <Typography variant="body2">
+            {`We'll be in your inbox every Saturday morning with all the day’s top
           business news, inspiring stories, best advice and exclusive reporting
           from InTheKnow.`}
-        </Typography>
-      </Grid>
+          </Typography>
+        </Grid>
 
-      <Grid xs={12} md={4} item sx={{ padding: "20px" }}>
-        <form noValidate autoComplete="off" onSubmit={handleSubmit}>
-          <Box sx={{ display: "flex" }}>
-            <TextField
-              id="newsletter-email"
-              label="Email"
-              type="email"
-              value={emailAddress}
-              onChange={(event) => setEmailAddress(event.target.value)}
-              variant="outlined"
-              sx={{
-                marginLeft: "25px",
-                width: "70%",
-                "&.MuiFormControl-root": {
-                  margin: "0 15px 0 0",
-                },
-              }}
-            />
-            <Button
-              variant="contained"
-              color="primary"
-              style={{
-                height: "56px",
-                width: "30%",
-              }}
-            >
-              Sign Up
-            </Button>
-          </Box>
+        <Grid xs={12} md={4} item sx={{ padding: "20px" }}>
+          {/* <form onSubmit={handleSubmit}>
+            <Box sx={{ display: "flex" }}>
+              <TextField
+                id="newsletter-email"
+                label="Email"
+                type="email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value.toLowerCase())}
+                variant="outlined"
+                sx={{
+                  marginLeft: "25px",
+                  width: "70%",
+                  "&.MuiFormControl-root": {
+                    margin: "0 15px 0 0",
+                  },
+                }}
+              />
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                style={{
+                  height: "56px",
+                  width: "30%",
+                }}
+              >
+                Sign Up
+              </Button>
+            </Box>
+          </form> */}
+          <SignUpForm setOpen={setOpen} />
           <Box sx={{ paddingTop: "20px" }}>
             <Typography
               sx={{ fontSize: "14px", color: "#4B5563" }}
@@ -96,8 +140,8 @@ export const SignUp = () => {
               Read our privacy policy for more information.
             </Typography>
           </Box>
-        </form>
+        </Grid>
       </Grid>
-    </Grid>
+    </>
   );
 };

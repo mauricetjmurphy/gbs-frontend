@@ -32,8 +32,6 @@ export const Home: React.FC = () => {
     }
   );
 
-  console.info(data);
-
   if (artiiclesIsLoading) {
     return <Spinner />;
   }
