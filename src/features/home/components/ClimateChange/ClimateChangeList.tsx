@@ -4,6 +4,7 @@ import { nanoid } from "nanoid";
 
 import { ListHeading } from "../LatestArticles/ListHeading";
 import { Card } from "../../types";
+import { useWindowSize } from "../../../../hooks/useWindowSize";
 
 import { ClimateChangeCard } from "./ClimateChangeCard";
 
@@ -13,12 +14,17 @@ interface ClimateChangeListProps {
 }
 
 export const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
-  console.log(props.data?.slice(0, 2));
+  const { width } = useWindowSize();
 
   return (
     <Box>
       <ListHeading listTitle={props.listTitle} />
-      <Grid columnSpacing={2} sx={{ padding: "30px 0px" }} container>
+      <Grid
+        rowSpacing={width < 600 ? 3 : 0}
+        columnSpacing={2}
+        sx={{ padding: "30px 0px" }}
+        container
+      >
         {props.data?.slice(9, 11).map((item: any) => (
           <ClimateChangeCard
             key={nanoid()}

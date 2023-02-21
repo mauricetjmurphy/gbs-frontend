@@ -20,6 +20,7 @@ export const GreenTechList: React.FC<MostPopularArticlesProps> = (props) => {
     <Box sx={{ padding: "30px 0px" }}>
       <ListHeading listTitle={props.listTitle} />
       <Grid
+        rowSpacing={width < 600 ? 3 : 0}
         columnSpacing={2}
         container
         wrap={width > 600 ? "nowrap" : "wrap"}
