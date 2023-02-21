@@ -1,16 +1,12 @@
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Box, Button } from "@mui/material";
+import { InputBase, Button, Grid } from "@mui/material";
 
 import { API_URL } from "../../../config";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 
-import {
-  getErrorStyle,
-  getInputStyle,
-  getTextAreaStyle,
-} from "./contactForm.styles";
+import { contactFormStyles } from "./contactForm.styles";
 
 const initialValues = {
   firstName: "",
@@ -48,16 +44,19 @@ export const ContactForm = () => {
 
   return (
     <form onSubmit={formik.handleSubmit}>
-      <Box
+      <Grid
+        columnSpacing={1}
+        rowSpacing={2}
+        container
         sx={{
           display: "flex",
           flexDirection: width > 600 ? "row" : "column",
           margin: "10px 0px",
         }}
       >
-        <Box>
-          <input
-            style={{ ...getInputStyle(width) }}
+        <Grid item xs={12} md={6}>
+          <InputBase
+            style={contactFormStyles.input(width)}
             type="text"
             name="firstName"
             placeholder="First Name"
@@ -66,16 +65,15 @@ export const ContactForm = () => {
             value={formik.values.firstName}
           />
           {formik.touched.firstName && formik.errors.firstName && (
-            <div style={getErrorStyle()}>{formik.errors.firstName}</div>
+            <div style={contactFormStyles.error()}>
+              {formik.errors.firstName}
+            </div>
           )}
-        </Box>
+        </Grid>
 
-        <Box>
-          <input
-            style={{
-              ...getInputStyle(width),
-              marginTop: width < 600 ? "10px" : "0px",
-            }}
+        <Grid item xs={12} md={6}>
+          <InputBase
+            style={contactFormStyles.input(width)}
             type="text"
             name="lastName"
             placeholder="Last Name"
@@ -84,21 +82,15 @@ export const ContactForm = () => {
             value={formik.values.lastName}
           />
           {formik.touched.lastName && formik.errors.lastName && (
-            <div style={getErrorStyle()}>{formik.errors.lastName}</div>
+            <div style={contactFormStyles.error()}>
+              {formik.errors.lastName}
+            </div>
           )}
-        </Box>
-      </Box>
+        </Grid>
 
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: width > 600 ? "row" : "column",
-          margin: "10px 0px",
-        }}
-      >
-        <Box>
-          <input
-            style={{ ...getInputStyle(width), minWidth: "440px" }}
+        <Grid item xs={12} md={12} sx={{}}>
+          <InputBase
+            style={contactFormStyles.input(width)}
             type="email"
             name="email"
             placeholder="Email"
@@ -107,21 +99,13 @@ export const ContactForm = () => {
             value={formik.values.email}
           />
           {formik.touched.email && formik.errors.email && (
-            <div style={getErrorStyle()}>{formik.errors.email}</div>
+            <div style={contactFormStyles.error()}>{formik.errors.email}</div>
           )}
-        </Box>
-      </Box>
+        </Grid>
 
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: width > 600 ? "row" : "column",
-          margin: "10px 0px",
-        }}
-      >
-        <Box>
+        <Grid item xs={12} md={12} sx={{}}>
           <textarea
-            style={{ ...getTextAreaStyle(width) }}
+            style={contactFormStyles.textArea(width)}
             name="message"
             placeholder="Message"
             onChange={formik.handleChange}
@@ -129,12 +113,17 @@ export const ContactForm = () => {
             value={formik.values.message}
           />
           {formik.touched.message && formik.errors.message && (
-            <div style={getErrorStyle()}>{formik.errors.message}</div>
+            <div style={contactFormStyles.error()}>{formik.errors.message}</div>
           )}
-        </Box>
-      </Box>
+        </Grid>
+      </Grid>
 
-      <Button type="submit" color={"inherit"} variant="contained">
+      <Button
+        sx={{ marginLeft: "8px" }}
+        type="submit"
+        color={"inherit"}
+        variant="contained"
+      >
         Submit
       </Button>
     </form>

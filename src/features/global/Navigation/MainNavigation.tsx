@@ -17,8 +17,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router";
 
-import { SocialLinks } from "../SocialMedia/SocialLinks";
-import { useWindowSize } from "../../hooks/useWindowSize";
+import { useWindowSize } from "../../../hooks/useWindowSize";
+import { SocialLinks } from "../../../components/SocialMedia/SocialLinks";
 
 import { navigationStyles } from "./navigation.styles";
 
@@ -164,7 +164,7 @@ const Title: React.FC<TitleProps> = (props) => {
         variant={"h1"}
         component={"h1"}
         onClick={() => navigate("/")}
-        sx={{ fontSize: "42px", cursor: "pointer", textAlign: "center" }}
+        sx={{ fontWeight: 400, cursor: "pointer", textAlign: "center" }}
       >
         {props.title}
       </Typography>

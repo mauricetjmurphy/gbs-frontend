@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Button } from "@mui/material";
 
-import { API_URL } from "../../config";
+import { API_URL } from "../../../config";
 
 import { signUpFormStyles } from "./footer.styles";
 
@@ -58,7 +58,6 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ setOpen, open }) => {
         />
 
         <Button
-          color="primary"
           variant="contained"
           style={signUpFormStyles.signUpButton}
           type="submit"

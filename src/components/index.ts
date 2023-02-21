@@ -1,4 +1,3 @@
-export * from "./Layout/ContentLayout";
-export * from "./Layout/MainLayout";
-export * from "./Navigation/MainNavigation";
-export * from "./Footer/Footer";
+export * from "../features/global/Layout/ContentLayout";
+export * from "../features/global/Layout/MainLayout";
+export * from "../features/global/Footer/Footer";

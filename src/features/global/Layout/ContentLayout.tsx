@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import React from "react";
 
-import { useWindowSize } from "../../hooks/useWindowSize";
-import { Head } from "../Head/Head";
+import { useWindowSize } from "../../../hooks/useWindowSize";
+import { Head } from "../../../components/Head/Head";
 
 import { layoutStyles } from "./layout.styles";
 
@@ -24,7 +24,6 @@ export const ContentLayout = ({
       sx={{
         display: "flex",
         flexDirection: "column",
-        height: "auto",
         padding: width > 600 ? "0 100px" : "0px 20px",
         background: "#faf5f5",
         minHeight: "100vh",

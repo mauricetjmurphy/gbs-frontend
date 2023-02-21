@@ -4,11 +4,18 @@ import { ErrorBoundary } from "react-error-boundary";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ThemeProvider } from "@emotion/react";
+import {
+  Box,
+  Button,
+  CssBaseline,
+  ThemeProvider,
+  Typography,
+} from "@mui/material";
+import { ThemeOptions } from "@material-ui/core";
 
+import { ColorModeContext, useMode } from "../theme/theme";
 // import { store } from "../stores/store";
 import { ScrollToTop } from "../lib/ScrollToTop";
-import theme from "../styles/Styles";
 
 const queryClient = new QueryClient();
 
@@ -34,22 +41,31 @@ const handleRefreshClick = async () => {
 
 const ErrorFallback: React.FC = () => {
   return (
-    <div
-      className="w-screen h-screen flex flex-col justify-center items-center"
+    <Box
+      width={"100vw"}
+      height={"100vh"}
+      display={"flex"}
+      flexDirection={"column"}
+      justifyContent={"center"}
+      alignItems={"center"}
       role="alert"
     >
-      <h1 className="text-[24px] font-bold">Please bear with us..</h1>
-      <p>
-        Sorry for the inconvenience. We suggest you <b>refresh the page</b> to
-        resolve the issue.
-      </p>
-      <button
-        className="mt-4 py-2 px-4 bg-red-600 border text-white border-gray-300 disabled:opacity-70 disabled:cursor-not-allowed rounded-md shadow-sm font-medium focus:outline-none"
+      <Typography variant={"h4"} sx={{ fontWeight: "400" }} gutterBottom>
+        Please bear with us...
+      </Typography>
+      <Typography variant="h5" sx={{ fontWeight: "100" }} gutterBottom>
+        Sorry for the inconvenience. We suggest you try{" "}
+        <b>refreshing the page</b> to resolve the issue.
+      </Typography>
+      <Button
+        sx={{ margin: "30px" }}
+        variant="outlined"
+        color="primary"
         onClick={handleRefreshClick}
       >
         Refresh
-      </button>
-    </div>
+      </Button>
+    </Box>
   );
 };
 
@@ -60,16 +76,20 @@ interface AppProviderProps {
 export const AppProvider: React.FC<AppProviderProps> = ({
   children,
 }: AppProviderProps) => {
+  const { theme, colorMode } = useMode();
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <HelmetProvider>
         <QueryClientProvider client={queryClient}>
-          <ThemeProvider theme={theme}>
-            <Router>
-              <ScrollToTop />
-              {children}
-            </Router>
-          </ThemeProvider>
+          <ColorModeContext.Provider value={colorMode}>
+            <ThemeProvider theme={{ ...theme, ...colorMode } as ThemeOptions}>
+              <CssBaseline />
+              <Router>
+                <ScrollToTop />
+                {children}
+              </Router>
+            </ThemeProvider>
+          </ColorModeContext.Provider>
         </QueryClientProvider>
       </HelmetProvider>
     </ErrorBoundary>

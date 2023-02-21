@@ -1,10 +1,10 @@
 import React from "react";
 import { Box, Grid, Typography } from "@mui/material";
 
-import { ContentLayout, MainLayout } from "../../../components";
 import { ContactForm } from "../components/ContactForm";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import { SocialLinks } from "../../../components/SocialMedia/SocialLinks";
+import { MainLayout, ContentLayout } from "../../global";
 
 interface SupportProps {}
 
@@ -28,7 +28,7 @@ export const Support: React.FC<SupportProps> = (props) => {
             xs={12}
             md={6}
           >
-            <Typography variant="h1" component="h1">
+            <Typography sx={{ paddingLeft: "8px" }} variant="h1" component="h1">
               Contact Us
             </Typography>
             <ContactForm />

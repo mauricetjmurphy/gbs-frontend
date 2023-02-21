@@ -2,8 +2,8 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
 
-import { useWindowSize } from "../../hooks/useWindowSize";
-import { SocialLinks } from "../SocialMedia/SocialLinks";
+import { useWindowSize } from "../../../hooks/useWindowSize";
+import { SocialLinks } from "../../../components/SocialMedia/SocialLinks";
 
 import { footerStyles } from "./footer.styles";
 import { SignUp } from "./SignUp";
@@ -46,12 +46,14 @@ export const Footer = (props: Props) => {
             >
               <Button
                 color="inherit"
-                sx={{ fontSize: "12px" }}
+                sx={{}}
                 onClick={() => {
                   navigate(item.route);
                 }}
               >
-                {item.name}
+                <Typography variant="subtitle1" component={"h1"}>
+                  {item.name}
+                </Typography>
               </Button>
             </Grid>
           ))}

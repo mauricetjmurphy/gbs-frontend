@@ -45,7 +45,7 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
         sx={{ textAlign: "left", width: "100%", padding: "10px 0px 20px 0px" }}
       >
         <Typography
-          variant="h1"
+          variant="h3"
           component="h1"
           color="#000"
           gutterBottom

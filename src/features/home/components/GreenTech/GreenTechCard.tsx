@@ -12,7 +12,7 @@ interface MostPopularCardProps {
   body: Section[];
 }
 
-export const MostPopularCard: React.FC<MostPopularCardProps> = (props) => {
+export const GreenTechCard: React.FC<MostPopularCardProps> = (props) => {
   const { width } = useWindowSize();
   const navigate = useNavigate();
 
@@ -26,8 +26,6 @@ export const MostPopularCard: React.FC<MostPopularCardProps> = (props) => {
       }}
       sx={{
         cursor: "pointer",
-        padding: "20px 0px",
-        margin: width > 600 ? "0px 10px" : "0px",
         display: "flex",
         flexDirection: "column",
         "&:hover": {
@@ -55,7 +53,7 @@ export const MostPopularCard: React.FC<MostPopularCardProps> = (props) => {
               textDecoration: "underline",
             },
           }}
-          variant="h1"
+          variant="h3"
           component="h1"
           color="#000"
           gutterBottom

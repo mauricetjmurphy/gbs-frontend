@@ -62,10 +62,10 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
           </Avatar>
         </ListItemAvatar>
         <ListItemText>
-          <Typography variant="h6" component={"h1"}>
+          <Typography variant="subtitle1" component={"h1"}>
             {props.author}
           </Typography>
-          <Typography variant="h6" component={"h2"}>
+          <Typography variant="subtitle1" component={"h2"}>
             {formatDate(props.date)}
           </Typography>
         </ListItemText>
@@ -74,7 +74,7 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
         sx={{ textAlign: "left", width: "100%", padding: "10px 0px 20px 0px" }}
       >
         <Typography
-          variant="h1"
+          variant="h3"
           component="h1"
           color="#000"
           sx={{

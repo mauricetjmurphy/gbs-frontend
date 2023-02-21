@@ -27,6 +27,7 @@ export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
         navigate(`/article/${props.id}`);
       }}
       sx={{
+        textTransform: "none",
         padding: width > 600 ? "0px 20px" : "20px 10px",
         margin: "0px",
         display: "flex",
@@ -56,18 +57,18 @@ export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
           padding: "10px 10px",
         }}
       >
-        <Typography variant="h6" component={"h2"}>
+        <Typography variant="subtitle1" component={"h2"}>
           {formatDate(props.date)}
         </Typography>
       </Box>
       <Box sx={{ textAlign: "left", width: "100%" }}>
         <Typography
-          variant="h1"
+          variant="h2"
           component="h1"
           color="#000"
           gutterBottom
           sx={{
-            fontSize: "32px",
+            fontWeight: 400,
             paddingTop: "20px",
             "&:hover": {
               textDecoration: "underline",
@@ -76,7 +77,7 @@ export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
         >
           {props.title}
         </Typography>
-        <Typography variant={"body2"} component={"p"}>
+        <Typography sx={{}} variant={"body1"} component={"p"}>
           {`${props.body[0].text[0].split(".")[0]}.` +
             `${props.body[0].text[0].split(".")[1]}.`}
         </Typography>

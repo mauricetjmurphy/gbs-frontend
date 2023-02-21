@@ -3,13 +3,14 @@ import React, { useEffect, useState } from "react";
 // import { ajax } from "rxjs/ajax";
 import { useQuery } from "@tanstack/react-query";
 
-import { ContentLayout, MainLayout } from "../../../components";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { API_URL } from "../../../config";
 import { LatestArticles } from "../components/LatestArticles/LatestArticles";
-import { MostPopularArticles } from "../components/MostPopularArticles/MostPopularArticles";
+import { GreenTechList } from "../components/GreenTech/GreenTechList";
 import { Card } from "../types";
 import { Spinner } from "../../../components/Spinner/Spinner";
+import { ContentLayout, MainLayout } from "../../global";
+import { ClimateChangeList } from "../components/ClimateChange/ClimateChangeList";
 
 interface S3Image {
   key: string | null;
@@ -50,7 +51,8 @@ export const Home: React.FC = () => {
       >
         <PageTitle title={"Climate News"} />
         <LatestArticles data={data} />
-        <MostPopularArticles listTitle={"Green Technology"} data={data} />
+        <GreenTechList listTitle={"Green Technology"} data={data} />
+        <ClimateChangeList listTitle={"Climate Change"} data={data} />
       </ContentLayout>
     </MainLayout>
   );

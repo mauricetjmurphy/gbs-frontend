@@ -7,11 +7,7 @@ interface ArticleTitleProps {
 
 export const ArticleTitle: React.FC<ArticleTitleProps> = (props) => {
   return (
-    <Typography
-      variant="h1"
-      component={"h1"}
-      sx={{ fontSize: "28px", marginBottom: "20px" }}
-    >
+    <Typography variant="h1" component={"h1"} sx={{ marginBottom: "20px" }}>
       {props.title}
     </Typography>
   );

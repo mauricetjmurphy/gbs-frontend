@@ -11,7 +11,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 
-import { useWindowSize } from "../../hooks/useWindowSize";
+import { useWindowSize } from "../../../hooks/useWindowSize";
 
 import { SignUpForm } from "./SignUpForm";
 
