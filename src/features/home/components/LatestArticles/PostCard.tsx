@@ -18,7 +18,7 @@ interface PostCardProps {
   id: string;
   title: string;
   image_url: string | undefined;
-  body: Section[];
+  body: Section;
   author: string;
   date: string;
 }
@@ -87,7 +87,7 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography variant={"body2"} component={"p"} sx={{}}>
-          {props.body && `${props.body[0].text[0].split(".")[0]}.`}
+          {props.body && `${props.body.paragraphs[0].split(".")[0]}.`}
         </Typography>
       </Box>
     </ListItemButton>

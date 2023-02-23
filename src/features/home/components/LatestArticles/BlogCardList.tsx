@@ -29,10 +29,10 @@ export const BlogCardList: React.FC<BlogCardListProps> = (props) => {
         {props.data?.map((item: Card) => (
           <BlogCard
             key={nanoid()}
-            id={item.Id}
-            title={item.Title}
-            image_url={item.Image_url}
-            body={item.Body}
+            id={item.id}
+            title={item.title}
+            image_url={item.image_url}
+            body={item.body}
           />
         ))}
       </List>

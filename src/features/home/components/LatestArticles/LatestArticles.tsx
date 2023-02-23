@@ -22,23 +22,23 @@ export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
     >
       <Grid md={3} xs={12} item sx={{}}>
         <BlogCardList
-          data={props.data?.slice(1, 3)}
+          data={props.data?.slice(0, 2)}
           listTitle={"Top Stories"}
         />
       </Grid>
       <Grid md={6} xs={12} item sx={{}}>
         {props.data && (
           <HeadlineCard
-            id={props.data[0].Id}
-            title={props.data[0].Title}
-            image_url={props.data[0].Image_url}
-            body={props.data[0].Body}
-            date={props.data[0].Date}
+            id={props.data[2].id}
+            title={props.data[2].title}
+            image_url={props.data[2].image_url}
+            body={props.data[2].body}
+            date={props.data[2].date}
           />
         )}
       </Grid>
       <Grid md={3} xs={12} item sx={{}}>
-        <PostCardList data={props.data} listTitle={"Opinion"} />
+        <PostCardList data={props.data?.slice(3, 6)} listTitle={"Opinion"} />
       </Grid>
     </Grid>
   );

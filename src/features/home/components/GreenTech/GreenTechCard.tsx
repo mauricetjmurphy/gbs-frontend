@@ -9,7 +9,7 @@ interface MostPopularCardProps {
   id: string;
   title: string;
   image_url: string | undefined;
-  body: Section[];
+  body: Section;
 }
 
 export const GreenTechCard: React.FC<MostPopularCardProps> = (props) => {
@@ -61,8 +61,8 @@ export const GreenTechCard: React.FC<MostPopularCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography variant={"body2"} component={"p"}>
-          {`${props.body[0].text[0].split(".")[0]}.` +
-            `${props.body[0].text[0].split(".")[1]}.`}
+          {`${props.body.paragraphs[0].split(".")[0]}.` +
+            `${props.body.paragraphs[0].split(".")[1]}.`}
         </Typography>
       </Box>
     </Grid>

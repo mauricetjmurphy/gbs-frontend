@@ -9,15 +9,10 @@ interface ArticleListProps {
   article: Card | undefined;
 }
 
-interface Section {
-  title: string;
-  text: string[];
-}
-
 export const ArticleParagraphList: React.FC<ArticleListProps> = (props) => {
   return (
     <>
-      {props.article?.Body[0].text.map((item) => {
+      {props.article?.body.paragraphs.map((item) => {
         return <ArticleSection key={nanoid()} text={item} />;
       })}
     </>

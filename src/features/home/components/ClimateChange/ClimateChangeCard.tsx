@@ -10,7 +10,7 @@ interface ClimateChangeCardProps {
   id: string | undefined;
   title: string;
   image_url: string | undefined;
-  body: Section[];
+  body: Section;
   date: string;
 }
 
@@ -76,8 +76,8 @@ export const ClimateChangeCard: React.FC<ClimateChangeCardProps> = (props) => {
             {props.title}
           </Typography>
           <Typography sx={{}} variant={"body2"} component={"p"}>
-            {`${props.body[0].text[0].split(".")[0]}.` +
-              `${props.body[0].text[0].split(".")[1]}.`}
+            {`${props.body.paragraphs[0].split(".")[0]}.` +
+              `${props.body.paragraphs[0].split(".")[1]}.`}
           </Typography>
         </Box>
       </Button>

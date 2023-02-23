@@ -22,15 +22,15 @@ export const PostCardList: React.FC<PostCardListProps> = (props) => {
       <List
         sx={{ display: "flex", flexDirection: "column", padding: "10px 0px" }}
       >
-        {props.data?.slice(4, 7).map((item) => (
+        {props.data?.map((item) => (
           <PostCard
             key={nanoid()}
-            id={item.Id}
-            title={item.Title}
-            image_url={item.Image_url}
-            body={item.Body}
-            author={item.Author}
-            date={item.Date}
+            id={item.id}
+            title={item.title}
+            image_url={item.image_url}
+            body={item.body}
+            author={item.author}
+            date={item.date}
           />
         ))}
       </List>

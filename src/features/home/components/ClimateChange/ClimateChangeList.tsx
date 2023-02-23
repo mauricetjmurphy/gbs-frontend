@@ -25,14 +25,14 @@ export const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
         sx={{ padding: "30px 0px" }}
         container
       >
-        {props.data?.slice(9, 11).map((item: any) => (
+        {props.data?.map((item: any) => (
           <ClimateChangeCard
             key={nanoid()}
-            id={item.Id}
-            title={item.Title}
-            image_url={item.Image_url}
-            body={item.Body}
-            date={item.Date}
+            id={item.id}
+            title={item.title}
+            image_url={item.image_url}
+            body={item.body}
+            date={item.date}
           />
         ))}
       </Grid>

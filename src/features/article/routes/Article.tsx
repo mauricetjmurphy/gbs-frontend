@@ -35,8 +35,8 @@ export const Article: React.FC<ArticleProps> = (props) => {
     }
   );
 
-  const article = data?.find((item: Card) => item.Id === id);
-  const ImageCardListData = data?.slice(0, 5);
+  const article = data?.find((item: Card) => item.id === id);
+  const ImageCardListData = data?.slice(0, 5).filter((item) => item.id !== id);
 
   if (isLoading) {
     return <Spinner />;
@@ -49,10 +49,10 @@ export const Article: React.FC<ArticleProps> = (props) => {
   return (
     <MainLayout>
       <ContentLayout
-        title={article?.Title}
-        description={article?.Body[0].text[0]}
+        title={article?.title}
+        description={article?.body.paragraphs[0]}
       >
-        <PageTitle title={article?.Category} />
+        <PageTitle title={article?.category} />
         <BackButton />
         <Grid
           container
@@ -70,10 +70,10 @@ export const Article: React.FC<ArticleProps> = (props) => {
               marginBottom: "40px",
             }}
           >
-            <ArticleTitle title={article?.Title} />
+            <ArticleTitle title={article?.title} />
             <ArticleImage
-              title={article?.Title}
-              image_url={article?.Image_url}
+              title={article?.title}
+              image_url={article?.image_url}
             />
             <ArticleParagraphList article={article} />
           </Grid>

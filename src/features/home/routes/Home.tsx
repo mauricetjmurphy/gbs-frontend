@@ -51,8 +51,14 @@ export const Home: React.FC = () => {
       >
         <PageTitle title={"Climate News"} />
         <LatestArticles data={data} />
-        <GreenTechList listTitle={"Green Technology"} data={data} />
-        <ClimateChangeList listTitle={"Climate Change"} data={data} />
+        <GreenTechList
+          listTitle={"Green Technology"}
+          data={data.slice(6, 10)}
+        />
+        <ClimateChangeList
+          listTitle={"Climate Change"}
+          data={data.slice(10, 12)}
+        />
       </ContentLayout>
     </MainLayout>
   );
