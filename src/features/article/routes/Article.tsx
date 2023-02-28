@@ -24,10 +24,14 @@ export const Article: React.FC<ArticleProps> = (props) => {
   const { width } = useWindowSize();
   const navigate = useNavigate();
 
-  const { data, isLoading, isError } = useQuery<Card[], Error>(
-    ["articles"],
+  const {
+    data: techData,
+    isLoading: techArtiiclesIsLoading,
+    isError: techIsError,
+  } = useQuery<Card[], Error>(
+    ["tech-articles"],
     async () =>
-      await fetch(`${API_URL}/articles`).then(
+      await fetch(`${API_URL}/tech-articles`).then(
         async (response) => await response.json()
       ),
     {
@@ -35,15 +39,48 @@ export const Article: React.FC<ArticleProps> = (props) => {
     }
   );
 
-  const article = data?.find((item: Card) => item.id === id);
-  const ImageCardListData = data?.slice(0, 5).filter((item) => item.id !== id);
+  const {
+    data: climateData,
+    isLoading: climateArtiiclesIsLoading,
+    isError: climateIsError,
+  } = useQuery<Card[], Error>(
+    ["climate-articles"],
+    async () =>
+      await fetch(`${API_URL}/climate-articles`).then(
+        async (response) => await response.json()
+      ),
+    {
+      staleTime: 1000 * 60 * 60 * 24 * 7, // cache for a week
+    }
+  );
 
-  if (isLoading) {
+  if (techArtiiclesIsLoading || climateArtiiclesIsLoading) {
     return <Spinner />;
   }
 
-  if (isError) {
-    return <p>Error!</p>;
+  if (techIsError || climateIsError) {
+    return (
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+        <p>Failed to fetch data!</p>
+      </Box>
+    );
+  }
+
+  const data = [...climateData, ...techData];
+
+  const article = data?.find((item: Card) => item.id === id);
+  const ImageCardListData = data?.slice(0, 5).filter((item) => item.id !== id);
+
+  if (techArtiiclesIsLoading || climateArtiiclesIsLoading) {
+    return <Spinner />;
+  }
+
+  if (techIsError || climateIsError) {
+    return (
+      <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
+        <p>Failed to fetch data!</p>
+      </Box>
+    );
   }
 
   return (

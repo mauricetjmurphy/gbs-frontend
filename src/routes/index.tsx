@@ -10,6 +10,7 @@ import { Cookies } from "../features/legal/routes/Cookies";
 import { Privacy } from "../features/legal/routes/Privacy";
 import { Support } from "../features/legal/routes/Support";
 import { Terms } from "../features/legal/routes/Terms";
+import { Articles } from "../features/articles/routes/Articles";
 
 // import { PrivateRoutes } from "./Private";
 
@@ -20,6 +21,7 @@ export const AppRoutes: React.FC = () => {
       <Route path="/vision" element={<Vision />} />
       <Route path="/admin" element={<Admin />} />
       <Route path="/article/:id" element={<Article />} />
+      <Route path="/articles" element={<Articles />} />
       {/* <Route path="/login" element={<Login />} />
       <Route path="/policy/:policyId" element={<PrivateRoutes />} /> */}
 

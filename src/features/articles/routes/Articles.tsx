@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
-// import { firstValueFrom, from } from "rxjs";
-// import { ajax } from "rxjs/ajax";
+import React from "react";
+import { Box, Grid } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
-import { Box } from "@mui/material";
 
-import { PageTitle } from "../../../components/PageTitle/PageTitle";
-import { API_URL } from "../../../config";
-import { LatestArticles } from "../components/LatestArticles/LatestArticles";
-import { GreenTechList } from "../components/GreenTech/GreenTechList";
-import { Card } from "../types";
-import { Spinner } from "../../../components/Spinner/Spinner";
 import { ContentLayout, MainLayout } from "../../global";
-import { ClimateChangeList } from "../components/ClimateChange/ClimateChangeList";
+import { AllArticlesList } from "../components/AllArticlesList";
+import { Card } from "../../home/types";
+import { API_URL } from "../../../config";
+import { Spinner } from "../../../components/Spinner/Spinner";
+import { PageTitle } from "../../../components/PageTitle/PageTitle";
 
-export const Home: React.FC = () => {
+type Props = {};
+
+export const Articles = (props: Props) => {
   const {
     data: techData,
     isLoading: techArtiiclesIsLoading,
@@ -56,24 +54,13 @@ export const Home: React.FC = () => {
     );
   }
 
+  const data = [...climateData, ...techData];
+
   return (
     <MainLayout>
-      <ContentLayout
-        title={"Home Page"}
-        description={
-          "Here we share interesting insights and perspectives on the latest news and trends in popular topics."
-        }
-      >
-        <PageTitle title={"Climate News"} />
-        <LatestArticles climateData={climateData} techData={techData} />
-        <GreenTechList
-          listTitle={"Green Technology"}
-          data={techData.slice(6, 10)}
-        />
-        <ClimateChangeList
-          listTitle={"Climate Change"}
-          data={climateData.slice(10, 12)}
-        />
+      <ContentLayout title={"All Blog Articles"} description={""}>
+        <PageTitle title={"All Articles"} />
+        <AllArticlesList data={data} listTitle={"All Articles"} />
       </ContentLayout>
     </MainLayout>
   );

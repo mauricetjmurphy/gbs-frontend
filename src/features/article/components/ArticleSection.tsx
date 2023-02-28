@@ -9,8 +9,8 @@ export const ArticleSection: React.FC<ArticleTextParaProps> = (props) => {
   return (
     <Box sx={{ paddingBottom: "30px" }}>
       <Typography
-        variant="body2"
-        sx={{ fontSize: "15px", letterSpacing: ".5px", color: "#292929" }}
+        variant="body1"
+        sx={{ letterSpacing: ".5px", color: "#292929" }}
       >
         {props.text}
       </Typography>

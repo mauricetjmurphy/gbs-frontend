@@ -9,11 +9,14 @@ import { PostCardList } from "./PostCardList";
 import { HeadlineCard } from "./HeadlineCard";
 
 interface LatestArticlesProps {
-  data: Card[] | undefined;
+  techData: Card[];
+  climateData: Card[];
 }
 
 export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
   const { width } = useWindowSize();
+
+  const data = [...props.climateData, ...props.techData];
 
   return (
     <Grid
@@ -21,24 +24,21 @@ export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
       sx={{ background: "#fff", padding: width > 600 ? "40px" : "10px" }}
     >
       <Grid md={3} xs={12} item sx={{}}>
-        <BlogCardList
-          data={props.data?.slice(0, 2)}
-          listTitle={"Top Stories"}
-        />
+        <BlogCardList data={data?.slice(0, 2)} listTitle={"Top Stories"} />
       </Grid>
       <Grid md={6} xs={12} item sx={{}}>
-        {props.data && (
+        {data && (
           <HeadlineCard
-            id={props.data[2].id}
-            title={props.data[2].title}
-            image_url={props.data[2].image_url}
-            body={props.data[2].body}
-            date={props.data[2].date}
+            id={data[2].id}
+            title={data[2].title}
+            image_url={data[2].image_url}
+            body={data[2].body}
+            date={data[2].date}
           />
         )}
       </Grid>
       <Grid md={3} xs={12} item sx={{}}>
-        <PostCardList data={props.data?.slice(3, 6)} listTitle={"Opinion"} />
+        <PostCardList data={data?.slice(3, 6)} listTitle={"Opinion"} />
       </Grid>
     </Grid>
   );
