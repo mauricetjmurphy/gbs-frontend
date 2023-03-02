@@ -39,12 +39,14 @@ export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
     >
       <Box sx={{ width: "100%" }}>
         <img
-          srcSet={`/images/${props.image_url?.split(".")[0]}-small.jpg 640w,
-          /images/${props.image_url?.split(".")[0]}-medium.jpg 960w, 
-          /images/${props.image_url?.split(".")[0]}-large.jpg 1280w, 
-          /images/${props.image_url?.split(".")[0]}-xl.jpg 1920w`}
+          width={540}
+          height={360}
+          srcSet={`/images/SM-placeholder.png 640w,
+          /images/SM-placeholder.png 960w, 
+          /images/SM-placeholder.png 1280w, 
+          /images/SM-placeholder.png 1920w`}
           sizes="(max-width: 600px) 640px, (max-width: 960px) 960px, (max-width: 1280px) 1280px, 1920px"
-          src={`/images/${props.image_url?.split(".")[0]}-xl.jpg`}
+          src={`/images/SM-placeholder.png`}
           alt={props.title}
           style={{ width: "100%" }}
         />

@@ -9,7 +9,10 @@ import {
   ListItemButton,
   ListItemText,
   IconButton,
+  Menu,
+  MenuItem,
 } from "@mui/material";
+import { AccountCircle } from "@mui/icons-material";
 import { nanoid } from "nanoid";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router";
@@ -17,8 +20,8 @@ import { useNavigate } from "react-router";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import { SocialLinks } from "../../../components/SocialMedia/SocialLinks";
 
-import { navigationStyles } from "./navigation.styles";
 import { SearchSection } from "./NavSearch";
+import { navigationStyles } from "./navigation.styles";
 
 interface PageNavigationProps {
   handleDrawerToggle: () => void;
@@ -48,13 +51,42 @@ const navigation = [
 const PageNavigation: React.FC<PageNavigationProps> = (props) => {
   const navigate = useNavigate();
   const { width } = useWindowSize();
+  const [auth, setAuth] = React.useState(true);
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setAuth(event.target.checked);
+  };
+
+  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleAdminClick = () => {
+    setAnchorEl(null);
+    navigate("/admin");
+  };
+
   return (
     <Box
       style={{
-        justifyContent: width > 600 ? "center" : "space-between",
+        justifyContent: "space-between",
+        alignItems: "center",
         ...navigationStyles.secondaryNavSection,
       }}
     >
+      <Box sx={{ width: "50px", height: "100%" }}>
+        <img
+          style={{ width: "100%", height: "100%" }}
+          src={"/logo.png"}
+          alt=""
+        />
+      </Box>
+
       <List style={navigationStyles.pageLinkList}>
         {width < 600 && (
           <IconButton
@@ -79,6 +111,39 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
             </ListItemButton>
           ))}
       </List>
+
+      {auth && (
+        <Box>
+          <IconButton
+            size="large"
+            aria-label="account of current user"
+            aria-controls="menu-appbar"
+            aria-haspopup="true"
+            onClick={handleMenu}
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorEl}
+            anchorOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleAdminClick}>Admin</MenuItem>
+          </Menu>
+        </Box>
+      )}
     </Box>
   );
 };

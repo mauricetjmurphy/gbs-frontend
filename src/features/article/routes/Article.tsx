@@ -19,7 +19,7 @@ import BackButton from "../components/BackButton";
 
 interface ArticleProps {}
 
-export const Article: React.FC<ArticleProps> = (props) => {
+const Article: React.FC<ArticleProps> = (props) => {
   const { id } = useParams();
   const { width } = useWindowSize();
   const navigate = useNavigate();
@@ -129,3 +129,5 @@ export const Article: React.FC<ArticleProps> = (props) => {
     </MainLayout>
   );
 };
+
+export default Article;

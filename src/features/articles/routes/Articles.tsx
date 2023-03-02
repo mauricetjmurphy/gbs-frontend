@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Grid } from "@mui/material";
+import { Box } from "@mui/material";
 import { useQuery } from "@tanstack/react-query";
 
 import { ContentLayout, MainLayout } from "../../global";
@@ -9,9 +9,9 @@ import { API_URL } from "../../../config";
 import { Spinner } from "../../../components/Spinner/Spinner";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 
-type Props = {};
+type ArticlesProps = {};
 
-export const Articles = (props: Props) => {
+const Articles: React.FC<ArticlesProps> = (props) => {
   const {
     data: techData,
     isLoading: techArtiiclesIsLoading,
@@ -65,3 +65,5 @@ export const Articles = (props: Props) => {
     </MainLayout>
   );
 };
+
+export default Articles;

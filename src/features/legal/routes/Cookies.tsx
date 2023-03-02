@@ -7,7 +7,7 @@ import { ParagraphList } from "../components/ParagraphList";
 
 interface CookiesProps {}
 
-export const Cookies: React.FC<CookiesProps> = (props) => {
+const Cookies: React.FC<CookiesProps> = (props) => {
   return (
     <>
       <LegalTitle title={"Cookies Policy"} />
@@ -17,3 +17,5 @@ export const Cookies: React.FC<CookiesProps> = (props) => {
     </>
   );
 };
+
+export default Cookies;

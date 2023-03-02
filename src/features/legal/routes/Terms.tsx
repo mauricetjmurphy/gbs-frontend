@@ -7,7 +7,7 @@ import { ParagraphList } from "../components/ParagraphList";
 
 interface termsProps {}
 
-export const Terms: React.FC<termsProps> = (props) => {
+const Terms: React.FC<termsProps> = (props) => {
   return (
     <>
       <LegalTitle title={"Terms of Service"} />
@@ -17,3 +17,5 @@ export const Terms: React.FC<termsProps> = (props) => {
     </>
   );
 };
+
+export default Terms;

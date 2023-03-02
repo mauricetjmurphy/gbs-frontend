@@ -1,4 +1,5 @@
 import React from "react";
+import { nanoid } from "nanoid";
 import { Box, Grid, Typography } from "@mui/material";
 
 import { useWindowSize } from "../../../hooks/useWindowSize";
@@ -30,15 +31,15 @@ export const VisionContainer: React.FC<VisionProps> = (props) => {
       >
         <Box>
           <img
-            srcSet={`/images/vision-small.webp 640w,
-                     /images/vision-medium.webp 960w, 
-                     /images/vision-large.webp 1280w, 
-                     /images/vision-xl.webp 1920w`}
+            srcSet={`/images/SM-placeholder.png 640w,
+                     /images/SM-placeholder.png 960w, 
+                     /images/SM-placeholder.png 1280w, 
+                     /images/SM-placeholder.png 1920w`}
             sizes={`(max-width: 600px) 640px,
                     (max-width: 960px) 960px,
                     (max-width: 1280px) 1280px, 
                     1920px`}
-            src={`/images/vision-xl.jpg`}
+            src={`/images/SM-placeholder.png`}
             alt={"Team photo"}
             style={{ width: "100%" }}
           />
@@ -64,7 +65,10 @@ export const VisionContainer: React.FC<VisionProps> = (props) => {
         </Typography>
 
         {props.data.untitled_list_1.map((item) => (
-          <Typography sx={{ paddingBottom: "25px", fontSize: "14px" }}>
+          <Typography
+            key={nanoid()}
+            sx={{ paddingBottom: "25px", fontSize: "14px" }}
+          >
             {item}
           </Typography>
         ))}

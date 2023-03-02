@@ -13,7 +13,7 @@ interface ClimateChangeListProps {
   data: Card[];
 }
 
-export const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
+const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
   const { width } = useWindowSize();
 
   return (
@@ -39,3 +39,5 @@ export const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
     </Box>
   );
 };
+
+export default ClimateChangeList;

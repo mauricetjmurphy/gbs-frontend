@@ -7,7 +7,7 @@ import { ParagraphList } from "../components/ParagraphList";
 
 interface PrivacyProps {}
 
-export const Privacy: React.FC<PrivacyProps> = (props) => {
+const Privacy: React.FC<PrivacyProps> = (props) => {
   return (
     <>
       <LegalTitle title={"Privacy Policy"} />
@@ -17,3 +17,5 @@ export const Privacy: React.FC<PrivacyProps> = (props) => {
     </>
   );
 };
+
+export default Privacy;

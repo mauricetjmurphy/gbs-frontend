@@ -13,7 +13,7 @@ interface MostPopularArticlesProps {
   listTitle: string;
 }
 
-export const GreenTechList: React.FC<MostPopularArticlesProps> = (props) => {
+const GreenTechList: React.FC<MostPopularArticlesProps> = (props) => {
   const { width } = useWindowSize();
 
   return (
@@ -42,3 +42,5 @@ export const GreenTechList: React.FC<MostPopularArticlesProps> = (props) => {
     </Box>
   );
 };
+
+export default GreenTechList;

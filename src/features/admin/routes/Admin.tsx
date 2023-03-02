@@ -1,25 +1,20 @@
-import { Button } from "@mui/material";
 import React from "react";
+import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
-import { ContentLayout, MainLayout } from "../../../components";
+interface AdminProps {}
 
-interface Props {}
-
-export const Admin = (props: Props) => {
+export const Admin: React.FC<AdminProps> = (props) => {
   const navigate = useNavigate();
   return (
-    <MainLayout>
-      <ContentLayout title={"Admin Page"} description={"Administrator page"}>
-        <div>About</div>
-        <Button
-          onClick={() => {
-            navigate("/");
-          }}
-        >
-          Home
-        </Button>
-      </ContentLayout>
-    </MainLayout>
+    <Button
+      onClick={() => {
+        navigate("/");
+      }}
+    >
+      Back Home
+    </Button>
   );
 };
+
+export default Admin;

@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useState } from "react";
+import { useNavigate } from "react-router";
 import { useQuery } from "@tanstack/react-query";
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Divider, Grid, Typography } from "@mui/material";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
@@ -14,6 +15,8 @@ interface SearchProps {}
 
 interface SerchItemsListProps {
   data: Card[];
+  searchTerm: string;
+  setSearchTerm: (arg: string) => void;
 }
 
 const Search = styled("div")(({ theme }) => ({
@@ -59,24 +62,63 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const SearchItemList: React.FC<SerchItemsListProps> = (props) => {
+  const navigate = useNavigate();
+
   return (
-    <Grid container columnSpacing={2} rowSpacing={2}>
+    <Box
+      sx={{
+        position: "absolute",
+        top: "60px",
+        background: "#fff",
+        zIndex: 10,
+        border:
+          props.searchTerm.length > 0 && props.data.length > 0
+            ? "1px solid #00000050"
+            : "none",
+        height:
+          props.searchTerm.length > 0 && props.data.length > 0
+            ? "500px"
+            : "0px",
+        overflow: "scroll",
+      }}
+    >
       {props.data.map((item) => (
-        <>
-          <Grid item md={3}>
-            <img
-              src={`/images/${item.image_url?.split(".")[0]}-small.jpg`}
-              alt={item.title}
-              style={{ width: "100%" }}
-            />
+        <Grid
+          onClick={() => {
+            navigate(`/article/${item.id}`);
+            props.setSearchTerm("");
+          }}
+          container
+          direction={"row"}
+          sx={{
+            "&:hover": { background: "#cccccc95" },
+            cursor: "pointer",
+          }}
+        >
+          <Grid item md={4}>
+            <Box sx={{ overflow: "hidden", padding: "10px" }}>
+              <img
+                src={`/images/${item.image_url?.split(".")[0]}-small.jpg`}
+                alt={item.title}
+                style={{ width: "100%" }}
+              />
+            </Box>
           </Grid>
-          <Grid item md={9}>
-            <Typography variant="body2">{item.title}</Typography>
-            <Typography>{}</Typography>
+          <Grid item md={8}>
+            <Typography
+              sx={{ paddingTop: "10px", fontWeight: "bold" }}
+              variant="body2"
+            >
+              {item.title}
+            </Typography>
+            <Typography variant="body2" sx={{ color: "#818181" }}>
+              {`${item.body.paragraphs[0].substring(0, 50)}...`}
+            </Typography>
           </Grid>
-        </>
+          <Divider sx={{ width: "100%" }} />
+        </Grid>
       ))}
-    </Grid>
+    </Box>
   );
 };
 
@@ -99,8 +141,6 @@ export const SearchSection: React.FC<SearchProps> = (props) => {
     }
   );
 
-  console.log({ techData });
-
   const {
     data: climateData,
     isLoading: climateArtiiclesIsLoading,
@@ -115,8 +155,6 @@ export const SearchSection: React.FC<SearchProps> = (props) => {
       staleTime: 1000 * 60 * 60 * 24 * 7, // cache for a week
     }
   );
-
-  console.log({ climateData });
 
   if (techArtiiclesIsLoading || climateArtiiclesIsLoading) {
     return null;
@@ -141,7 +179,7 @@ export const SearchSection: React.FC<SearchProps> = (props) => {
       item.title.toLowerCase().includes(value.toLowerCase())
     );
 
-    setSearchItems(filteredArray.slice(0, 5));
+    setSearchItems(filteredArray.slice(0, 15));
   };
 
   return (
@@ -164,19 +202,12 @@ export const SearchSection: React.FC<SearchProps> = (props) => {
           onChange={onChangeHandler}
         />
       </Search>
-      <Box
-        sx={{
-          position: "absolute",
-          top: "46px",
-          background: "#fff",
-          zIndex: 10,
-          width: "300px",
-          padding:
-            searchTerm.length > 0 && searchItems.length > 0 ? "10px" : "0px",
-        }}
-      >
-        <SearchItemList data={searchItems} />
-      </Box>
+
+      <SearchItemList
+        searchTerm={searchTerm}
+        data={searchItems}
+        setSearchTerm={setSearchTerm}
+      />
     </Grid>
   );
 };

@@ -8,7 +8,7 @@ import { MainLayout, ContentLayout } from "../../global";
 
 interface SupportProps {}
 
-export const Support: React.FC<SupportProps> = (props) => {
+const Support: React.FC<SupportProps> = (props) => {
   const { width } = useWindowSize();
 
   return (
@@ -71,3 +71,5 @@ export const Support: React.FC<SupportProps> = (props) => {
     </MainLayout>
   );
 };
+
+export default Support;
