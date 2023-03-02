@@ -48,9 +48,9 @@ export const ContactForm = () => {
         columnSpacing={1}
         rowSpacing={2}
         container
+        flexDirection={{ sm: "column", md: "row" }}
         sx={{
           display: "flex",
-          flexDirection: width > 600 ? "row" : "column",
           margin: "10px 0px",
         }}
       >

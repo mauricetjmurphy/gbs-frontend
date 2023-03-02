@@ -1,6 +1,6 @@
+import React from "react";
 import { Grid, IconButton, List, ListItem } from "@mui/material";
 import { nanoid } from "nanoid";
-import React from "react";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
@@ -32,8 +32,8 @@ export const SocialLinks: React.FC<SocialMediaProps> = (props) => {
       item
       md={4}
       xs={12}
+      padding={{ sm: "0px", md: "15px 0px" }}
       style={{
-        padding: width < 600 ? "15px 0px" : "0px",
         justifyContent: props.position,
         ...navigationStyles.socialContainer,
       }}

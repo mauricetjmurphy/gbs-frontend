@@ -5,6 +5,7 @@ import { Box, Divider, Grid, Typography } from "@mui/material";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
+import CancelIcon from "@mui/icons-material/Cancel";
 
 import { Card } from "../../home/types";
 import { API_URL } from "../../../config";
@@ -50,13 +51,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-    transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
+      width: "15ch",
     },
   },
 }));
@@ -98,7 +95,7 @@ const SearchItemList: React.FC<SerchItemsListProps> = (props) => {
           <Grid item md={4}>
             <Box sx={{ overflow: "hidden", padding: "10px" }}>
               <img
-                src={`/images/${item.image_url?.split(".")[0]}-small.jpg`}
+                src={`/images/SM-placeholder.png`}
                 alt={item.title}
                 style={{ width: "100%" }}
               />
@@ -200,6 +197,20 @@ export const SearchSection: React.FC<SearchProps> = (props) => {
           inputProps={{ "aria-label": "search" }}
           value={searchTerm}
           onChange={onChangeHandler}
+          endAdornment={
+            <CancelIcon
+              onClick={() => setSearchTerm("")}
+              sx={{
+                width: "18px",
+                color: "#9D9D99",
+                cursor: "pointer",
+                opacity: "30%",
+                "&:hover": {
+                  opacity: "100%",
+                },
+              }}
+            />
+          }
         />
       </Search>
 

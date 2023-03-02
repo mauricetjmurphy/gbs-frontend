@@ -16,19 +16,14 @@ export const VisionContainer: React.FC<VisionProps> = (props) => {
 
   return (
     <Grid
+      padding={{ sm: "20px", md: "50px" }}
       sx={{
         background: "#fff",
-        padding: width < 600 ? "20px" : "50px",
         marginBottom: "50px",
       }}
       container
     >
-      <Grid
-        sx={{ padding: width < 600 ? "0px" : "0px 15px" }}
-        item
-        xs={12}
-        md={6}
-      >
+      <Grid padding={{ sm: "0px", md: "0px 15px" }} item xs={12} md={6}>
         <Box>
           <img
             srcSet={`/images/SM-placeholder.png 640w,
@@ -46,10 +41,10 @@ export const VisionContainer: React.FC<VisionProps> = (props) => {
         </Box>
       </Grid>
       <Grid
+        padding={{ sm: "10px 0px", md: "0px 15px" }}
         sx={{
           display: "flex",
           flexDirection: "column",
-          padding: width < 600 ? "10px 0px" : "0px 15px",
         }}
         item
         xs={12}

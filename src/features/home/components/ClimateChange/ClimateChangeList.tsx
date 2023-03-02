@@ -20,7 +20,7 @@ const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
     <Box>
       <ListHeading listTitle={props.listTitle} />
       <Grid
-        rowSpacing={width < 600 ? 3 : 0}
+        rowSpacing={{ sm: 0, md: 3 }}
         columnSpacing={2}
         sx={{ padding: "30px 0px" }}
         container

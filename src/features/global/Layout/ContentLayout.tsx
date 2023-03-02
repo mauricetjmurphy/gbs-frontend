@@ -1,16 +1,28 @@
-import { Box } from "@mui/material";
 import React from "react";
+import { styled } from "@mui/material/styles";
 
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import { Head } from "../../../components/Head/Head";
-
-import { layoutStyles } from "./layout.styles";
 
 interface ContentLayoutProps {
   children: React.ReactElement | React.ReactElement[];
   title: string | undefined;
   description: string | undefined;
 }
+
+const ContentLayoutContainer = styled("div")(({ theme }) => ({
+  maxWidth: "100vw",
+  display: "flex",
+  flexDirection: "column",
+  background: "#faf5f5",
+  minHeight: "100vh",
+  [theme.breakpoints.up("md")]: {
+    padding: "0 20px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    padding: "0 100px",
+  },
+}));
 
 export const ContentLayout = ({
   children,
@@ -19,18 +31,9 @@ export const ContentLayout = ({
 }: ContentLayoutProps) => {
   const { width } = useWindowSize();
   return (
-    <Box
-      maxWidth={"100vw"}
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        padding: width > 600 ? "0 100px" : "0px 20px",
-        background: "#faf5f5",
-        minHeight: "100vh",
-      }}
-    >
+    <ContentLayoutContainer>
       <Head title={title} description={description} />
       {children}
-    </Box>
+    </ContentLayoutContainer>
   );
 };

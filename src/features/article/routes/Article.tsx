@@ -99,11 +99,11 @@ const Article: React.FC<ArticleProps> = (props) => {
         >
           <Grid
             item
+            padding={{ sm: "20px 10px", md: "50px" }}
             md={8}
             xs={12}
             sx={{
               background: "#fff",
-              padding: width > 600 ? "50px" : "20px 10px",
               marginBottom: "40px",
             }}
           >
@@ -114,14 +114,7 @@ const Article: React.FC<ArticleProps> = (props) => {
             />
             <ArticleParagraphList article={article} />
           </Grid>
-          <Grid
-            item
-            md={4}
-            xs={12}
-            sx={{
-              padding: width > 600 ? "0px 50px" : "0px",
-            }}
-          >
+          <Grid item md={4} xs={12} padding={{ sm: "0px", md: "0px 50px" }}>
             <BlogCardList data={ImageCardListData} listTitle={"Top Stories"} />
           </Grid>
         </Grid>

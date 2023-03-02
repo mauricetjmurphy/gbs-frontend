@@ -27,8 +27,8 @@ export const Footer = (props: Props) => {
         <SignUp />
       </Box>
       <Box
+        padding={{ sm: "0 20px", md: "0 100px" }}
         sx={{
-          padding: width > 600 ? "0 100px" : "0 20px",
           ...footerStyles.footerLinkSection,
         }}
       >
@@ -60,13 +60,7 @@ export const Footer = (props: Props) => {
         </Grid>
       </Box>
       <Box sx={footerStyles.footerSocialSection}>
-        <Grid
-          sx={{
-            padding: width > 600 ? "0 100px" : "0px",
-          }}
-          direction="row"
-          container
-        >
+        <Grid padding={{ sm: "0px", md: "0 100px" }} direction="row" container>
           <Grid xs={12} md={8} item>
             <Typography sx={{ fontSize: "14px", color: "#4B5563" }}>
               Copyright © 2023 Gemtech Solutions, Ltd. All rights reserved.

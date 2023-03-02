@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { Typography, Box, Button } from "@mui/material";
+import { Typography, Box, Button, styled } from "@mui/material";
 
 import { Section } from "../../types";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
@@ -15,26 +15,33 @@ interface HeadlineCardProps {
   date: string;
 }
 
+const BackButton = styled(Button)(({ theme }) => ({
+  textTransform: "none",
+  margin: "0px",
+  display: "flex",
+  flexDirection: "column",
+  "&:hover": {
+    backgroundColor: "transparent",
+  },
+
+  [theme.breakpoints.up("md")]: {
+    padding: "0px 20px",
+  },
+  [theme.breakpoints.up("sm")]: {
+    padding: "20px 10px",
+  },
+}));
+
 export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
   const { width } = useWindowSize();
   const navigate = useNavigate();
 
   return (
-    <Button
+    <BackButton
       disableRipple
       fullWidth
       onClick={() => {
         navigate(`/article/${props.id}`);
-      }}
-      sx={{
-        textTransform: "none",
-        padding: width > 600 ? "0px 20px" : "20px 10px",
-        margin: "0px",
-        display: "flex",
-        flexDirection: "column",
-        "&:hover": {
-          backgroundColor: "transparent",
-        },
       }}
     >
       <Box sx={{ width: "100%" }}>
@@ -84,6 +91,6 @@ export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
             `${props.body.paragraphs[0].split(".")[1]}.`}
         </Typography>
       </Box>
-    </Button>
+    </BackButton>
   );
 };

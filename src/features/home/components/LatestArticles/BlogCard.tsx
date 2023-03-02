@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
-import { ListItemButton, Typography, Box } from "@mui/material";
+import { ListItemButton, Typography, Box, Grid } from "@mui/material";
 
 import { Section } from "../../types";
 

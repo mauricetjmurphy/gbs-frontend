@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { Card } from "../../types";
@@ -13,16 +14,23 @@ interface LatestArticlesProps {
   climateData: Card[];
 }
 
+const LatestArticlesContainer = styled(Grid)(({ theme }) => ({
+  background: "#fff",
+  [theme.breakpoints.up("md")]: {
+    padding: "10px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    padding: "40px",
+  },
+}));
+
 export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
   const { width } = useWindowSize();
 
   const data = [...props.climateData, ...props.techData];
 
   return (
-    <Grid
-      container
-      sx={{ background: "#fff", padding: width > 600 ? "40px" : "10px" }}
-    >
+    <LatestArticlesContainer container>
       <Grid md={3} xs={12} item sx={{}}>
         <BlogCardList data={data?.slice(0, 2)} listTitle={"Top Stories"} />
       </Grid>
@@ -40,6 +48,6 @@ export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
       <Grid md={3} xs={12} item sx={{}}>
         <PostCardList data={data?.slice(3, 6)} listTitle={"Opinion"} />
       </Grid>
-    </Grid>
+    </LatestArticlesContainer>
   );
 };

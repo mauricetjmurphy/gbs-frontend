@@ -156,9 +156,9 @@ const Title: React.FC<TitleProps> = (props) => {
       item
       md={4}
       xs={12}
+      paddingTop={{ sm: "0px", md: "20px" }}
       style={{
         ...navigationStyles.titleContainer,
-        paddingTop: width > 600 ? "0px" : "20px",
       }}
     >
       <Typography
@@ -230,8 +230,8 @@ export const MainNavigation: React.FC<MainNavigationProps> = (props) => {
         <PageNavigation handleDrawerToggle={handleDrawerToggle} />
         <Grid
           container
+          padding={{ sm: "20px", md: "20px 100px" }}
           style={{
-            padding: width > 600 ? "20px 100px" : "20px",
             ...navigationStyles.primaryNavSection,
           }}
         >

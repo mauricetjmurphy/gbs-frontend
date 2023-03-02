@@ -61,13 +61,7 @@ export const SignUp: React.FC = () => {
   return (
     <>
       <AlertDialog setOpen={setOpen} open={open} />
-      <Grid
-        sx={{
-          padding: width > 600 ? "0 100px" : "0px",
-        }}
-        direction="row"
-        container
-      >
+      <Grid padding={{ sm: "0px", md: "0 100px" }} direction="row" container>
         <Grid xs={12} md={8} item sx={{ padding: "20px" }}>
           <Typography
             gutterBottom

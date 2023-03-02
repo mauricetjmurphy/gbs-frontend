@@ -213,6 +213,15 @@ export const themeSettings: any = (mode: string) => {
         fontFamily: [POPPINS_FONT, BASE_SERIF_FONT].join(","),
       },
     },
+    breakpoints: {
+      values: {
+        xs: 0, // extra small breakpoint
+        sm: 600, // small breakpoint
+        md: 960, // medium breakpoint
+        lg: 1280, // large breakpoint
+        xl: 1920, // extra large breakpoint
+      },
+    },
   };
 };
 

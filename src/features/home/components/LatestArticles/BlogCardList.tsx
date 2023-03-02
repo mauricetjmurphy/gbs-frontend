@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, List } from "@mui/material";
+import { Box, List, Grid } from "@mui/material";
+import { styled } from "@mui/material/styles";
 import { nanoid } from "nanoid";
 
 import { Card } from "../../types";
@@ -13,11 +14,20 @@ interface BlogCardListProps {
   listTitle: string;
 }
 
+const BlogCardListContainer = styled(Grid)(({ theme }) => ({
+  [theme.breakpoints.up("md")]: {
+    padding: "0px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    padding: "0 10px",
+  },
+}));
+
 export const BlogCardList: React.FC<BlogCardListProps> = (props) => {
   const { width } = useWindowSize();
 
   return (
-    <Box sx={{ padding: width > 600 ? "0 10px" : "0px" }}>
+    <BlogCardListContainer>
       <ListHeading listTitle={props.listTitle} />
       <List
         sx={{
@@ -36,6 +46,6 @@ export const BlogCardList: React.FC<BlogCardListProps> = (props) => {
           />
         ))}
       </List>
-    </Box>
+    </BlogCardListContainer>
   );
 };
