@@ -15,17 +15,14 @@ interface BlogCardListProps {
 }
 
 const BlogCardListContainer = styled(Grid)(({ theme }) => ({
-  [theme.breakpoints.up("md")]: {
-    padding: "0px",
-  },
-  [theme.breakpoints.up("lg")]: {
-    padding: "0 10px",
+  padding: "10px",
+
+  [theme.breakpoints.up("sm")]: {
+    padding: "20px 10px",
   },
 }));
 
 export const BlogCardList: React.FC<BlogCardListProps> = (props) => {
-  const { width } = useWindowSize();
-
   return (
     <BlogCardListContainer>
       <ListHeading listTitle={props.listTitle} />

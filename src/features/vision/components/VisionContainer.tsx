@@ -1,4 +1,3 @@
-import React from "react";
 import { nanoid } from "nanoid";
 import { Box, Grid, Typography } from "@mui/material";
 
@@ -16,7 +15,7 @@ export const VisionContainer: React.FC<VisionProps> = (props) => {
 
   return (
     <Grid
-      padding={{ sm: "20px", md: "50px" }}
+      padding={{ xs: "10px", sm: "50px" }}
       sx={{
         background: "#fff",
         marginBottom: "50px",

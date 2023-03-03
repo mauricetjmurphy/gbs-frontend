@@ -41,9 +41,9 @@ interface NavigationItem {
 }
 
 const navigation = [
-  // { name: "Climate change", route: "/climate-change" },
-  // { name: "Green tech", route: "/green-tech" },
-  // { name: "Opinion", route: "/opinion" },
+  { name: "Climate change", route: "/climate-change" },
+  { name: "Green tech", route: "/green-tech" },
+  { name: "Opinion", route: "/opinion" },
   { name: "Our Vision", route: "/vision" },
   { name: "All Articles", route: "/articles" },
 ].filter(Boolean) as NavigationItem[];
@@ -79,9 +79,18 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
         ...navigationStyles.secondaryNavSection,
       }}
     >
-      <Box sx={{ width: "50px", height: "100%" }}>
+      <Box
+        onClick={() => navigate("/")}
+        sx={{
+          width: "50px",
+          height: "50px",
+          cursor: "pointer",
+          borderTop: "1px solid #000",
+          borderBottom: "1px solid #000",
+        }}
+      >
         <img
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "48px", height: "48px" }}
           src={"/logo.png"}
           alt=""
         />

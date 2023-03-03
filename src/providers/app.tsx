@@ -3,7 +3,11 @@ import * as React from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from "@tanstack/react-query";
 import {
   Box,
   Button,
@@ -14,8 +18,8 @@ import {
 import { ThemeOptions } from "@material-ui/core";
 
 import { ColorModeContext, useMode } from "../theme/theme";
-// import { store } from "../stores/store";
 import { ScrollToTop } from "../lib/ScrollToTop";
+import { ArticleContextProvider } from "../state/ArticleCtx";
 
 const queryClient = new QueryClient();
 
@@ -83,11 +87,13 @@ export const AppProvider: React.FC<AppProviderProps> = ({
         <QueryClientProvider client={queryClient}>
           <ColorModeContext.Provider value={colorMode}>
             <ThemeProvider theme={{ ...theme, ...colorMode } as ThemeOptions}>
-              <CssBaseline />
-              <Router>
-                <ScrollToTop />
-                {children}
-              </Router>
+              <ArticleContextProvider>
+                <CssBaseline />
+                <Router>
+                  <ScrollToTop />
+                  {children}
+                </Router>
+              </ArticleContextProvider>
             </ThemeProvider>
           </ColorModeContext.Provider>
         </QueryClientProvider>

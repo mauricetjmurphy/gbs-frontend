@@ -1,17 +1,18 @@
-import React from "react";
+import { useContext } from "react";
 import { Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { Card } from "../../types";
+import { ArticleContext } from "../../../../state/ArticleCtx";
 
 import { BlogCardList } from "./BlogCardList";
 import { PostCardList } from "./PostCardList";
 import { HeadlineCard } from "./HeadlineCard";
 
 interface LatestArticlesProps {
-  techData: Card[];
-  climateData: Card[];
+  techData: Card[] | undefined;
+  climateData: Card[] | undefined;
 }
 
 const LatestArticlesContainer = styled(Grid)(({ theme }) => ({
@@ -27,7 +28,9 @@ const LatestArticlesContainer = styled(Grid)(({ theme }) => ({
 export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
   const { width } = useWindowSize();
 
-  const data = [...props.climateData, ...props.techData];
+  const { techData = [], climateData = [] } = useContext(ArticleContext);
+
+  const data = [...climateData, ...techData];
 
   return (
     <LatestArticlesContainer container>
@@ -37,11 +40,11 @@ export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
       <Grid md={6} xs={12} item sx={{}}>
         {data && (
           <HeadlineCard
-            id={data[2].id}
-            title={data[2].title}
-            image_url={data[2].image_url}
-            body={data[2].body}
-            date={data[2].date}
+            id={data[2]?.id}
+            title={data[2]?.title}
+            image_url={data[2]?.image_url}
+            body={data[2]?.body}
+            date={data[2]?.date}
           />
         )}
       </Grid>

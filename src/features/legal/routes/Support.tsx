@@ -16,19 +16,19 @@ const Support: React.FC<SupportProps> = (props) => {
       <ContentLayout title={"Support Page"} description={""}>
         <Grid
           container
-          padding={{ sm: "20px", md: "50px" }}
+          padding={{ xs: "20px", sm: "50px" }}
           sx={{
             background: "#fff",
             margin: "50px 0px",
           }}
         >
-          <Grid padding={{ sm: "10px", md: "30px" }} item xs={12} md={6}>
+          <Grid padding={{ xs: "10px", sm: "30px" }} item xs={12} md={6}>
             <Typography sx={{ paddingLeft: "8px" }} variant="h1" component="h1">
               Contact Us
             </Typography>
             <ContactForm />
           </Grid>
-          <Grid padding={{ sm: "10px", md: "30px" }} item xs={12} md={6}>
+          <Grid padding={{ xs: "10px", sm: "30px" }} item xs={12} md={6}>
             <Box sx={{ paddingBottom: "30px" }}>
               <Typography variant="h1" component={"h1"} gutterBottom>
                 Contact Information

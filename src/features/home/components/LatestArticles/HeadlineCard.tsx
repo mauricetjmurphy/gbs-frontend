@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router";
 import { Typography, Box, Button, styled } from "@mui/material";
 
@@ -44,10 +43,8 @@ export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
         navigate(`/article/${props.id}`);
       }}
     >
-      <Box sx={{ width: "100%" }}>
+      <Box sx={{ width: "100%", objectFit: "contain" }}>
         <img
-          width={540}
-          height={360}
           srcSet={`/images/SM-placeholder.png 640w,
           /images/SM-placeholder.png 960w, 
           /images/SM-placeholder.png 1280w, 
@@ -87,8 +84,8 @@ export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography sx={{}} variant={"body1"} component={"p"}>
-          {`${props.body.paragraphs[0].split(".")[0]}.` +
-            `${props.body.paragraphs[0].split(".")[1]}.`}
+          {`${props.body?.paragraphs[0].split(".")[0]}.` +
+            `${props.body?.paragraphs[0].split(".")[1]}.`}
         </Typography>
       </Box>
     </BackButton>

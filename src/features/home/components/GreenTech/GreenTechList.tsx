@@ -17,10 +17,10 @@ const GreenTechList: React.FC<MostPopularArticlesProps> = (props) => {
   const { width } = useWindowSize();
 
   return (
-    <Box sx={{ padding: "30px 0px" }}>
+    <Box padding={{ xs: "10px", sm: "20px 10px" }}>
       <ListHeading listTitle={props.listTitle} />
       <Grid
-        rowSpacing={{ sm: 0, md: 3 }}
+        rowSpacing={{ xs: 2, sm: 3 }}
         columnSpacing={2}
         container
         flexWrap={{ sm: "wrap", md: "nowrap" }}

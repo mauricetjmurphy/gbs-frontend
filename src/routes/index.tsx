@@ -1,18 +1,7 @@
-import React, { Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { Home } from "../features/home/routes/Home";
-// import { Vision } from "../features/vision/routes/Vision";
-// import { Admin } from "../features/admin/routes/Admin";
-// import { Article } from "../features/article";
-// import { Login } from "../features/auth/routes/Login";
-// import { Cookies } from "../features/legal/routes/Cookies";
-// import { Privacy } from "../features/legal/routes/Privacy";
-// import { Support } from "../features/legal/routes/Support";
-// import { Terms } from "../features/legal/routes/Terms";
-// import { Articles } from "../features/articles/routes/Articles";
-
-// import { PrivateRoutes } from "./Private";
 
 const Vision = lazy(() => import("../features/vision/routes/Vision"));
 const Admin = lazy(() => import("../features/admin/routes/Admin"));
@@ -32,9 +21,6 @@ export const AppRoutes: React.FC = () => {
         <Route path="/admin" element={<Admin />} />
         <Route path="/article/:id" element={<Article />} />
         <Route path="/articles" element={<Articles />} />
-        {/* <Route path="/login" element={<Login />} />
-      <Route path="/policy/:policyId" element={<PrivateRoutes />} /> */}
-
         <Route path="/terms" element={<Terms />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/cookies" element={<Cookies />} />

@@ -11,6 +11,7 @@ import { navigationStyles } from "../../features/global/Navigation/navigation.st
 interface SocialNavigationItem {
   name: string;
   to: string;
+  label: string;
   icon: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
 }
 
@@ -20,9 +21,24 @@ interface SocialMediaProps {
 }
 
 const socialLinks = [
-  { name: "Instagram", to: "https://www.instagram.com/", icon: InstagramIcon },
-  { name: "Facebook", to: "https://www.facebook.com/", icon: FacebookIcon },
-  { name: "Twitter", to: "https://twitter.com/", icon: TwitterIcon },
+  {
+    name: "Instagram",
+    to: "https://www.instagram.com/",
+    icon: InstagramIcon,
+    label: "Follow us on Instagram",
+  },
+  {
+    name: "Facebook",
+    to: "https://www.facebook.com/",
+    icon: FacebookIcon,
+    label: "Like us on Facebook",
+  },
+  {
+    name: "Twitter",
+    to: "https://twitter.com/",
+    icon: TwitterIcon,
+    label: "Follow us on Twitter",
+  },
 ].filter(Boolean) as SocialNavigationItem[];
 
 export const SocialLinks: React.FC<SocialMediaProps> = (props) => {
@@ -46,6 +62,7 @@ export const SocialLinks: React.FC<SocialMediaProps> = (props) => {
               href={item.to}
               rel="noreferrer"
               target="_blank"
+              aria-label={item.label}
               sx={{
                 padding: "0px",
                 ".MuiSvgIcon-root": {

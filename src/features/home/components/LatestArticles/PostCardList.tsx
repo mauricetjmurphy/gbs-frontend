@@ -17,7 +17,7 @@ export const PostCardList: React.FC<PostCardListProps> = (props) => {
   const { width } = useWindowSize();
 
   return (
-    <Box padding={{ sm: "0px 10px", md: "20px 10px" }}>
+    <Box padding={{ xs: "10px", sm: "20px 10px" }}>
       <ListHeading listTitle={props.listTitle} />
       <List
         sx={{ display: "flex", flexDirection: "column", padding: "10px 0px" }}

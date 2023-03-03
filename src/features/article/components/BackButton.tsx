@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router";
 
@@ -8,7 +7,10 @@ const BackButton = (props: Props) => {
   const navigate = useNavigate();
 
   return (
-    <Box sx={{ height: "60px", display: "flex", alignItems: "center" }}>
+    <Box
+      padding={{ xs: "0px 10px" }}
+      sx={{ height: "60px", display: "flex", alignItems: "center" }}
+    >
       <Button
         variant={"outlined"}
         onClick={() => {

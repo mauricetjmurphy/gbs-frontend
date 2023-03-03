@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense, lazy } from "react";
+import { useEffect, useState, useContext, Suspense, lazy } from "react";
 // import { firstValueFrom, from } from "rxjs";
 // import { ajax } from "rxjs/ajax";
 import { useQuery } from "@tanstack/react-query";
@@ -7,11 +7,9 @@ import { Box } from "@mui/material";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { API_URL } from "../../../config";
 import { LatestArticles } from "../components/LatestArticles/LatestArticles";
-// import { GreenTechList } from "../components/GreenTech/GreenTechList";
-import { Card } from "../types";
 import { Spinner } from "../../../components/Spinner/Spinner";
 import { ContentLayout, MainLayout } from "../../global";
-// import { ClimateChangeList } from "../components/ClimateChange/ClimateChangeList";
+import { ArticleContext } from "../../../state/ArticleCtx";
 
 const GreenTechList = lazy(
   () => import("../components/GreenTech/GreenTechList")
@@ -22,36 +20,15 @@ const ClimateChangeList = lazy(
 
 export const Home: React.FC = () => {
   const {
-    data: techData,
-    isLoading: techArtiiclesIsLoading,
-    isError: techIsError,
-  } = useQuery<Card[], Error>(
-    ["tech-articles"],
-    async () =>
-      await fetch(`${API_URL}/tech-articles`).then(
-        async (response) => await response.json()
-      ),
-    {
-      staleTime: 1000 * 60 * 60 * 24 * 7, // cache for a week
-    }
-  );
+    techData,
+    techIsLoading,
+    techIsError,
+    climateData,
+    climateIsLoading,
+    climateIsError,
+  } = useContext(ArticleContext);
 
-  const {
-    data: climateData,
-    isLoading: climateArtiiclesIsLoading,
-    isError: climateIsError,
-  } = useQuery<Card[], Error>(
-    ["climate-articles"],
-    async () =>
-      await fetch(`${API_URL}/climate-articles`).then(
-        async (response) => await response.json()
-      ),
-    {
-      staleTime: 1000 * 60 * 60 * 24 * 7, // cache for a week
-    }
-  );
-
-  if (techArtiiclesIsLoading || climateArtiiclesIsLoading) {
+  if (techIsLoading || climateIsLoading) {
     return <Spinner />;
   }
 
@@ -76,13 +53,13 @@ export const Home: React.FC = () => {
         <Suspense>
           <GreenTechList
             listTitle={"Green Technology"}
-            data={techData.slice(6, 10)}
+            data={techData?.slice(6, 10)}
           />
         </Suspense>
         <Suspense>
           <ClimateChangeList
             listTitle={"Climate Change"}
-            data={climateData.slice(10, 12)}
+            data={climateData?.slice(10, 12)}
           />
         </Suspense>
       </ContentLayout>

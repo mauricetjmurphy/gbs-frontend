@@ -10,17 +10,17 @@ import { ClimateChangeCard } from "./ClimateChangeCard";
 
 interface ClimateChangeListProps {
   listTitle: string;
-  data: Card[];
+  data: Card[] | undefined;
 }
 
 const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
   const { width } = useWindowSize();
 
   return (
-    <Box>
+    <Box padding={{ xs: "10px", sm: "20px 10px" }}>
       <ListHeading listTitle={props.listTitle} />
       <Grid
-        rowSpacing={{ sm: 0, md: 3 }}
+        rowSpacing={{ xs: 2, sm: 3 }}
         columnSpacing={2}
         sx={{ padding: "30px 0px" }}
         container
