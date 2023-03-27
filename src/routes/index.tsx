@@ -1,10 +1,12 @@
 import { Suspense, lazy } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { Home } from "../features/home/routes/Home";
+// import { useAuth } from "../features/auth/hooks/useAuth";
 
 const Vision = lazy(() => import("../features/vision/routes/Vision"));
 const Admin = lazy(() => import("../features/admin/routes/Admin"));
+const Login = lazy(() => import("../features/auth/routes/Login"));
 const GreenTech = lazy(() => import("../features/greentech/routes/GreenTech"));
 const ClimateChange = lazy(
   () => import("../features/climatechange/routes/ClimateChange")
@@ -17,12 +19,20 @@ const Support = lazy(() => import("../features/legal/routes/Support"));
 const Terms = lazy(() => import("../features/legal/routes/Terms"));
 
 export const AppRoutes: React.FC = () => {
+  // const { isAuthenticated } = useAuth();
+
+  const isAuthenticated = false;
+
   return (
     <Suspense>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/vision" element={<Vision />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route
+          path="/admin"
+          element={isAuthenticated ? <Admin /> : <Navigate to="/login" />}
+        />
+        <Route path="/login" element={<Login />} />
         <Route path="/climate-change" element={<ClimateChange />} />
         <Route path="/green-tech" element={<GreenTech />} />
         <Route path="/article/:id" element={<Article />} />

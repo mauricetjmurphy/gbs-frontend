@@ -121,7 +121,7 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
           ))}
       </List>
 
-      {/* {auth && (
+      {width > 960 && (
         <Box>
           <IconButton
             size="large"
@@ -151,7 +151,7 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
             <MenuItem onClick={handleAdminClick}>Admin</MenuItem>
           </Menu>
         </Box>
-      )} */}
+      )}
     </Box>
   );
 };
