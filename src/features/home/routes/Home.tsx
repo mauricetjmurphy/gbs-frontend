@@ -59,7 +59,7 @@ export const Home: React.FC = () => {
         <Suspense>
           <ClimateChangeList
             listTitle={"Climate Change"}
-            data={climateData?.slice(10, 12)}
+            data={climateData?.slice(9, 11)}
           />
         </Suspense>
       </ContentLayout>

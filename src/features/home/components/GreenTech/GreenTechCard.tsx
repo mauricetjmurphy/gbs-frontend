@@ -4,6 +4,7 @@ import { Typography, Box, Grid } from "@mui/material";
 
 import { Section } from "../../types";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
+import { CF_IMAGE_URL } from "../../../../config";
 
 interface MostPopularCardProps {
   id: string;
@@ -35,12 +36,7 @@ export const GreenTechCard: React.FC<MostPopularCardProps> = (props) => {
     >
       <Box>
         <img
-          srcSet={`/images/SM-placeholder.png 640w,
-          /images/SM-placeholder.png 960w, 
-          /images/SM-placeholder.png 1280w, 
-          /images/SM-placeholder.png 1920w`}
-          sizes="(max-width: 600px) 640px, (max-width: 960px) 960px, (max-width: 1280px) 1280px, 1920px"
-          src={`/images/SM-placeholder.png`}
+          src={`${CF_IMAGE_URL}/${props.image_url}`}
           alt={props.title}
           style={{ width: "100%" }}
         />

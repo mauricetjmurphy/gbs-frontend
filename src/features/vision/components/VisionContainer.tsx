@@ -2,6 +2,7 @@ import { nanoid } from "nanoid";
 import { Box, Grid, Typography } from "@mui/material";
 
 import { useWindowSize } from "../../../hooks/useWindowSize";
+import { CF_IMAGE_URL } from "../../../config";
 
 interface VisionProps {
   data: {
@@ -25,15 +26,7 @@ export const VisionContainer: React.FC<VisionProps> = (props) => {
       <Grid padding={{ sm: "0px", md: "0px 15px" }} item xs={12} md={6}>
         <Box>
           <img
-            srcSet={`/images/SM-placeholder.png 640w,
-                     /images/SM-placeholder.png 960w, 
-                     /images/SM-placeholder.png 1280w, 
-                     /images/SM-placeholder.png 1920w`}
-            sizes={`(max-width: 600px) 640px,
-                    (max-width: 960px) 960px,
-                    (max-width: 1280px) 1280px, 
-                    1920px`}
-            src={`/images/SM-placeholder.png`}
+            src={`${CF_IMAGE_URL}/vision-medium.jpg`}
             alt={"Team photo"}
             style={{ width: "100%" }}
           />

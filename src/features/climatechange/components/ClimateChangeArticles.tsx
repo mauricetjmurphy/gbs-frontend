@@ -35,10 +35,10 @@ const ClimateChangeArticles: React.FC<ClimateChangeArticlesProps> = (props) => {
         )}
       </Grid>
       <Grid item sm={3} xs={6}>
-        <BlogCardList data={props.data?.slice(0, 2)} />
+        <BlogCardList data={props.data?.slice(1, 3)} />
       </Grid>
       <Grid item sm={3} xs={6}>
-        <BlogCardList data={props.data?.slice(0, 2)} />
+        <BlogCardList data={props.data?.slice(3, 5)} />
       </Grid>
     </ClimateChangeArticlesContainer>
   );

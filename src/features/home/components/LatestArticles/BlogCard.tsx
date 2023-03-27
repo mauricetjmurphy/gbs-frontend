@@ -2,6 +2,7 @@ import { useNavigate } from "react-router";
 import { ListItemButton, Typography, Box, Grid } from "@mui/material";
 
 import { Section } from "../../types";
+import { CF_IMAGE_URL } from "../../../../config";
 
 interface BlogCardProps {
   id: string;
@@ -12,6 +13,8 @@ interface BlogCardProps {
 
 export const BlogCard: React.FC<BlogCardProps> = (props) => {
   const navigate = useNavigate();
+
+  console.log(`${CF_IMAGE_URL}/${props.image_url}`);
 
   return (
     <ListItemButton
@@ -29,16 +32,13 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
       }}
     >
       <Box>
-        <img
-          srcSet={`/images/SM-placeholder.png 640w,
-          /images/SM-placeholder.png 960w, 
-          /images/SM-placeholder.png 1280w, 
-          /images/SM-placeholder.png 1920w`}
-          sizes="(max-width: 600px) 640px, (max-width: 960px) 960px, (max-width: 1280px) 1280px, 1920px"
-          src={`/images/SM-placeholder.png`}
-          alt={props.title}
-          style={{ width: "100%" }}
-        />
+        {CF_IMAGE_URL && (
+          <img
+            src={`${CF_IMAGE_URL}/${props.image_url}`}
+            alt={props.title}
+            style={{ width: "100%" }}
+          />
+        )}
       </Box>
       <Box
         sx={{ textAlign: "left", width: "100%", padding: "10px 0px 20px 0px" }}

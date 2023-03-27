@@ -4,7 +4,7 @@ import { Typography, Box, Button, styled } from "@mui/material";
 import { Section } from "../../types";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { formatDate } from "../../../../utils/formatDate";
-import { BUCKET_URL } from "../../../../config";
+import { BUCKET_URL, CF_IMAGE_URL } from "../../../../config";
 
 interface HeadlineCardProps {
   id: string | undefined;
@@ -45,12 +45,7 @@ export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
     >
       <Box sx={{ width: "100%", objectFit: "contain" }}>
         <img
-          srcSet={`/images/SM-placeholder.png 640w,
-          /images/SM-placeholder.png 960w, 
-          /images/SM-placeholder.png 1280w, 
-          /images/SM-placeholder.png 1920w`}
-          sizes="(max-width: 600px) 640px, (max-width: 960px) 960px, (max-width: 1280px) 1280px, 1920px"
-          src={`/images/SM-placeholder.png`}
+          src={`${CF_IMAGE_URL}/${props.image_url}`}
           alt={props.title}
           style={{ width: "100%" }}
         />
