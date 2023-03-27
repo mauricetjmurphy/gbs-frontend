@@ -11,7 +11,7 @@ import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { BlogCardList } from "../../home/components/LatestArticles/BlogCardList";
 import { Spinner } from "../../../components/Spinner/Spinner";
 import BackButton from "../components/BackButton";
-import { ArticleContext } from "../../../state/ArticleCtx";
+import { ArticleContext } from "../../../context/ArticleCtx";
 
 interface ArticleProps {}
 

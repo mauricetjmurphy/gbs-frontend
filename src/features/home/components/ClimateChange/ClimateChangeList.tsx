@@ -24,6 +24,7 @@ const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
         columnSpacing={2}
         sx={{ padding: "30px 0px" }}
         container
+        direction={"row"}
       >
         {props.data?.map((item: any) => (
           <ClimateChangeCard

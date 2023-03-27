@@ -11,7 +11,7 @@ import { ListHeading } from "./ListHeading";
 
 interface BlogCardListProps {
   data: Card[] | undefined;
-  listTitle: string;
+  listTitle?: string;
 }
 
 const BlogCardListContainer = styled(Grid)(({ theme }) => ({
@@ -25,7 +25,8 @@ const BlogCardListContainer = styled(Grid)(({ theme }) => ({
 export const BlogCardList: React.FC<BlogCardListProps> = (props) => {
   return (
     <BlogCardListContainer>
-      <ListHeading listTitle={props.listTitle} />
+      {props.listTitle && <ListHeading listTitle={props.listTitle} />}
+
       <List
         sx={{
           display: "flex",

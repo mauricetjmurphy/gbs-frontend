@@ -5,6 +5,10 @@ import { Home } from "../features/home/routes/Home";
 
 const Vision = lazy(() => import("../features/vision/routes/Vision"));
 const Admin = lazy(() => import("../features/admin/routes/Admin"));
+const GreenTech = lazy(() => import("../features/greentech/routes/GreenTech"));
+const ClimateChange = lazy(
+  () => import("../features/climatechange/routes/ClimateChange")
+);
 const Article = lazy(() => import("../features/article/routes/Article"));
 const Articles = lazy(() => import("../features/articles/routes/Articles"));
 const Cookies = lazy(() => import("../features/legal/routes/Cookies"));
@@ -19,6 +23,8 @@ export const AppRoutes: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/vision" element={<Vision />} />
         <Route path="/admin" element={<Admin />} />
+        <Route path="/climate-change" element={<ClimateChange />} />
+        <Route path="/green-tech" element={<GreenTech />} />
         <Route path="/article/:id" element={<Article />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/terms" element={<Terms />} />

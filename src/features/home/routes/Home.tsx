@@ -9,7 +9,7 @@ import { API_URL } from "../../../config";
 import { LatestArticles } from "../components/LatestArticles/LatestArticles";
 import { Spinner } from "../../../components/Spinner/Spinner";
 import { ContentLayout, MainLayout } from "../../global";
-import { ArticleContext } from "../../../state/ArticleCtx";
+import { ArticleContext } from "../../../context/ArticleCtx";
 
 const GreenTechList = lazy(
   () => import("../components/GreenTech/GreenTechList")

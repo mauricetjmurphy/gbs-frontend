@@ -43,7 +43,7 @@ interface NavigationItem {
 const navigation = [
   { name: "Climate change", route: "/climate-change" },
   { name: "Green tech", route: "/green-tech" },
-  { name: "Opinion", route: "/opinion" },
+  // { name: "Opinion", route: "/opinion" },
   { name: "Our Vision", route: "/vision" },
   { name: "All Articles", route: "/articles" },
 ].filter(Boolean) as NavigationItem[];
@@ -148,7 +148,6 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
             open={Boolean(anchorEl)}
             onClose={handleClose}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
             <MenuItem onClick={handleAdminClick}>Admin</MenuItem>
           </Menu>
         </Box>
@@ -174,7 +173,12 @@ const Title: React.FC<TitleProps> = (props) => {
         variant={"h1"}
         component={"h1"}
         onClick={() => navigate("/")}
-        sx={{ fontWeight: 400, cursor: "pointer", textAlign: "center" }}
+        sx={{
+          fontWeight: 400,
+          cursor: "pointer",
+          textAlign: "center",
+          paddingBottom: { xs: "20px", sm: "0px" },
+        }}
       >
         {props.title}
       </Typography>
@@ -246,10 +250,12 @@ export const MainNavigation: React.FC<MainNavigationProps> = (props) => {
         >
           <SearchSection />
           <Title title={"Never Too Late"} />
-          <SocialLinks
-            position={width < 600 ? "center" : "end"}
-            color="#ffb67c"
-          />
+          {width > 960 && (
+            <SocialLinks
+              position={width < 960 ? "center" : "end"}
+              color="#000"
+            />
+          )}
         </Grid>
       </Box>
     </>

@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { Card } from "../../types";
-import { ArticleContext } from "../../../../state/ArticleCtx";
+import { ArticleContext } from "../../../../context/ArticleCtx";
 
 import { BlogCardList } from "./BlogCardList";
 import { PostCardList } from "./PostCardList";

@@ -5,7 +5,7 @@ import { ContentLayout, MainLayout } from "../../global";
 import { AllArticlesList } from "../components/AllArticlesList";
 import { Spinner } from "../../../components/Spinner/Spinner";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
-import { ArticleContext } from "../../../state/ArticleCtx";
+import { ArticleContext } from "../../../context/ArticleCtx";
 
 type ArticlesProps = {};
 

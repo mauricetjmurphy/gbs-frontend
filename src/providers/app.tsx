@@ -19,7 +19,7 @@ import { ThemeOptions } from "@material-ui/core";
 
 import { ColorModeContext, useMode } from "../theme/theme";
 import { ScrollToTop } from "../lib/ScrollToTop";
-import { ArticleContextProvider } from "../state/ArticleCtx";
+import { ArticleContextProvider } from "../context/ArticleCtx";
 
 const queryClient = new QueryClient();
 
