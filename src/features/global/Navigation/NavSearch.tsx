@@ -8,9 +8,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import CancelIcon from "@mui/icons-material/Cancel";
 
 import { Card } from "../../home/types";
-import { API_URL } from "../../../config";
+import { API_URL, CF_IMAGE_URL } from "../../../config";
 
 import { navigationStyles } from "./navigation.styles";
+import { nanoid } from "nanoid";
 
 interface SearchProps {}
 
@@ -85,27 +86,28 @@ const SearchItemList: React.FC<SerchItemsListProps> = (props) => {
     >
       {props.data.map((item) => (
         <Grid
+          key={nanoid()}
           onClick={() => {
             navigate(`/article/${item.id}`);
             props.setSearchTerm("");
           }}
           container
-          direction={"row"}
+          direction={{ xs: "row", md: "row" }}
           sx={{
             "&:hover": { background: "#cccccc95" },
             cursor: "pointer",
           }}
         >
-          <Grid item md={4}>
+          <Grid item xs={4} md={4}>
             <Box sx={{ overflow: "hidden", padding: "10px" }}>
               <img
-                src={`/images/SM-placeholder.png`}
+                src={`${CF_IMAGE_URL}/${item.image_url}`}
                 alt={item.title}
                 style={{ width: "100%" }}
               />
             </Box>
           </Grid>
-          <Grid item md={8}>
+          <Grid item xs={8} md={8}>
             <Typography
               sx={{ paddingTop: "10px", fontWeight: "bold" }}
               variant="body2"

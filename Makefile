@@ -5,7 +5,7 @@ build: install
 	yarn build
 
 build-dev: install
-	yarn build:dev
+	yarn build
 
 build-stg: install
 	yarn build:stg
