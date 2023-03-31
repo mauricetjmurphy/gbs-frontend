@@ -8,7 +8,7 @@ const BackButton = (props: Props) => {
 
   return (
     <Box
-      padding={{ xs: "0px 10px" }}
+      padding={{ xs: "0px 10px", sm: "0px" }}
       sx={{ height: "60px", display: "flex", alignItems: "center" }}
     >
       <Button

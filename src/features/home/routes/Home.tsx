@@ -9,7 +9,10 @@ import { API_URL } from "../../../config";
 import { LatestArticles } from "../components/LatestArticles/LatestArticles";
 import { Spinner } from "../../../components/Spinner/Spinner";
 import { ContentLayout, MainLayout } from "../../global";
-import { ArticleContext } from "../../../context/ArticleCtx";
+import {
+  ArticleContextInterface,
+  ArticleContext,
+} from "../../../context/ArticleCtx";
 
 const GreenTechList = lazy(
   () => import("../components/GreenTech/GreenTechList")
@@ -26,7 +29,7 @@ export const Home: React.FC = () => {
     climateData,
     climateIsLoading,
     climateIsError,
-  } = useContext(ArticleContext);
+  } = useContext<ArticleContextInterface>(ArticleContext);
 
   if (techIsLoading || climateIsLoading) {
     return <Spinner />;

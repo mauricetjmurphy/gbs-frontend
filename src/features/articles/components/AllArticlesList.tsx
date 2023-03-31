@@ -11,19 +11,25 @@ import ArticleCard from "./ArticleCard";
 interface BlogCardListProps {
   data: Card[] | undefined;
   listTitle: string;
+  currentPage: number;
+  perPage: number;
 }
 
 export const AllArticlesList: React.FC<BlogCardListProps> = (props) => {
   const { width } = useWindowSize();
+  const startIndex = (props.currentPage - 1) * props.perPage;
+  const endIndex = startIndex + props.perPage;
+  const currentData = props.data?.slice(startIndex, endIndex);
 
   return (
     <Grid
+      minHeight={"1100px"}
       columnSpacing={3}
       rowSpacing={2}
       container
       sx={{ background: "#fff", padding: "20px" }}
     >
-      {props.data?.map((item: Card) => (
+      {currentData?.map((item: Card) => (
         <ArticleCard
           key={nanoid()}
           id={item.id}

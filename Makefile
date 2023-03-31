@@ -5,13 +5,10 @@ build: install
 	yarn build
 
 build-dev: install
-	yarn build
+	yarn build:dev
 
 build-stg: install
 	yarn build:stg
-
-build-dr: install
-	yarn build:dr
 
 build-prod: install
 	yarn build:prod

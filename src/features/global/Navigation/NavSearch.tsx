@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
+import { nanoid } from "nanoid";
 import { useNavigate } from "react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Box, Divider, Grid, Typography } from "@mui/material";
@@ -7,11 +8,10 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import CancelIcon from "@mui/icons-material/Cancel";
 
-import { Card } from "../../home/types";
 import { API_URL, CF_IMAGE_URL } from "../../../config";
+import { Card } from "../../home/types";
 
 import { navigationStyles } from "./navigation.styles";
-import { nanoid } from "nanoid";
 
 interface SearchProps {}
 

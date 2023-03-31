@@ -4,7 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Card } from "../features/home/types";
 import { API_URL } from "../config";
 
-interface ArticleContextInterface {
+export interface ArticleContextInterface {
   techData: Card[] | undefined;
   techIsLoading: boolean;
   techIsError: boolean;

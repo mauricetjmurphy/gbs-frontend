@@ -7,6 +7,11 @@ import { Home } from "../features/home/routes/Home";
 const Vision = lazy(() => import("../features/vision/routes/Vision"));
 const Admin = lazy(() => import("../features/admin/routes/Admin"));
 const Login = lazy(() => import("../features/auth/routes/Login"));
+const Register = lazy(() => import("../features/auth/routes/Register"));
+const PostArticle = lazy(
+  () => import("../features/postarticle/routes/PostArticle")
+);
+// const Opinion = lazy(() => import("../features/opinion/routes/Opinion"));
 const GreenTech = lazy(() => import("../features/greentech/routes/GreenTech"));
 const ClimateChange = lazy(
   () => import("../features/climatechange/routes/ClimateChange")
@@ -33,6 +38,9 @@ export const AppRoutes: React.FC = () => {
           element={isAuthenticated ? <Admin /> : <Navigate to="/login" />}
         />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        {/* <Route path="/opinion" element={<Opinion />} /> */}
+        <Route path="/user-post" element={<PostArticle />} />
         <Route path="/climate-change" element={<ClimateChange />} />
         <Route path="/green-tech" element={<GreenTech />} />
         <Route path="/article/:id" element={<Article />} />
