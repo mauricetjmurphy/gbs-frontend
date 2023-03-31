@@ -1,24 +1,24 @@
 install:
 	yarn install
 
-build: install
-	yarn build
-
-build-dev: install
-	yarn build:dev
-
-build-stg: install
-	yarn build:stg
-
-build-prod: install
-	yarn build:prod
-
 run-tests:
 	yarn test
 
+build-dev:
+	yarn build:dev
+	rm -rf ./build/.env
+
+build-stg:
+	yarn build:stg
+	rm -rf ./build/.env
+
+build-prod:
+	yarn build:prod
+	rm -rf ./build/.env
+
 deploy-dev: build-dev
 	aws s3 sync --delete build/ s3://gbs-blog-dev-web
-	aws cloudfront create-invalidation --distribution-id "E1D0I1EMJ4O77T" --paths '/*'
+	aws cloudfront create-invalidation --distribution-id "E2WE5B1GQZGWDP" --paths '/*'
 
 deploy-stg: build-stg
 	aws s3 sync --delete build/ s3://gbs-blog-stg-web
@@ -26,4 +26,4 @@ deploy-stg: build-stg
 
 deploy-prod: build-prod
 	aws s3 sync --delete build/ s3://gbs-blog-prod-web
-	aws cloudfront create-invalidation --distribution-id "" --paths '/*'
+	aws cloudfront create-invalidation --distribution-id "E2HW3SJEGMZV3U" --paths '/*'
