@@ -3,7 +3,7 @@ import React from "react";
 import { ContentLayout, MainLayout } from "../../../components";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { aboutData } from "../../../data/aboutData";
-import BackButton from "../../article/components/BackButton";
+import BackButton from "../../../components/BackButton/BackButton";
 import { VisionContainer } from "../components/VisionContainer";
 
 interface VisionProps {}

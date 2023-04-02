@@ -123,6 +123,7 @@ export const ContactForm = () => {
         type="submit"
         color={"inherit"}
         variant="contained"
+        fullWidth
       >
         Submit
       </Button>

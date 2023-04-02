@@ -22,6 +22,7 @@ const ArticleCard: React.FC<ArticleCardProps> = (props) => {
       onClick={() => {
         navigate(`/article/${props.id}`);
       }}
+      sx={{ padding: "0 10px" }}
     >
       <Box>
         <img

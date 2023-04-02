@@ -10,7 +10,7 @@ import { ArticleParagraphList } from "../components/ArticleParagraphList";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { BlogCardList } from "../../home/components/LatestArticles/BlogCardList";
 import { Spinner } from "../../../components/Spinner/Spinner";
-import BackButton from "../components/BackButton";
+import BackButton from "../../../components/BackButton/BackButton";
 import { ArticleContext } from "../../../context/ArticleCtx";
 
 interface ArticleProps {}

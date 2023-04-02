@@ -2,7 +2,7 @@ import React from "react";
 import { Box, List, ListItem, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
 
-import BackButton from "../../article/components/BackButton";
+import BackButton from "../../../components/BackButton/BackButton";
 
 interface ParagraphListProps {
   data: Record<string, any>;

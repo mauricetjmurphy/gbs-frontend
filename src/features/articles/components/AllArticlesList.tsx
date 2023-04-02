@@ -23,8 +23,6 @@ export const AllArticlesList: React.FC<BlogCardListProps> = (props) => {
   return (
     <Grid
       minHeight={"1100px"}
-      columnSpacing={3}
-      rowSpacing={2}
       container
       sx={{ background: "#fff", padding: "20px" }}
     >

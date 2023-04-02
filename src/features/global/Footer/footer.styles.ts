@@ -39,8 +39,9 @@ export const signUpFormStyles = {
     lineHeight: "1.75",
   },
   signUpButton: {
+    marginLeft: "10px",
     background: "#2a9df4",
-    maxHeight: "49.5px",
+    maxHeight: "56px",
     padding: "16.5px 14px",
     fontSize: "16px",
   },

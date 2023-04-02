@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Button } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 
 import { API_URL } from "../../../config";
 
@@ -47,11 +47,13 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ setOpen, open }) => {
       onSubmit={formik.handleSubmit}
     >
       <div style={signUpFormStyles.conatainer}>
-        <input
-          style={signUpFormStyles.inputField}
+        <TextField
+          style={{}}
           type="email"
           id="email"
           name="email"
+          label="Email*"
+          variant="outlined"
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.email}

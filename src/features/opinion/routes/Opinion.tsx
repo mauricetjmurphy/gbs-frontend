@@ -6,7 +6,7 @@ import { OpinionList } from "../components/OpinionList";
 import { Spinner } from "../../../components/Spinner/Spinner";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { ArticleContext } from "../../../context/ArticleCtx";
-import BackButton from "../../article/components/BackButton";
+import BackButton from "../../../components/BackButton/BackButton";
 
 type OpinionProps = {};
 

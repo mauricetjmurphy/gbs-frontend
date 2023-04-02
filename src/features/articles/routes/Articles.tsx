@@ -12,6 +12,7 @@ import {
   ArticleContextInterface,
 } from "../../../context/ArticleCtx";
 import { Card } from "../../home/types";
+import BackButton from "../../../components/BackButton/BackButton";
 
 type ArticlesProps = {};
 
@@ -53,6 +54,7 @@ const Articles: React.FC<ArticlesProps> = (props) => {
     <MainLayout>
       <ContentLayout title={"All Blog Articles"} description={""}>
         <PageTitle title={"All Articles"} />
+        <BackButton />
         <AllArticlesList
           data={data}
           listTitle={"All Articles"}

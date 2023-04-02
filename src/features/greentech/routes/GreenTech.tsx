@@ -5,6 +5,7 @@ import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { ContentLayout, MainLayout } from "../../global";
 import GreenTechList from "../../home/components/GreenTech/GreenTechList";
 import GreenTechArticles from "../components/GreenTechArticles";
+import BackButton from "../../../components/BackButton/BackButton";
 
 interface GreenTechProps {}
 
@@ -22,6 +23,7 @@ const GreenTech = (props: GreenTechProps) => {
         }
       >
         <PageTitle title={"Green Technology"} />
+        <BackButton />
         <GreenTechArticles data={data} />
         <GreenTechList listTitle={"Top Stories"} data={data?.slice(5, 9)} />
       </ContentLayout>

@@ -5,6 +5,7 @@ import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { ContentLayout, MainLayout } from "../../global";
 import ClimateChangeList from "../../home/components/ClimateChange/ClimateChangeList";
 import ClimateChangeArticles from "../components/ClimateChangeArticles";
+import BackButton from "../../../components/BackButton/BackButton";
 
 interface ClimateChangeProps {}
 
@@ -22,7 +23,7 @@ const ClimateChange = (props: ClimateChangeProps) => {
         }
       >
         <PageTitle title={"Climate Change"} />
-
+        <BackButton />
         <ClimateChangeArticles data={data} />
         <ClimateChangeList listTitle={"Top Stories"} data={data?.slice(5, 9)} />
       </ContentLayout>
