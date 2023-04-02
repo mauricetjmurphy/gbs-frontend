@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { Typography, Box, Grid } from "@mui/material";
 
-import { Section } from "../../types";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { CF_IMAGE_URL } from "../../../../config";
 
@@ -10,7 +9,7 @@ interface MostPopularCardProps {
   id: string;
   title: string;
   image_url: string | undefined;
-  body: Section;
+  body: string[];
 }
 
 export const GreenTechCard: React.FC<MostPopularCardProps> = (props) => {
@@ -57,8 +56,8 @@ export const GreenTechCard: React.FC<MostPopularCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography variant={"body2"} component={"p"}>
-          {`${props.body.paragraphs[0].split(".")[0]}.` +
-            `${props.body.paragraphs[0].split(".")[1]}.`}
+          {`${props.body && props.body[0].split(".")[0]}.` +
+            `${props.body && props.body[0].split(".")[1]}.`}
         </Typography>
       </Box>
     </Grid>

@@ -31,6 +31,9 @@ export const Home: React.FC = () => {
     climateIsError,
   } = useContext<ArticleContextInterface>(ArticleContext);
 
+  console.log({ techData });
+  console.log({ climateData });
+
   if (techIsLoading || climateIsLoading) {
     return <Spinner />;
   }

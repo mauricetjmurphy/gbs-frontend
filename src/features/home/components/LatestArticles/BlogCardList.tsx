@@ -10,7 +10,7 @@ import { BlogCard } from "./BlogCard";
 import { ListHeading } from "./ListHeading";
 
 interface BlogCardListProps {
-  data: Card[] | undefined;
+  data: Card[];
   listTitle?: string;
 }
 
@@ -37,10 +37,10 @@ export const BlogCardList: React.FC<BlogCardListProps> = (props) => {
         {props.data?.map((item: Card) => (
           <BlogCard
             key={nanoid()}
-            id={item.id}
-            title={item.title}
-            image_url={item.image_url}
-            body={item.body}
+            id={item.Id}
+            title={item.Title}
+            image_url={item.Image_url}
+            body={item.Body}
           />
         ))}
       </List>

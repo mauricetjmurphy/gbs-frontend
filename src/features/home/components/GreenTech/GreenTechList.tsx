@@ -32,10 +32,10 @@ const GreenTechList: React.FC<MostPopularArticlesProps> = (props) => {
         {props.data?.map((item: Card) => (
           <GreenTechCard
             key={nanoid()}
-            id={item.id}
-            title={item.title}
-            image_url={item.image_url}
-            body={item.body}
+            id={item.Id}
+            title={item.Title}
+            image_url={item.Image_url}
+            body={item.Body}
           />
         ))}
       </Grid>

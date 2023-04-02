@@ -9,7 +9,7 @@ import { PostCard } from "./PostCard";
 import { ListHeading } from "./ListHeading";
 
 interface PostCardListProps {
-  data: Card[] | undefined;
+  data: Card[];
   listTitle: string;
 }
 
@@ -25,12 +25,12 @@ export const PostCardList: React.FC<PostCardListProps> = (props) => {
         {props.data?.map((item) => (
           <PostCard
             key={nanoid()}
-            id={item.id}
-            title={item.title}
-            image_url={item.image_url}
-            body={item.body}
-            author={item.author}
-            date={item.date}
+            id={item.Id}
+            title={item.Title}
+            image_url={item.Image_url}
+            body={item.Body}
+            author={item.Author}
+            date={item.Date}
           />
         ))}
       </List>

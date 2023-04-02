@@ -8,7 +8,7 @@ import { Card } from "../../home/types";
 import { OpinionCard } from "./OpinionCard";
 
 interface BlogCardListProps {
-  data: Card[] | undefined;
+  data: Card[];
   listTitle: string;
 }
 
@@ -25,12 +25,12 @@ export const OpinionList: React.FC<BlogCardListProps> = (props) => {
       {props.data?.map((item: Card) => (
         <OpinionCard
           key={nanoid()}
-          id={item.id}
-          title={item.title}
-          image_url={item.image_url}
-          body={item.body}
-          author={item.author}
-          date={item.date}
+          id={item.Id}
+          title={item.Title}
+          image_url={item.Image_url}
+          body={item.Body}
+          author={item.Author}
+          date={item.Date}
         />
       ))}
     </Grid>

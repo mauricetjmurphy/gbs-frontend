@@ -3,15 +3,14 @@ import { useNavigate } from "react-router";
 import { Box, Button, Grid, Typography } from "@mui/material";
 
 import { formatDate } from "../../../../utils/formatDate";
-import { Section } from "../../types";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { CF_IMAGE_URL } from "../../../../config";
 
 interface ClimateChangeCardProps {
-  id: string | undefined;
+  id: string;
   title: string;
-  image_url: string | undefined;
-  body: Section;
+  image_url: string;
+  body: string[];
   date: string;
 }
 
@@ -73,8 +72,8 @@ export const ClimateChangeCard: React.FC<ClimateChangeCardProps> = (props) => {
             {props.title}
           </Typography>
           <Typography sx={{}} variant={"body2"} component={"p"}>
-            {`${props.body.paragraphs[0].split(".")[0]}.` +
-              `${props.body.paragraphs[0].split(".")[1]}.`}
+            {`${props.body && props.body[0].split(".")[0]}.` +
+              `${props.body && props.body[0].split(".")[1]}.`}
           </Typography>
         </Box>
       </Button>

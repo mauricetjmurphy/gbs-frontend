@@ -3,13 +3,12 @@ import { Grid } from "@mui/material";
 import { nanoid } from "nanoid";
 
 import { useWindowSize } from "../../../hooks/useWindowSize";
-import { ListHeading } from "../../home/components/LatestArticles/ListHeading";
 import { Card } from "../../home/types";
 
 import ArticleCard from "./ArticleCard";
 
 interface BlogCardListProps {
-  data: Card[] | undefined;
+  data: Card[];
   listTitle: string;
   currentPage: number;
   perPage: number;
@@ -32,10 +31,10 @@ export const AllArticlesList: React.FC<BlogCardListProps> = (props) => {
       {currentData?.map((item: Card) => (
         <ArticleCard
           key={nanoid()}
-          id={item.id}
-          title={item.title}
-          image_url={item.image_url}
-          body={item.body}
+          id={item.Id}
+          title={item.Title}
+          image_url={item.Image_url}
+          body={item.Body}
         />
       ))}
     </Grid>

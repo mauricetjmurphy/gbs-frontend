@@ -7,7 +7,7 @@ import { BlogCardList } from "../../home/components/LatestArticles/BlogCardList"
 import { Card } from "../../home/types";
 
 interface ClimateChangeArticlesProps {
-  data: Card[] | undefined;
+  data: Card[];
 }
 
 const GreenTechArticlesContainer = styled(Grid)(({ theme }) => ({
@@ -26,11 +26,11 @@ const GreenTechArticles: React.FC<ClimateChangeArticlesProps> = (props) => {
       <Grid item md={6} xs={12}>
         {props.data && (
           <HeadlineCard
-            id={props.data[0]?.id}
-            title={props.data[0]?.title}
-            image_url={props.data[0]?.image_url}
-            body={props.data[0]?.body}
-            date={props.data[0]?.date}
+            id={props.data[0]?.Id}
+            title={props.data[0]?.Title}
+            image_url={props.data[0]?.Image_url}
+            body={props.data[0]?.Body}
+            date={props.data[0]?.Date}
           />
         )}
       </Grid>

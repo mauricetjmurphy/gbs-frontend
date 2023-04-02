@@ -2,14 +2,13 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { Box, Grid, Typography } from "@mui/material";
 
-import { Section } from "../../home/types";
 import { CF_IMAGE_URL } from "../../../config";
 
 interface ArticleCardProps {
   id: string;
   title: string;
   image_url: string | undefined;
-  body: Section;
+  body: string[];
 }
 
 const ArticleCard: React.FC<ArticleCardProps> = (props) => {
@@ -48,8 +47,8 @@ const ArticleCard: React.FC<ArticleCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography sx={{}} variant={"body2"} component={"p"}>
-          {`${props.body.paragraphs[0].split(".")[0]}.` +
-            `${props.body.paragraphs[0].split(".")[1]}.`}
+          {`${props.body && props.body[0].split(".")[0]}.` +
+            `${props.body && props.body[0].split(".")[1]}.`}
         </Typography>
       </Box>
     </Grid>

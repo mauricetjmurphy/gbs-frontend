@@ -12,7 +12,6 @@ import {
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 
-import { Section } from "../../home/types";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import { formatDate } from "../../../utils/formatDate";
 import CommentIcon from "../../article/components/CommentIcon";
@@ -21,7 +20,7 @@ interface OpinionCardProps {
   id: string;
   title: string;
   image_url: string | undefined;
-  body: Section;
+  body: string[];
   author: string;
   date: string;
 }
@@ -106,7 +105,7 @@ export const OpinionCard: React.FC<OpinionCardProps> = (props) => {
             {props.title}
           </Typography>
           <Typography variant={"body2"} component={"p"} sx={{}}>
-            {props.body && `${props.body.paragraphs[0].split(".")[0]}.`}
+            {props.body && `${props.body[0].split(".")[0]}.`}
           </Typography>
         </Box>
         <Divider />

@@ -88,7 +88,7 @@ const SearchItemList: React.FC<SerchItemsListProps> = (props) => {
         <Grid
           key={nanoid()}
           onClick={() => {
-            navigate(`/article/${item.id}`);
+            navigate(`/article/${item.Id}`);
             props.setSearchTerm("");
           }}
           container
@@ -101,8 +101,8 @@ const SearchItemList: React.FC<SerchItemsListProps> = (props) => {
           <Grid item xs={4} md={4}>
             <Box sx={{ overflow: "hidden", padding: "10px" }}>
               <img
-                src={`${CF_IMAGE_URL}/${item.image_url}`}
-                alt={item.title}
+                src={`${CF_IMAGE_URL}/${item.Image_url}`}
+                alt={item.Title}
                 style={{ width: "100%" }}
               />
             </Box>
@@ -112,10 +112,10 @@ const SearchItemList: React.FC<SerchItemsListProps> = (props) => {
               sx={{ paddingTop: "10px", fontWeight: "bold" }}
               variant="body2"
             >
-              {item.title}
+              {item.Title}
             </Typography>
             <Typography variant="body2" sx={{ color: "#818181" }}>
-              {`${item.body.paragraphs[0].substring(0, 50)}...`}
+              {`${item.Body[0].substring(0, 50)}...`}
             </Typography>
           </Grid>
           <Divider sx={{ width: "100%" }} />
@@ -179,7 +179,7 @@ export const SearchSection: React.FC<SearchProps> = (props) => {
     if (!value) return setSearchItems([]);
 
     const filteredArray = data.filter((item) =>
-      item.title.toLowerCase().includes(value.toLowerCase())
+      item.Title.toLowerCase().includes(value.toLowerCase())
     );
 
     setSearchItems(filteredArray.slice(0, 15));

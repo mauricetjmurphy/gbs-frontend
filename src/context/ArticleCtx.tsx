@@ -1,4 +1,4 @@
-import { createContext, useCallback } from "react";
+import { createContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { Card } from "../features/home/types";
@@ -36,7 +36,7 @@ export const ArticleContextProvider = ({
     data: techData,
     isLoading: techIsLoading,
     isError: techIsError,
-  } = useQuery<Card[], Error>(
+  } = useQuery<Card[] | undefined, Error>(
     ["tech-articles"],
     async () => fetchData(`${API_URL}/tech-articles`),
     {
@@ -48,7 +48,7 @@ export const ArticleContextProvider = ({
     data: climateData,
     isLoading: climateIsLoading,
     isError: climateIsError,
-  } = useQuery<Card[], Error>(
+  } = useQuery<Card[] | undefined, Error>(
     ["climate-articles"],
     async () => fetchData(`${API_URL}/climate-articles`),
     {
@@ -56,28 +56,16 @@ export const ArticleContextProvider = ({
     }
   );
 
-  const memoizedValue = useCallback(
-    () => ({
-      techData,
-      techIsLoading,
-      techIsError,
-      climateData,
-      climateIsLoading,
-      climateIsError,
-    }),
-    [
-      techData,
-      techIsLoading,
-      techIsError,
-      climateData,
-      climateIsLoading,
-      climateIsError,
-    ]
-  );
+  const value = {
+    techData,
+    techIsLoading,
+    techIsError,
+    climateData,
+    climateIsLoading,
+    climateIsError,
+  };
 
   return (
-    <ArticleContext.Provider value={memoizedValue()}>
-      {children}
-    </ArticleContext.Provider>
+    <ArticleContext.Provider value={value}>{children}</ArticleContext.Provider>
   );
 };

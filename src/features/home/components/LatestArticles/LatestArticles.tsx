@@ -32,6 +32,8 @@ export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
 
   const data = [...climateData, ...techData];
 
+  console.log({ data });
+
   return (
     <LatestArticlesContainer container>
       <Grid md={3} xs={12} item sx={{}}>
@@ -40,11 +42,11 @@ export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
       <Grid md={6} xs={12} item sx={{}}>
         {data && (
           <HeadlineCard
-            id={data[2]?.id}
-            title={data[2]?.title}
-            image_url={data[2]?.image_url}
-            body={data[2]?.body}
-            date={data[2]?.date}
+            id={data[2]?.Id}
+            title={data[2]?.Title}
+            image_url={data[2]?.Image_url}
+            body={data[2]?.Body}
+            date={data[2]?.Date}
           />
         )}
       </Grid>

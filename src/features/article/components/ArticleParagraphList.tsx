@@ -12,7 +12,7 @@ interface ArticleListProps {
 export const ArticleParagraphList: React.FC<ArticleListProps> = (props) => {
   return (
     <>
-      {props.article?.body.paragraphs.map((item) => {
+      {props.article?.Body.map((item) => {
         return <ArticleSection key={nanoid()} text={item} />;
       })}
     </>
