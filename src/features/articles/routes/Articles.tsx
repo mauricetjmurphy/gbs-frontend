@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { useLocation, useParams } from "react-router";
 import { Box } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
@@ -14,33 +15,31 @@ import {
 import { Card } from "../../home/types";
 import BackButton from "../../../components/BackButton/BackButton";
 
-type ArticlesProps = {};
+interface ArticlesProps {}
 
 const Articles: React.FC<ArticlesProps> = (props) => {
+  const location = useLocation();
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 8;
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     value: number
-  ) => {
+  ): void => {
     setCurrentPage(value);
   };
 
   const {
-    techData = [],
-    techIsLoading,
-    techIsError,
-    climateData = [],
-    climateIsLoading,
-    climateIsError,
+    data = [],
+    dataIsLoading,
+    dataIsError,
   } = useContext<ArticleContextInterface>(ArticleContext);
 
-  if (techIsLoading || climateIsLoading) {
+  if (dataIsLoading) {
     return <Spinner />;
   }
 
-  if (techIsError || climateIsError) {
+  if (dataIsError) {
     return (
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
         <p>Failed to fetch data!</p>
@@ -48,15 +47,21 @@ const Articles: React.FC<ArticlesProps> = (props) => {
     );
   }
 
-  const data = [...climateData, ...techData];
+  const filteredData = data?.filter((item: Card) => {
+    if (location.state?.category === "All Articles") {
+      return true;
+    } else {
+      return item.Category === location.state?.category;
+    }
+  });
 
   return (
     <MainLayout>
       <ContentLayout title={"All Blog Articles"} description={""}>
-        <PageTitle title={"All Articles"} />
+        <PageTitle title={location.state.category} />
         <BackButton />
         <AllArticlesList
-          data={data}
+          data={filteredData}
           listTitle={"All Articles"}
           currentPage={currentPage}
           perPage={perPage}
@@ -66,7 +71,7 @@ const Articles: React.FC<ArticlesProps> = (props) => {
         >
           <Stack spacing={2}>
             <Pagination
-              count={Math.ceil(data.length / perPage)}
+              count={Math.ceil(filteredData.length / perPage)}
               page={currentPage}
               onChange={handlePageChange}
             />

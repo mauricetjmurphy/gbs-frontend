@@ -9,7 +9,7 @@ import { PostCard } from "./PostCard";
 import { ListHeading } from "./ListHeading";
 
 interface PostCardListProps {
-  data: Card[];
+  data: Card[] | undefined;
   listTitle: string;
 }
 

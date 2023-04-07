@@ -13,6 +13,9 @@ import {
   ArticleContextInterface,
   ArticleContext,
 } from "../../../context/ArticleCtx";
+import { CategoryCard } from "../components/Categories/CategoryCard";
+import CategoryList from "../components/Categories/CategoryList";
+import { Card } from "../types";
 
 const GreenTechList = lazy(
   () => import("../components/GreenTech/GreenTechList")
@@ -22,29 +25,35 @@ const ClimateChangeList = lazy(
 );
 
 export const Home: React.FC = () => {
-  const {
-    techData,
-    techIsLoading,
-    techIsError,
-    climateData,
-    climateIsLoading,
-    climateIsError,
-  } = useContext<ArticleContextInterface>(ArticleContext);
+  const { data, dataIsLoading, dataIsError } =
+    useContext<ArticleContextInterface>(ArticleContext);
 
-  console.log({ techData });
-  console.log({ climateData });
-
-  if (techIsLoading || climateIsLoading) {
+  if (dataIsLoading) {
     return <Spinner />;
   }
 
-  if (techIsError || climateIsError) {
+  if (dataIsError) {
     return (
-      <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-        <p>Failed to fetch data!</p>
+      <Box
+        display={"flex"}
+        height={"100vh"}
+        justifyContent={"center"}
+        flexDirection={"column"}
+        alignItems={"center"}
+      >
+        <h1>The site is temporarily down for maintenance</h1>
+        <h2>Sorry for the inconvenience</h2>
       </Box>
     );
   }
+
+  const climateData = data?.filter(
+    (item: Card) => item.Category === "Climate Change"
+  );
+
+  const techData = data?.filter(
+    (item: Card) => item.Category === "Green Technology"
+  );
 
   return (
     <MainLayout>
@@ -55,17 +64,20 @@ export const Home: React.FC = () => {
         }
       >
         <PageTitle title={"Latest Articles"} />
-        <LatestArticles climateData={climateData} techData={techData} />
+        <LatestArticles data={data} />
+        <Suspense>
+          <CategoryList listTitle={"Categories"} />
+        </Suspense>
         <Suspense>
           <GreenTechList
             listTitle={"Green Technology"}
-            data={techData?.slice(6, 10)}
+            data={techData?.slice(0, 5)}
           />
         </Suspense>
         <Suspense>
           <ClimateChangeList
             listTitle={"Climate Change"}
-            data={climateData?.slice(9, 11)}
+            data={climateData?.slice(0, 2)}
           />
         </Suspense>
       </ContentLayout>

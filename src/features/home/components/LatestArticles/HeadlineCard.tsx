@@ -4,6 +4,7 @@ import { Typography, Box, Button, styled } from "@mui/material";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { formatDate } from "../../../../utils/formatDate";
 import { BUCKET_URL, CF_IMAGE_URL } from "../../../../config";
+import { formatBodyText } from "../../../../utils/formatBodyText";
 
 interface HeadlineCardProps {
   id: string | undefined;
@@ -31,8 +32,6 @@ const BackButton = styled(Button)(({ theme }) => ({
 }));
 
 export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
-  console.log({ props });
-
   const { width } = useWindowSize();
   const navigate = useNavigate();
 
@@ -80,8 +79,7 @@ export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography sx={{}} variant={"body1"} component={"p"}>
-          {`${props.body && props.body[0].split(".")[0]}.` +
-            `${props.body && props.body[0].split(".")[1]}.`}
+          {formatBodyText(props.body)}
         </Typography>
       </Box>
     </BackButton>

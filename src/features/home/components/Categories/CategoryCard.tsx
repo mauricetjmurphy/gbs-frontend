@@ -7,25 +7,23 @@ import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { CF_IMAGE_URL } from "../../../../config";
 import { formatBodyText } from "../../../../utils/formatBodyText";
 
-interface ClimateChangeCardProps {
-  id: string;
-  title: string;
+interface CategoryCardProps {
+  category: string;
   image_url: string;
-  body: string[];
-  date: string;
+  path: string;
 }
 
-export const ClimateChangeCard: React.FC<ClimateChangeCardProps> = (props) => {
+export const CategoryCard: React.FC<CategoryCardProps> = (props) => {
   const navigate = useNavigate();
   const { width } = useWindowSize();
 
   return (
-    <Grid sx={{}} xs={12} md={6} item>
+    <Grid sx={{}} xs={12} md={3} item>
       <Button
         disableRipple
         fullWidth
         onClick={() => {
-          navigate(`/article/${props.id}`);
+          navigate(props.path, { state: { category: props.category } });
         }}
         sx={{
           textTransform: "none",
@@ -40,22 +38,10 @@ export const ClimateChangeCard: React.FC<ClimateChangeCardProps> = (props) => {
       >
         <img
           src={`${CF_IMAGE_URL}/${props.image_url}`}
-          alt={props.title}
+          alt={props.category}
           style={{ width: "100%" }}
           loading={"lazy"}
         />
-        <Box
-          sx={{
-            width: "100%",
-            display: "flex",
-            justifyContent: "start",
-            padding: "10px 10px",
-          }}
-        >
-          <Typography variant="subtitle1" component={"h2"}>
-            {formatDate(props.date)}
-          </Typography>
-        </Box>
         <Box sx={{ textAlign: "left", width: "100%" }}>
           <Typography
             variant="h2"
@@ -63,17 +49,13 @@ export const ClimateChangeCard: React.FC<ClimateChangeCardProps> = (props) => {
             color="#000"
             gutterBottom
             sx={{
+              fontSize: "18px",
               fontWeight: 400,
+              textAlign: "center",
               paddingTop: "20px",
-              "&:hover": {
-                textDecoration: "underline",
-              },
             }}
           >
-            {props.title}
-          </Typography>
-          <Typography sx={{}} variant={"body2"} component={"p"}>
-            {formatBodyText(props.body)}
+            {props.category}
           </Typography>
         </Box>
       </Button>

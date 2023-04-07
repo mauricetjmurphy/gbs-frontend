@@ -66,7 +66,7 @@ export const PostForm: React.FC<PostFormProps> = () => {
       //   headers: { "Content-Type": "application/json" },
       //   body: JSON.stringify(values),
       // })
-      console.log(values);
+
       // .then(() => {
       //   formik.resetForm();
       //   setButtonDisabled(false);

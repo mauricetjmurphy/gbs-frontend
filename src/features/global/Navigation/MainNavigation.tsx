@@ -12,6 +12,7 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
+import { styled } from "@mui/system";
 import { AccountCircle } from "@mui/icons-material";
 import { nanoid } from "nanoid";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -38,6 +39,7 @@ interface MainNavigationProps {
 interface NavigationItem {
   name: string;
   route: string;
+  category: string;
 }
 
 const navigation = [
@@ -45,7 +47,7 @@ const navigation = [
   { name: "Green tech", route: "/green-tech" },
   // { name: "Opinion", route: "/opinion" },
   { name: "Our Vision", route: "/vision" },
-  { name: "All Articles", route: "/articles" },
+  { name: "All Articles", route: "/articles", category: "All Articles" },
 ].filter(Boolean) as NavigationItem[];
 
 const PageNavigation: React.FC<PageNavigationProps> = (props) => {
@@ -114,7 +116,9 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
             <ListItemButton
               style={navigationStyles.pageListItem}
               key={nanoid()}
-              onClick={() => navigate(item.route)}
+              onClick={() =>
+                navigate(item.route, { state: { category: item.category } })
+              }
             >
               {item.name}
             </ListItemButton>
@@ -201,7 +205,9 @@ export const MainNavigation: React.FC<MainNavigationProps> = (props) => {
         {navigation.map((item) => (
           <ListItem key={nanoid()} disablePadding>
             <ListItemButton
-              onClick={() => navigate(item.route)}
+              onClick={() => {
+                navigate(item.route, { state: { category: item.category } });
+              }}
               sx={{ textAlign: "center" }}
             >
               <ListItemText primary={item.name} />
@@ -223,16 +229,17 @@ export const MainNavigation: React.FC<MainNavigationProps> = (props) => {
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
-          anchor="left"
+          anchor="top"
           ModalProps={{
             keepMounted: true, // Better open performance on mobile.
           }}
           sx={{
             display: { xs: "block", sm: "none" },
             "& .MuiDrawer-paper": {
-              marginTop: "50px",
+              top: "50px",
               boxSizing: "border-box",
               width: "100vw",
+              zIndex: 400,
             },
           }}
         >

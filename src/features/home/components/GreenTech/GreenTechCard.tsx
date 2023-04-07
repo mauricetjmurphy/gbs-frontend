@@ -4,6 +4,7 @@ import { Typography, Box, Grid } from "@mui/material";
 
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { CF_IMAGE_URL } from "../../../../config";
+import { formatBodyText } from "../../../../utils/formatBodyText";
 
 interface MostPopularCardProps {
   id: string;
@@ -56,8 +57,7 @@ export const GreenTechCard: React.FC<MostPopularCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography variant={"body2"} component={"p"}>
-          {`${props.body && props.body[0].split(".")[0]}.` +
-            `${props.body && props.body[0].split(".")[1]}.`}
+          {formatBodyText(props.body)}
         </Typography>
       </Box>
     </Grid>

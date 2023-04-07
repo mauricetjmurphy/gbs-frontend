@@ -2,6 +2,8 @@ import { useNavigate } from "react-router";
 import { ListItemButton, Typography, Box, Grid } from "@mui/material";
 
 import { CF_IMAGE_URL } from "../../../../config";
+import { truncateText } from "../../../../utils/truncate";
+import { formatBodyText } from "../../../../utils/formatBodyText";
 
 interface BlogCardProps {
   id: string;
@@ -12,8 +14,6 @@ interface BlogCardProps {
 
 export const BlogCard: React.FC<BlogCardProps> = (props) => {
   const navigate = useNavigate();
-
-  console.log(`${CF_IMAGE_URL}/${props.image_url}`);
 
   return (
     <ListItemButton
@@ -56,8 +56,7 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography sx={{}} variant={"body2"} component={"p"}>
-          {`${props.body && props.body[0].split(".")[0]}.` +
-            `${props.body && props.body[0].split(".")[1]}.`}
+          {formatBodyText(props.body)}
         </Typography>
       </Box>
     </ListItemButton>

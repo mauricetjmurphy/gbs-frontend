@@ -1,7 +1,6 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent, useContext, useState } from "react";
 import { nanoid } from "nanoid";
 import { useNavigate } from "react-router";
-import { useQuery } from "@tanstack/react-query";
 import { Box, Divider, Grid, Typography } from "@mui/material";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
@@ -10,13 +9,18 @@ import CancelIcon from "@mui/icons-material/Cancel";
 
 import { API_URL, CF_IMAGE_URL } from "../../../config";
 import { Card } from "../../home/types";
+import {
+  ArticleContext,
+  ArticleContextInterface,
+} from "../../../context/ArticleCtx";
+import { Spinner } from "../../../components/Spinner/Spinner";
 
 import { navigationStyles } from "./navigation.styles";
 
 interface SearchProps {}
 
 interface SerchItemsListProps {
-  data: Card[];
+  data: Card[] | undefined;
   searchTerm: string;
   setSearchTerm: (arg: string) => void;
 }
@@ -74,17 +78,17 @@ const SearchItemList: React.FC<SerchItemsListProps> = (props) => {
         background: "#fff",
         zIndex: 10,
         border:
-          props.searchTerm.length > 0 && props.data.length > 0
+          props.data && props.searchTerm.length > 0 && props.data.length > 0
             ? "1px solid #00000050"
             : "none",
         height:
-          props.searchTerm.length > 0 && props.data.length > 0
+          props.data && props.searchTerm.length > 0 && props.data.length > 0
             ? "500px"
             : "0px",
         overflow: "scroll",
       }}
     >
-      {props.data.map((item) => (
+      {props.data?.map((item) => (
         <Grid
           key={nanoid()}
           onClick={() => {
@@ -127,62 +131,40 @@ const SearchItemList: React.FC<SerchItemsListProps> = (props) => {
 
 export const SearchSection: React.FC<SearchProps> = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchItems, setSearchItems] = useState<Card[]>([]);
+  const [searchItems, setSearchItems] = useState<Card[] | undefined>([]);
 
-  const {
-    data: techData,
-    isLoading: techArtiiclesIsLoading,
-    isError: techIsError,
-  } = useQuery<Card[], Error>(
-    ["tech-articles"],
-    async () =>
-      await fetch(`${API_URL}/tech-articles`).then(
-        async (response) => await response.json()
-      ),
-    {
-      staleTime: 1000 * 60 * 60 * 24 * 7, // cache for a week
-    }
-  );
+  const { data, dataIsLoading, dataIsError } =
+    useContext<ArticleContextInterface>(ArticleContext);
 
-  const {
-    data: climateData,
-    isLoading: climateArtiiclesIsLoading,
-    isError: climateIsError,
-  } = useQuery<Card[], Error>(
-    ["climate-articles"],
-    async () =>
-      await fetch(`${API_URL}/climate-articles`).then(
-        async (response) => await response.json()
-      ),
-    {
-      staleTime: 1000 * 60 * 60 * 24 * 7, // cache for a week
-    }
-  );
-
-  if (techArtiiclesIsLoading || climateArtiiclesIsLoading) {
-    return null;
+  if (dataIsLoading) {
+    return <Spinner />;
   }
 
-  if (techIsError || climateIsError) {
+  if (dataIsError) {
     return (
-      <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
-        <p>Failed to fetch data!</p>
+      <Box
+        display={"flex"}
+        height={"100vh"}
+        justifyContent={"center"}
+        flexDirection={"column"}
+        alignItems={"center"}
+      >
+        <h1>The site is temporarily down for maintenance</h1>
+        <h2>Sorry for the inconvenience</h2>
       </Box>
     );
   }
-
-  const data = [...climateData, ...techData];
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setSearchTerm(value);
     if (!value) return setSearchItems([]);
 
-    const filteredArray = data.filter((item) =>
+    const filteredArray = data?.filter((item) =>
       item.Title.toLowerCase().includes(value.toLowerCase())
     );
 
-    setSearchItems(filteredArray.slice(0, 15));
+    setSearchItems(filteredArray?.slice(0, 15));
   };
 
   return (

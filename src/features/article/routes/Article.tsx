@@ -18,25 +18,17 @@ interface ArticleProps {}
 const Article: React.FC<ArticleProps> = (props) => {
   const { id } = useParams();
 
-  const {
-    techData = [],
-    techIsLoading,
-    techIsError,
-    climateData = [],
-    climateIsLoading,
-    climateIsError,
-  } = useContext(ArticleContext);
-
-  const data = [...climateData, ...techData];
+  const { data = [], dataIsLoading, dataIsError } = useContext(ArticleContext);
 
   const article = data?.find((item: Card) => item.Id === id);
+
   const ImageCardListData = data?.slice(0, 5).filter((item) => item.Id !== id);
 
-  if (techIsLoading || climateIsLoading) {
+  if (dataIsLoading) {
     return <Spinner />;
   }
 
-  if (techIsError || climateIsError) {
+  if (dataIsError) {
     return (
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
         <p>Failed to fetch data!</p>

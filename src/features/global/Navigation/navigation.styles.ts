@@ -4,6 +4,7 @@ export const navigationStyles = {
   },
   secondaryNavSection: {
     background: "#ffb67c",
+    zIndex: 999,
     color: "#000",
     height: 50,
     padding: "0 30px",

@@ -14,7 +14,7 @@ import PersonIcon from "@mui/icons-material/Person";
 
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import { formatDate } from "../../../utils/formatDate";
-import CommentIcon from "../../article/components/CommentIcon";
+import CommentIcon from "../../../components/CommentIcon/CommentIcon";
 
 interface OpinionCardProps {
   id: string;

@@ -34,7 +34,6 @@ export const ContactForm = () => {
       })
         .then((response) => response.json())
         .then(() => {
-          console.log("Message sent successfully");
           formik.resetForm();
         })
         .catch((error) => console.error(error));

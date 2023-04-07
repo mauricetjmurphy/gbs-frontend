@@ -10,7 +10,7 @@ import { BlogCard } from "./BlogCard";
 import { ListHeading } from "./ListHeading";
 
 interface BlogCardListProps {
-  data: Card[];
+  data: Card[] | undefined;
   listTitle?: string;
 }
 

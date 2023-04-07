@@ -6,13 +6,16 @@ import { ContentLayout, MainLayout } from "../../global";
 import GreenTechList from "../../home/components/GreenTech/GreenTechList";
 import GreenTechArticles from "../components/GreenTechArticles";
 import BackButton from "../../../components/BackButton/BackButton";
+import { Card } from "../../home/types";
 
 interface GreenTechProps {}
 
 const GreenTech = (props: GreenTechProps) => {
-  const { techData = [] } = useContext(ArticleContext);
+  const { data = [] } = useContext(ArticleContext);
 
-  const data = [...techData];
+  const filteredData = data?.filter(
+    (item: Card) => item.Category === "Green Technology"
+  );
 
   return (
     <MainLayout>
@@ -24,7 +27,7 @@ const GreenTech = (props: GreenTechProps) => {
       >
         <PageTitle title={"Green Technology"} />
         <BackButton />
-        <GreenTechArticles data={data} />
+        <GreenTechArticles data={filteredData} />
         <GreenTechList listTitle={"Top Stories"} data={data?.slice(5, 9)} />
       </ContentLayout>
     </MainLayout>

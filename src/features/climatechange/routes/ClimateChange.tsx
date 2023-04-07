@@ -6,13 +6,16 @@ import { ContentLayout, MainLayout } from "../../global";
 import ClimateChangeList from "../../home/components/ClimateChange/ClimateChangeList";
 import ClimateChangeArticles from "../components/ClimateChangeArticles";
 import BackButton from "../../../components/BackButton/BackButton";
+import { Card } from "../../home/types";
 
 interface ClimateChangeProps {}
 
 const ClimateChange = (props: ClimateChangeProps) => {
-  const { climateData = [] } = useContext(ArticleContext);
+  const { data = [] } = useContext(ArticleContext);
 
-  const data = [...climateData];
+  const filteredData = data?.filter(
+    (item: Card) => item.Category === "Climate Change"
+  );
 
   return (
     <MainLayout>
@@ -24,7 +27,7 @@ const ClimateChange = (props: ClimateChangeProps) => {
       >
         <PageTitle title={"Climate Change"} />
         <BackButton />
-        <ClimateChangeArticles data={data} />
+        <ClimateChangeArticles data={filteredData} />
         <ClimateChangeList listTitle={"Top Stories"} data={data?.slice(5, 9)} />
       </ContentLayout>
     </MainLayout>

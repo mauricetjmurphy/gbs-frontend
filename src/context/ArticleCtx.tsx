@@ -5,21 +5,15 @@ import { Card } from "../features/home/types";
 import { API_URL } from "../config";
 
 export interface ArticleContextInterface {
-  techData: Card[] | undefined;
-  techIsLoading: boolean;
-  techIsError: boolean;
-  climateData: Card[] | undefined;
-  climateIsLoading: boolean;
-  climateIsError: boolean;
+  data: Card[] | undefined;
+  dataIsLoading: boolean;
+  dataIsError: boolean;
 }
 
 export const ArticleContext = createContext<ArticleContextInterface>({
-  techData: [],
-  techIsLoading: true,
-  techIsError: false,
-  climateData: [],
-  climateIsLoading: true,
-  climateIsError: false,
+  data: [],
+  dataIsLoading: true,
+  dataIsError: false,
 });
 
 export const ArticleContextProvider = ({
@@ -33,36 +27,21 @@ export const ArticleContextProvider = ({
   };
 
   const {
-    data: techData,
-    isLoading: techIsLoading,
-    isError: techIsError,
+    data: data,
+    isLoading: dataIsLoading,
+    isError: dataIsError,
   } = useQuery<Card[] | undefined, Error>(
-    ["tech-articles"],
-    async () => fetchData(`${API_URL}/tech-articles`),
-    {
-      staleTime: 1000 * 60 * 60 * 24 * 7, // cache for a week
-    }
-  );
-
-  const {
-    data: climateData,
-    isLoading: climateIsLoading,
-    isError: climateIsError,
-  } = useQuery<Card[] | undefined, Error>(
-    ["climate-articles"],
-    async () => fetchData(`${API_URL}/climate-articles`),
+    ["articles"],
+    async () => fetchData(`${API_URL}/articles`),
     {
       staleTime: 1000 * 60 * 60 * 24 * 7, // cache for a week
     }
   );
 
   const value = {
-    techData,
-    techIsLoading,
-    techIsError,
-    climateData,
-    climateIsLoading,
-    climateIsError,
+    data,
+    dataIsLoading,
+    dataIsError,
   };
 
   return (

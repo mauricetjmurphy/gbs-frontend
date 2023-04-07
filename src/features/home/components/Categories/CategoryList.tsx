@@ -3,21 +3,20 @@ import { Box, Grid } from "@mui/material";
 import { nanoid } from "nanoid";
 
 import { ListHeading } from "../LatestArticles/ListHeading";
-import { Card } from "../../types";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 
-import { ClimateChangeCard } from "./ClimateChangeCard";
+import { CategoryCard } from "./CategoryCard";
+import { categories } from "./categoryData";
 
-interface ClimateChangeListProps {
+interface CategoryListProps {
   listTitle: string;
-  data: Card[] | undefined;
 }
 
-const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
+const CategoryList: React.FC<CategoryListProps> = (props) => {
   const { width } = useWindowSize();
 
   return (
-    <Box padding={{ xs: "10px", sm: "0px 10px 50px 10px" }}>
+    <Box padding={{ xs: "10px", sm: "50px 10px" }}>
       <ListHeading listTitle={props.listTitle} />
       <Grid
         rowSpacing={{ xs: 2, sm: 3 }}
@@ -26,14 +25,12 @@ const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
         container
         direction={"row"}
       >
-        {props.data?.map((item: any) => (
-          <ClimateChangeCard
+        {categories.map((item: any) => (
+          <CategoryCard
             key={nanoid()}
-            id={item.Id}
-            title={item.Title}
-            image_url={item.Image_url}
-            body={item.Body}
-            date={item.Date}
+            category={item.category}
+            image_url={item.image_url}
+            path={item.path}
           />
         ))}
       </Grid>
@@ -41,4 +38,4 @@ const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
   );
 };
 
-export default ClimateChangeList;
+export default CategoryList;

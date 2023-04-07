@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { Box, Grid, Typography } from "@mui/material";
 
 import { CF_IMAGE_URL } from "../../../config";
+import { formatBodyText } from "../../../utils/formatBodyText";
 
 interface ArticleCardProps {
   id: string;
@@ -48,8 +49,7 @@ const ArticleCard: React.FC<ArticleCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography sx={{}} variant={"body2"} component={"p"}>
-          {`${props.body && props.body[0].split(".")[0]}.` +
-            `${props.body && props.body[0].split(".")[1]}.`}
+          {formatBodyText(props.body)}
         </Typography>
       </Box>
     </Grid>

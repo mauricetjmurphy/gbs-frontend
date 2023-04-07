@@ -11,20 +11,13 @@ import BackButton from "../../../components/BackButton/BackButton";
 type OpinionProps = {};
 
 const Opinion: React.FC<OpinionProps> = (props) => {
-  const {
-    techData = [],
-    techIsLoading,
-    techIsError,
-    climateData = [],
-    climateIsLoading,
-    climateIsError,
-  } = useContext(ArticleContext);
+  const { data = [], dataIsLoading, dataIsError } = useContext(ArticleContext);
 
-  if (techIsLoading || climateIsLoading) {
+  if (dataIsLoading) {
     return <Spinner />;
   }
 
-  if (techIsError || climateIsError) {
+  if (dataIsError) {
     return (
       <Box display={"flex"} justifyContent={"center"} alignItems={"center"}>
         <p>Failed to fetch data!</p>
@@ -32,18 +25,12 @@ const Opinion: React.FC<OpinionProps> = (props) => {
     );
   }
 
-  const data = [...climateData, ...techData];
-
-  const sortedData = data?.sort((a: any, b: any) =>
-    a.image_url > b.image_url ? 1 : -1
-  );
-
   return (
     <MainLayout>
       <ContentLayout title={"User Opinions"} description={""}>
         <PageTitle title={"Opinion"} />
         <BackButton />
-        <OpinionList data={sortedData} listTitle={"All Articles"} />
+        <OpinionList data={data} listTitle={"All Articles"} />
       </ContentLayout>
     </MainLayout>
   );

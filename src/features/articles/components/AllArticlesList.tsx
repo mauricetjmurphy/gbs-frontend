@@ -8,7 +8,7 @@ import { Card } from "../../home/types";
 import ArticleCard from "./ArticleCard";
 
 interface BlogCardListProps {
-  data: Card[];
+  data: Card[] | undefined;
   listTitle: string;
   currentPage: number;
   perPage: number;
