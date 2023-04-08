@@ -79,7 +79,7 @@ export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography sx={{}} variant={"body1"} component={"p"}>
-          {formatBodyText(props.body)}
+          {formatBodyText(props.body, 500)}
         </Typography>
       </Box>
     </BackButton>

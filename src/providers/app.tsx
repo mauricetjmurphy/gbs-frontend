@@ -1,5 +1,6 @@
 import * as React from "react";
 // import { Provider } from "react-redux";
+import { ProSidebarProvider } from "react-pro-sidebar";
 import { ErrorBoundary } from "react-error-boundary";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -86,15 +87,17 @@ export const AppProvider: React.FC<AppProviderProps> = ({
       <HelmetProvider>
         <QueryClientProvider client={queryClient}>
           <ColorModeContext.Provider value={colorMode}>
-            <ThemeProvider theme={{ ...theme, ...colorMode } as ThemeOptions}>
-              <ArticleContextProvider>
-                <CssBaseline />
-                <Router>
-                  <ScrollToTop />
-                  {children}
-                </Router>
-              </ArticleContextProvider>
-            </ThemeProvider>
+            <ProSidebarProvider>
+              <ThemeProvider theme={{ ...theme, ...colorMode } as ThemeOptions}>
+                <ArticleContextProvider>
+                  <CssBaseline />
+                  <Router>
+                    <ScrollToTop />
+                    {children}
+                  </Router>
+                </ArticleContextProvider>
+              </ThemeProvider>
+            </ProSidebarProvider>
           </ColorModeContext.Provider>
         </QueryClientProvider>
       </HelmetProvider>

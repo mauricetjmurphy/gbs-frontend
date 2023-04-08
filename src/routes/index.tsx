@@ -26,7 +26,7 @@ const Terms = lazy(() => import("../features/legal/routes/Terms"));
 export const AppRoutes: React.FC = () => {
   // const { isAuthenticated } = useAuth();
 
-  const isAuthenticated = false;
+  const isAuthenticated = true;
 
   return (
     <Suspense>
@@ -34,13 +34,13 @@ export const AppRoutes: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/vision" element={<Vision />} />
         <Route
-          path="/admin"
+          path="/admin/*"
           element={isAuthenticated ? <Admin /> : <Navigate to="/login" />}
         />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        {/* <Route path="/register" element={<Register />} /> */}
         {/* <Route path="/opinion" element={<Opinion />} /> */}
-        {/* <Route path="/user-post" element={<PostArticle />} /> */}
+        <Route path="/user-post" element={<PostArticle />} />
         <Route path="/climate-change" element={<ClimateChange />} />
         <Route path="/green-tech" element={<GreenTech />} />
         <Route path="/article/:id" element={<Article />} />

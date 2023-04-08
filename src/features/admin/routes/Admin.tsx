@@ -1,19 +1,30 @@
-import React from "react";
-import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router";
+import { Box } from "@mui/material";
 
-interface AdminProps {}
+import AdminArticleList from "../components/Articles/AdminArticleList";
+// import Keywords from "../path/to/Keywords";
+// import Titles from "../path/to/Titles";
+import Topbar from "../components/global/Topbar";
+import Sidebar from "../components/global/Sidebar";
+import AdminKeywords from "../components/Keywords/AdminKeywords";
+import Dashboard from "../components/Dashboard/Dashboard";
+import ModifyArticle from "../components/Articles/ModifyArticle";
 
-export const Admin: React.FC<AdminProps> = (props) => {
-  const navigate = useNavigate();
+const Admin = () => {
   return (
-    <Button
-      onClick={() => {
-        navigate("/");
-      }}
-    >
-      Back Home
-    </Button>
+    <Box display={"flex"} maxWidth={"100vw"}>
+      <Sidebar />
+      <Box maxWidth={"calc(100vw - 300px)"}>
+        <Topbar />
+        <Routes>
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="articles" element={<AdminArticleList />} />
+          <Route path="modify-article" element={<ModifyArticle />} />
+          <Route path="keywords" element={<AdminKeywords />} />
+          {/* <Route path="titles" element={<Titles />} /> */}
+        </Routes>
+      </Box>
+    </Box>
   );
 };
 

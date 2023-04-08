@@ -70,7 +70,7 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
 
   const handleAdminClick = () => {
     setAnchorEl(null);
-    navigate("/admin");
+    navigate("/admin/dashboard");
   };
 
   return (
