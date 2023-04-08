@@ -5,6 +5,7 @@ import { DataGrid, GridAlignment } from "@mui/x-data-grid";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
+import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 
 import Header from "../global/Header";
 import { tokens } from "../../../../theme/theme";
@@ -65,33 +66,62 @@ const AdminArticlesList = () => {
       flex: 1,
     },
     {
-      field: "accessLevel",
-      headerName: "Access Level",
+      field: "modify",
+      headerName: "Modify",
       flex: 1,
       renderCell: ({ row: { Id } }: { row: { Id: string } }) => {
         return (
-          <Box
-            width={0.6}
-            m="0 auto"
-            p="5px"
-            display="flex"
-            justifyContent="center"
-            sx={{
-              cursor: "pointer",
-              border: `1px solid ${colors.primary[800]}`,
-              borderRadius: "4px",
+          <Box display={"flex"} justifyContent={"space-between"}>
+            <Box
+              flex={2}
+              m="0 2.5px"
+              p="5px"
+              display="flex"
+              justifyContent="center"
+              sx={{
+                cursor: "pointer",
+                border: `1px solid ${colors.primary[800]}`,
+                borderRadius: "4px",
 
-              ":hover": {
-                backgroundColor: colors.primary[700],
-                color: "#fff",
-              },
-            }}
-            onClick={() => {
-              const rowData = data.find((item: any) => item.Id === Id);
-              navigate(`/admin/modify-article`, { state: { rowData } });
-            }}
-          >
-            Update
+                ":hover": {
+                  backgroundColor: colors.primary[700],
+                  color: "#fff",
+                },
+              }}
+              onClick={() => {
+                const rowData = data.find((item: any) => item.Id === Id);
+                navigate(`/admin/modify-article`, { state: { rowData } });
+              }}
+            >
+              Update
+            </Box>
+
+            <Box
+              flex={1}
+              m="0 2.5px"
+              p="5px"
+              display="flex"
+              justifyContent="center"
+              sx={{
+                cursor: "pointer",
+                border: `1px solid ${colors.primary[800]}`,
+                borderRadius: "4px",
+
+                ":hover": {
+                  backgroundColor: colors.primary[700],
+                  color: "#fff",
+                },
+                "& .MuiSvgIcon-root": {
+                  color: "#ff5c5cfa",
+                },
+              }}
+              onClick={() => {
+                const rowData = data.find((item: any) => item.Id === Id);
+                navigate(`/admin/delete-article`, { state: { rowData } });
+              }}
+            >
+              <DeleteForeverIcon />
+            </Box>
           </Box>
         );
       },

@@ -151,7 +151,7 @@ const ModifyArticle: React.FC<ModifyArticleProps> = () => {
                                     style={{
                                       width: "100%",
                                       resize: "none",
-                                      fontFamily: "Poppins-thin, sans-serif",
+                                      fontFamily: "Poppins-regular, sans-serif",
                                       padding: "16px",
                                       fontSize: "16px",
                                       letterSpacing: "0.5px",

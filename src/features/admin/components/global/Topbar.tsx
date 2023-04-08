@@ -1,5 +1,6 @@
-import { Box, IconButton, useTheme } from "@mui/material";
+import { Box, Button, IconButton, useTheme } from "@mui/material";
 import { useContext } from "react";
+import { useNavigate } from "react-router";
 import InputBase from "@mui/material/InputBase";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
@@ -14,6 +15,7 @@ const Topbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
+  const navigate = useNavigate();
 
   return (
     <Box
@@ -23,17 +25,9 @@ const Topbar = () => {
       justifyContent="space-between"
       p={2}
     >
-      {/* SEARCH BAR */}
-      <Box
-        display="flex"
-        sx={{ backgroundColor: colors.primary[400] }}
-        borderRadius="3px"
-      >
-        <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
-        <IconButton type="button" sx={{ p: 1 }}>
-          <SearchIcon />
-        </IconButton>
-      </Box>
+      <Button variant="outlined" color="inherit" onClick={() => navigate("/")}>
+        Home Page
+      </Button>
 
       {/* ICONS */}
       <Box display="flex">

@@ -25,9 +25,17 @@ interface ItemProps {
   icon: React.ReactNode;
   selected: string;
   setSelected: (value: string) => void;
+  disabled?: boolean;
 }
 
-const Item = ({ title, to, icon, selected, setSelected }: ItemProps) => {
+const Item = ({
+  title,
+  to,
+  icon,
+  selected,
+  setSelected,
+  disabled,
+}: ItemProps) => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   return (
@@ -39,6 +47,7 @@ const Item = ({ title, to, icon, selected, setSelected }: ItemProps) => {
       }}
       onClick={() => setSelected(title)}
       icon={icon}
+      disabled={disabled}
     >
       <Typography>{title}</Typography>
     </MenuItem>
@@ -98,7 +107,7 @@ const AdminSidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  ADMINIS
+                  ADMINS
                 </Typography>
                 <IconButton onClick={() => collapseSidebar(!collapsed)}>
                   <MenuOutlinedIcon />
@@ -176,6 +185,7 @@ const AdminSidebar = () => {
               icon={<PersonOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              disabled={true}
             />
             <Item
               title="Calendar"
@@ -183,6 +193,7 @@ const AdminSidebar = () => {
               icon={<CalendarTodayOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              disabled={true}
             />
             <Item
               title="FAQ Page"
@@ -190,6 +201,7 @@ const AdminSidebar = () => {
               icon={<HelpOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              disabled={true}
             />
 
             <Typography
@@ -205,6 +217,7 @@ const AdminSidebar = () => {
               icon={<BarChartOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              disabled={true}
             />
             <Item
               title="Pie Chart"
@@ -212,6 +225,7 @@ const AdminSidebar = () => {
               icon={<PieChartOutlineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              disabled={true}
             />
             <Item
               title="Line Chart"
@@ -219,6 +233,7 @@ const AdminSidebar = () => {
               icon={<TimelineOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              disabled={true}
             />
             <Item
               title="Geography Chart"
@@ -226,6 +241,7 @@ const AdminSidebar = () => {
               icon={<MapOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
+              disabled={true}
             />
           </Box>
         </Menu>
