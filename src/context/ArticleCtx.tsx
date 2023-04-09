@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, QueryObserverResult } from "@tanstack/react-query";
 
 import { Card } from "../features/home/types";
 import { API_URL } from "../config";
@@ -8,12 +8,14 @@ export interface ArticleContextInterface {
   data: Card[] | undefined;
   dataIsLoading: boolean;
   dataIsError: boolean;
+  refetch: any;
 }
 
 export const ArticleContext = createContext<ArticleContextInterface>({
   data: [],
   dataIsLoading: true,
   dataIsError: false,
+  refetch: async () => {},
 });
 
 export const ArticleContextProvider = ({
@@ -27,9 +29,10 @@ export const ArticleContextProvider = ({
   };
 
   const {
-    data: data,
+    data,
     isLoading: dataIsLoading,
     isError: dataIsError,
+    refetch,
   } = useQuery<Card[] | undefined, Error>(
     ["articles"],
     async () => fetchData(`${API_URL}/articles`),
@@ -38,10 +41,13 @@ export const ArticleContextProvider = ({
     }
   );
 
+  console.log({ data });
+
   const value = {
     data,
     dataIsLoading,
     dataIsError,
+    refetch,
   };
 
   return (

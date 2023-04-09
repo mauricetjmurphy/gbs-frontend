@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import axios from "axios";
 import {
   TextField,
   Button,
@@ -16,16 +17,28 @@ import {
 } from "formik";
 import * as Yup from "yup";
 import { Box, Container, FormLabel, TextareaAutosize } from "@mui/material";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
+import {
+  useMutation,
+  useQueryClient,
+  UseMutationResult,
+} from "@tanstack/react-query";
+
+import { API_URL } from "../../../../config";
+import { Spinner } from "../../../../components/Spinner/Spinner";
+import { ArticleContext } from "../../../../context/ArticleCtx";
 
 interface FormData {
   Id: string;
   Image_url?: string;
   Title: string;
   Category: string;
+  CategoryTitle: string;
   Body: string[];
   Author: string;
-  Date: string;
+  CreatedAt: string;
+  UpdatedAt: string;
+  TopStory: string;
 }
 
 interface ModifyArticleProps {}
@@ -40,40 +53,87 @@ const useStyles = makeStyles((theme: any) => ({
   },
 }));
 
-const categories = ["Category 1", "Category 2", "Category 3"];
-
 const validationSchema = Yup.object().shape({
   Id: Yup.string().required("Required"),
   Image_url: Yup.string().required("Required"),
   Title: Yup.string().required("Required"),
   Category: Yup.string().required("Required"),
+  CategoryTitle: Yup.string().required("Required"),
   Body: Yup.array()
     .of(Yup.string().required("Required"))
     .min(1, "At least one paragraph is required"),
   Author: Yup.string().required("Required"),
-  Date: Yup.date().required("Required"),
+  CreatedAt: Yup.date().required("Required"),
+  UpdatedAt: Yup.date().required("Required"),
+  TopStory: Yup.string().required("Required"),
 });
 
 const ModifyArticle: React.FC<ModifyArticleProps> = () => {
   const classes = useStyles();
   const location = useLocation();
+  const navigate = useNavigate();
+  const [submitting, setSubmitting] = useState<boolean>(false);
+
+  console.log(location);
 
   const initialValues: FormData = {
     ...location.state.rowData,
-    Date: new Date(location.state.rowData.Date).toISOString().slice(0, 10),
+    CreatedAt: new Date(location.state.rowData.CreatedAt)
+      .toISOString()
+      .slice(0, 10),
+    UpdatedAt: new Date().toISOString().slice(0, 10),
   };
 
-  const handleSubmit = (
-    values: FormData,
-    actions: { setSubmitting: (isSubmitting: boolean) => void }
-  ) => {
+  const queryClient = useQueryClient();
+
+  const updateArticleMutation = useMutation(
+    ({ id, data }: { id: string; data: any }) => updateArticle(id, data),
+    {
+      onSuccess: () => {
+        queryClient.refetchQueries(["articles"]);
+      },
+    }
+  );
+
+  async function updateArticle(id: string, updatedArticle: any) {
+    try {
+      setSubmitting(true);
+      const response = await axios.put(
+        `${API_URL}/articles/${id}`,
+        updatedArticle
+      );
+      console.log("Article updated:", response.data);
+      setSubmitting(false);
+      navigate("/admin/articles");
+      return response.data;
+    } catch (error) {
+      console.error("Error updating article:", error);
+      throw error;
+    }
+  }
+
+  const { refetch } = useContext(ArticleContext);
+
+  const handleSubmit = (values: FormData) => {
     const submittedValues = {
       ...values,
-      Date: new Date(values.Date).toISOString(),
+      CreatedAt: new Date(values.CreatedAt).toISOString(),
+      UpdatedAt: new Date(values.UpdatedAt).toISOString(),
     };
     console.log("Form data: ", submittedValues);
-    actions.setSubmitting(false);
+    updateArticleMutation.mutate(
+      { id: values.Id, data: submittedValues },
+      {
+        onSuccess: () => {
+          refetch();
+        },
+      }
+    );
   };
+
+  if (submitting) {
+    return <Spinner />;
+  }
 
   return (
     <Container
@@ -97,6 +157,7 @@ const ModifyArticle: React.FC<ModifyArticleProps> = () => {
                   name="Id"
                   label="ID"
                   variant="outlined"
+                  disabled={true}
                   error={touched.Id && !!errors.Id}
                   helperText={touched.Id && errors.Id}
                 />
@@ -111,6 +172,18 @@ const ModifyArticle: React.FC<ModifyArticleProps> = () => {
                   variant="outlined"
                   error={touched.Title && !!errors.Title}
                   helperText={touched.Title && errors.Title}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Field
+                  as={TextField}
+                  fullWidth
+                  id="CategoryTitle"
+                  name="CategoryTitle"
+                  label="Category Title"
+                  variant="outlined"
+                  error={touched.CategoryTitle && !!errors.CategoryTitle}
+                  helperText={touched.CategoryTitle && errors.CategoryTitle}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -200,17 +273,50 @@ const ModifyArticle: React.FC<ModifyArticleProps> = () => {
                 <Field
                   as={TextField}
                   fullWidth
-                  id="Date"
-                  name="Date"
-                  label="Date"
+                  id="CreatedAt"
+                  name="CreatedAt"
+                  label="CreatedAt"
+                  type="date"
+                  disabled={true}
+                  variant="outlined"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  error={touched.CreatedAt && !!errors.CreatedAt}
+                  helperText={touched.CreatedAt && errors.CreatedAt}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <Field
+                  as={TextField}
+                  fullWidth
+                  id="UpdatedAt"
+                  name="UpdatedAt"
+                  label="UpdatedAt"
                   type="date"
                   variant="outlined"
                   InputLabelProps={{
                     shrink: true,
                   }}
-                  error={touched.Date && !!errors.Date}
-                  helperText={touched.Date && errors.Date}
+                  error={touched.UpdatedAt && !!errors.UpdatedAt}
+                  helperText={touched.UpdatedAt && errors.UpdatedAt}
                 />
+              </Grid>
+              <Grid item xs={12}>
+                <Field
+                  as={TextField}
+                  fullWidth
+                  id="TopStory"
+                  name="TopStory"
+                  label="Top Story"
+                  select
+                  variant="outlined"
+                  error={touched.TopStory && !!errors.TopStory}
+                  helperText={touched.TopStory && errors.TopStory}
+                >
+                  <MenuItem value="true">True</MenuItem>
+                  <MenuItem value="false">False</MenuItem>
+                </Field>
               </Grid>
               <Grid item xs={12}>
                 <Field

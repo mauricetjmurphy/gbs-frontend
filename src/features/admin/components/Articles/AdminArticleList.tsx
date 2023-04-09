@@ -1,27 +1,51 @@
-import { useContext } from "react";
-import { Box, Typography, useTheme } from "@mui/material";
+import { useContext, useState } from "react";
+import axios from "axios";
+import { nanoid } from "nanoid";
+import { Box, CircularProgress, useTheme } from "@mui/material";
 import { useNavigate } from "react-router";
-import { DataGrid, GridAlignment } from "@mui/x-data-grid";
-import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
-import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
+import { DataGrid } from "@mui/x-data-grid";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
+import { useMutation } from "@tanstack/react-query";
 
-import Header from "../global/Header";
 import { tokens } from "../../../../theme/theme";
-import { mockDataTeam } from "../../../../data/mockData";
 import {
   ArticleContext,
   ArticleContextInterface,
 } from "../../../../context/ArticleCtx";
 import { Spinner } from "../../../../components/Spinner/Spinner";
+import { API_URL } from "../../../../config";
 
 const AdminArticlesList = () => {
   const theme = useTheme();
   const navigate = useNavigate();
+  const [loadingItemId, setLoadingItemId] = useState<string | null>(null);
 
-  const { data, dataIsLoading, dataIsError }: any =
+  const { data, dataIsLoading, dataIsError, refetch }: any =
     useContext<ArticleContextInterface>(ArticleContext);
+
+  console.log({ data });
+
+  const deleteArticleMutation = useMutation(
+    async (variables: { id: string; createdAt: string }) => {
+      setLoadingItemId(variables.id);
+      const { id, createdAt } = variables;
+      const response = await axios.delete(
+        `${API_URL}/articles/${id}/${createdAt}`
+      );
+      return response.data;
+    },
+    {
+      onError: (error) => {
+        console.error("Error deleting article:", error);
+      },
+      onSuccess: () => {
+        refetch(); // Refetch data when the delete mutation is successful
+      },
+      onSettled: () => {
+        setLoadingItemId(null);
+      },
+    }
+  );
 
   if (dataIsLoading) {
     return <Spinner />;
@@ -61,8 +85,8 @@ const AdminArticlesList = () => {
       flex: 1,
     },
     {
-      field: "Date",
-      headerName: "Date",
+      field: "CreatedAt",
+      headerName: "CreatedAt",
       flex: 1,
     },
     {
@@ -70,6 +94,7 @@ const AdminArticlesList = () => {
       headerName: "Modify",
       flex: 1,
       renderCell: ({ row: { Id } }: { row: { Id: string } }) => {
+        const isCurrentItemLoading = loadingItemId === Id;
         return (
           <Box display={"flex"} justifyContent={"space-between"}>
             <Box
@@ -116,11 +141,20 @@ const AdminArticlesList = () => {
                 },
               }}
               onClick={() => {
-                const rowData = data.find((item: any) => item.Id === Id);
-                navigate(`/admin/delete-article`, { state: { rowData } });
+                const article = data.find((item: any) => item.Id === Id);
+                deleteArticleMutation.mutate({
+                  id: article.Id,
+                  createdAt: article.CreatedAt,
+                });
               }}
             >
-              <DeleteForeverIcon />
+              {isCurrentItemLoading ? (
+                <Box height={"32px"} width={"32px"} sx={{ display: "flex" }}>
+                  <CircularProgress size={24} />
+                </Box>
+              ) : (
+                <DeleteForeverIcon />
+              )}
             </Box>
           </Box>
         );
@@ -160,7 +194,7 @@ const AdminArticlesList = () => {
         }}
       >
         <DataGrid
-          getRowId={(row) => row.Id}
+          getRowId={() => nanoid()}
           checkboxSelection
           rows={data}
           columns={columns}

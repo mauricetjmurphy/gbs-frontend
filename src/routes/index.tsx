@@ -34,10 +34,10 @@ export const AppRoutes: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/vision" element={<Vision />} />
-        {/* <Route
+        <Route
           path="/admin/*"
           element={isAuthenticated ? <Admin /> : <Navigate to="/login" />}
-        /> */}
+        />
         <Route path="/login" element={<Login />} />
         {/* <Route path="/register" element={<Register />} /> */}
         {/* <Route path="/opinion" element={<Opinion />} /> */}

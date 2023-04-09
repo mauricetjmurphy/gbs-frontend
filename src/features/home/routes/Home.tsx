@@ -28,6 +28,8 @@ export const Home: React.FC = () => {
   const { data, dataIsLoading, dataIsError } =
     useContext<ArticleContextInterface>(ArticleContext);
 
+  console.log({ data });
+
   if (dataIsLoading) {
     return <Spinner />;
   }
