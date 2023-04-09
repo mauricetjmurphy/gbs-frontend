@@ -1,5 +1,5 @@
-import { useContext, useState } from "react";
-import { useLocation, useParams } from "react-router";
+import { useContext, useEffect, useState } from "react";
+import { Navigate, useLocation, useNavigate, useParams } from "react-router";
 import { Box } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
@@ -19,6 +19,7 @@ interface ArticlesProps {}
 
 const Articles: React.FC<ArticlesProps> = (props) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 8;
 
@@ -28,6 +29,10 @@ const Articles: React.FC<ArticlesProps> = (props) => {
   ): void => {
     setCurrentPage(value);
   };
+
+  useEffect(() => {
+    location.state?.category === undefined ? navigate("/") : null;
+  }, []);
 
   const {
     data = [],
@@ -58,7 +63,7 @@ const Articles: React.FC<ArticlesProps> = (props) => {
   return (
     <MainLayout>
       <ContentLayout title={"All Blog Articles"} description={""}>
-        <PageTitle title={location.state.category} />
+        <PageTitle title={location.state?.category} />
         <BackButton />
         <AllArticlesList
           data={filteredData}

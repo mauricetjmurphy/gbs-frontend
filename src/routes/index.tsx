@@ -2,12 +2,13 @@ import { Suspense, lazy } from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { Home } from "../features/home/routes/Home";
+import CategoryArticles from "../features/categorypage/routes/CategoryArticles";
 // import { useAuth } from "../features/auth/hooks/useAuth";
 
 const Vision = lazy(() => import("../features/vision/routes/Vision"));
 const Admin = lazy(() => import("../features/admin/routes/Admin"));
 const Login = lazy(() => import("../features/auth/routes/Login"));
-const Register = lazy(() => import("../features/auth/routes/Register"));
+// const Register = lazy(() => import("../features/auth/routes/Register"));
 const PostArticle = lazy(
   () => import("../features/postarticle/routes/PostArticle")
 );
@@ -33,16 +34,17 @@ export const AppRoutes: React.FC = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/vision" element={<Vision />} />
-        <Route
+        {/* <Route
           path="/admin/*"
           element={isAuthenticated ? <Admin /> : <Navigate to="/login" />}
-        />
+        /> */}
         <Route path="/login" element={<Login />} />
         {/* <Route path="/register" element={<Register />} /> */}
         {/* <Route path="/opinion" element={<Opinion />} /> */}
         <Route path="/user-post" element={<PostArticle />} />
-        <Route path="/climate-change" element={<ClimateChange />} />
-        <Route path="/green-tech" element={<GreenTech />} />
+        <Route path="/category-articles" element={<CategoryArticles />} />
+        {/* <Route path="/climate-change" element={<ClimateChange />} />
+        <Route path="/green-tech" element={<GreenTech />} /> */}
         <Route path="/article/:id" element={<Article />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/terms" element={<Terms />} />

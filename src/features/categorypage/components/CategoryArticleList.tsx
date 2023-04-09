@@ -2,18 +2,17 @@ import React from "react";
 import { Box, Grid } from "@mui/material";
 import { nanoid } from "nanoid";
 
-import { Card } from "../../types";
-import { ListHeading } from "../LatestArticles/ListHeading";
-import { useWindowSize } from "../../../../hooks/useWindowSize";
+import { Card } from "../../home/types";
+import { ListHeading } from "../../home/components/LatestArticles/ListHeading";
+import { useWindowSize } from "../../../hooks/useWindowSize";
+import { GreenTechCard } from "../../home/components/GreenTech/GreenTechCard";
 
-import { GreenTechCard } from "./GreenTechCard";
-
-interface MostPopularArticlesProps {
+interface CategoryArticleListProps {
   data: Card[] | undefined;
   listTitle: string;
 }
 
-const GreenTechList: React.FC<MostPopularArticlesProps> = (props) => {
+const CategoryArticleList: React.FC<CategoryArticleListProps> = (props) => {
   const { width } = useWindowSize();
 
   return (
@@ -43,4 +42,4 @@ const GreenTechList: React.FC<MostPopularArticlesProps> = (props) => {
   );
 };
 
-export default GreenTechList;
+export default CategoryArticleList;

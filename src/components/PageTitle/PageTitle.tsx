@@ -9,7 +9,7 @@ interface PageTitleProps {
 export const PageTitle: React.FC<PageTitleProps> = (props) => {
   return (
     <Box style={pageTitleStyles.pageTitleContainer}>
-      <Typography variant={"h2"} component={"h2"} sx={{}}>
+      <Typography variant={"h2"} component={"h2"} sx={{ textAlign: "center" }}>
         {props.title}
       </Typography>
     </Box>

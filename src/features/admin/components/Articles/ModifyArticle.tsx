@@ -58,8 +58,6 @@ const ModifyArticle: React.FC<ModifyArticleProps> = () => {
   const classes = useStyles();
   const location = useLocation();
 
-  console.log(location.state.rowData.Body);
-
   const initialValues: FormData = {
     ...location.state.rowData,
     Date: new Date(location.state.rowData.Date).toISOString().slice(0, 10),

@@ -23,9 +23,11 @@ import { SocialLinks } from "../../../components/SocialMedia/SocialLinks";
 
 import { SearchSection } from "./NavSearch";
 import { navigationStyles } from "./navigation.styles";
+import DropdownNavbar from "./DropdownNavbar";
 
 interface PageNavigationProps {
   handleDrawerToggle: () => void;
+  handleDropdownToggle: (event: React.MouseEvent) => void;
 }
 
 interface TitleProps {
@@ -43,9 +45,10 @@ interface NavigationItem {
 }
 
 const navigation = [
-  { name: "Climate change", route: "/climate-change" },
-  { name: "Green tech", route: "/green-tech" },
+  // { name: "Climate change", route: "/climate-change" },
+  // { name: "Green tech", route: "/green-tech" },
   // { name: "Opinion", route: "/opinion" },
+  { name: "Home", route: "/" },
   { name: "Our Vision", route: "/vision" },
   { name: "All Articles", route: "/articles", category: "All Articles" },
 ].filter(Boolean) as NavigationItem[];
@@ -76,8 +79,10 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
   return (
     <Box
       style={{
+        zIndex: 500,
         justifyContent: "space-between",
         alignItems: "center",
+        background: "#4CAF50",
         ...navigationStyles.secondaryNavSection,
       }}
     >
@@ -87,8 +92,8 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
           width: "50px",
           height: "50px",
           cursor: "pointer",
-          borderTop: "1px solid #000",
-          borderBottom: "1px solid #000",
+          borderTop: "1px solid #ccc",
+          borderBottom: "1px solid #ccc",
         }}
       >
         <img
@@ -99,12 +104,21 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
       </Box>
 
       <List style={navigationStyles.pageLinkList}>
+        {width > 600 && (
+          <ListItemButton
+            style={navigationStyles.pageListItem}
+            onClick={(event) => props.handleDropdownToggle(event)}
+          >
+            {"News"}
+          </ListItemButton>
+        )}
+
         {width < 600 && (
           <IconButton
             color="inherit"
             aria-label="open drawer"
             edge="start"
-            onClick={props.handleDrawerToggle}
+            onClick={(event) => props.handleDropdownToggle(event)}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
             <MenuIcon />
@@ -193,61 +207,33 @@ const Title: React.FC<TitleProps> = (props) => {
 export const MainNavigation: React.FC<MainNavigationProps> = (props) => {
   const { width } = useWindowSize();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
   const navigate = useNavigate();
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
 
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <List>
-        {navigation.map((item) => (
-          <ListItem key={nanoid()} disablePadding>
-            <ListItemButton
-              onClick={() => {
-                navigate(item.route, { state: { category: item.category } });
-              }}
-              sx={{ textAlign: "center" }}
-            >
-              <ListItemText primary={item.name} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
+  const handleDropdownToggle = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    setDropdownOpen(true);
+  };
 
   const container =
     typeof window !== "undefined" ? window.document.body : undefined;
 
   return (
     <>
-      <Box component="nav">
-        <Drawer
-          container={container}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-          anchor="top"
-          ModalProps={{
-            keepMounted: true, // Better open performance on mobile.
-          }}
-          sx={{
-            display: { xs: "block", sm: "none" },
-            "& .MuiDrawer-paper": {
-              top: "50px",
-              boxSizing: "border-box",
-              width: "100vw",
-              zIndex: 400,
-            },
-          }}
-        >
-          {drawer}
-        </Drawer>
-      </Box>
       <Box>
-        <PageNavigation handleDrawerToggle={handleDrawerToggle} />
+        <PageNavigation
+          handleDrawerToggle={handleDrawerToggle}
+          handleDropdownToggle={handleDropdownToggle}
+        />
+        <DropdownNavbar
+          dropdownOpen={dropdownOpen}
+          setDropdownOpen={setDropdownOpen}
+          toggleDropdown={handleDropdownToggle}
+        />
         <Grid
           container
           padding={{ sm: "20px", md: "20px 100px" }}

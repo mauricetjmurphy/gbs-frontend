@@ -3,14 +3,12 @@ export const navigationStyles = {
     background: "#faf5f5",
   },
   secondaryNavSection: {
-    background: "#ffb67c",
-    zIndex: 999,
     color: "#000",
     height: 50,
     padding: "0 30px",
     display: "flex",
-    borderBottom: "1px solid #000",
-    borderTop: "1px solid #000",
+    borderBottom: "1px solid #ccc",
+    borderTop: "1px solid #ccc",
   },
   pageLinkList: {
     padding: 0,
