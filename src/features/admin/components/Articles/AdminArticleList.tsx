@@ -77,6 +77,7 @@ const AdminArticlesList = () => {
     },
     {
       field: "Title",
+      flex: 1,
       headerName: "Title",
     },
     {
