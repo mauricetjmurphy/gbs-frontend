@@ -1,10 +1,8 @@
-import { useContext } from "react";
-import { Grid } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { Card } from "../../types";
-import { ArticleContext } from "../../../../context/ArticleCtx";
+import HeadlineSkeleton from "../../../../components/Skeletons/HeadlineSkeleton";
 
 import { BlogCardList } from "./BlogCardList";
 import { PostCardList } from "./PostCardList";
@@ -12,6 +10,7 @@ import { HeadlineCard } from "./HeadlineCard";
 
 interface LatestArticlesProps {
   data: Card[] | undefined;
+  dataIsLoading: boolean;
 }
 
 const LatestArticlesContainer = styled(Grid)(({ theme }) => ({
@@ -25,18 +24,17 @@ const LatestArticlesContainer = styled(Grid)(({ theme }) => ({
 }));
 
 export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
-  const { width } = useWindowSize();
-
   return (
     <LatestArticlesContainer container>
       <Grid md={3} xs={12} item sx={{}}>
         <BlogCardList
           data={props.data?.slice(0, 2)}
           listTitle={"Top Stories"}
+          dataIsLoading={props.dataIsLoading}
         />
       </Grid>
       <Grid md={6} xs={12} item sx={{}}>
-        {props.data && (
+        {!props.dataIsLoading && props.data ? (
           <HeadlineCard
             id={props.data[2]?.Id}
             title={props.data[2]?.Title}
@@ -44,10 +42,16 @@ export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
             body={props.data[2]?.Body}
             date={props.data[2]?.Date}
           />
+        ) : (
+          <HeadlineSkeleton />
         )}
       </Grid>
       <Grid md={3} xs={12} item sx={{}}>
-        <PostCardList data={props.data?.slice(3, 6)} listTitle={"Opinion"} />
+        <PostCardList
+          dataIsLoading={props.dataIsLoading}
+          data={props.data?.slice(3, 6)}
+          listTitle={"Opinion"}
+        />
       </Grid>
     </LatestArticlesContainer>
   );

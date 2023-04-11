@@ -4,18 +4,17 @@ import { nanoid } from "nanoid";
 
 import { Card } from "../../types";
 import { ListHeading } from "../LatestArticles/ListHeading";
-import { useWindowSize } from "../../../../hooks/useWindowSize";
+import BlogCardSkelton from "../../../../components/Skeletons/BlogCardSkelton";
 
 import { GreenTechCard } from "./GreenTechCard";
 
 interface MostPopularArticlesProps {
   data: Card[] | undefined;
   listTitle: string;
+  dataIsLoading: boolean;
 }
 
 const GreenTechList: React.FC<MostPopularArticlesProps> = (props) => {
-  const { width } = useWindowSize();
-
   return (
     <Box padding={{ xs: "10px", sm: "50px 10px 50px 10px" }}>
       <ListHeading listTitle={props.listTitle} />
@@ -29,6 +28,13 @@ const GreenTechList: React.FC<MostPopularArticlesProps> = (props) => {
           justifyContent: "center",
         }}
       >
+        {props.dataIsLoading &&
+          [1, 2, 3, 4, 5].map((i) => (
+            <Grid item md={3} xs={12}>
+              <BlogCardSkelton />
+            </Grid>
+          ))}
+
         {props.data?.map((item: Card) => (
           <GreenTechCard
             key={nanoid()}

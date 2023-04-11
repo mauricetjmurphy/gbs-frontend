@@ -70,8 +70,6 @@ const LoginForm = () => {
   });
 
   async function onSubmit(values: CreateSessionInput) {
-    console.log({ values });
-
     try {
       setIsSubmitting(true);
       await axios.post(`${AUTH_API_URL}/api/sessions`, values, {

@@ -12,6 +12,7 @@ import { BlogCardList } from "../../home/components/LatestArticles/BlogCardList"
 import { Spinner } from "../../../components/Spinner/Spinner";
 import BackButton from "../../../components/BackButton/BackButton";
 import { ArticleContext } from "../../../context/ArticleCtx";
+import { ArticleAd } from "../../../components/AdSense/ArticleAd";
 
 interface ArticleProps {}
 
@@ -39,6 +40,7 @@ const Article: React.FC<ArticleProps> = (props) => {
   return (
     <MainLayout>
       <ContentLayout title={article?.Title} description={article?.Body[0]}>
+        {/* <ArticleAd /> */}
         <PageTitle title={article?.Category} />
         <BackButton />
         <Grid
@@ -65,7 +67,11 @@ const Article: React.FC<ArticleProps> = (props) => {
             <ArticleParagraphList article={article} />
           </Grid>
           <Grid item md={4} xs={12} padding={{ xs: "0px", sm: "0px 50px" }}>
-            <BlogCardList data={ImageCardListData} listTitle={"Top Stories"} />
+            <BlogCardList
+              dataIsLoading={dataIsLoading}
+              data={ImageCardListData}
+              listTitle={"Top Stories"}
+            />
           </Grid>
         </Grid>
       </ContentLayout>

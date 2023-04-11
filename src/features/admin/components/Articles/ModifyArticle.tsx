@@ -74,8 +74,6 @@ const ModifyArticle: React.FC<ModifyArticleProps> = () => {
   const navigate = useNavigate();
   const [submitting, setSubmitting] = useState<boolean>(false);
 
-  console.log(location);
-
   const initialValues: FormData = {
     ...location.state.rowData,
     CreatedAt: new Date(location.state.rowData.CreatedAt)
@@ -102,7 +100,7 @@ const ModifyArticle: React.FC<ModifyArticleProps> = () => {
         `${API_URL}/articles/${id}`,
         updatedArticle
       );
-      console.log("Article updated:", response.data);
+
       setSubmitting(false);
       navigate("/admin/articles");
       return response.data;
@@ -120,7 +118,7 @@ const ModifyArticle: React.FC<ModifyArticleProps> = () => {
       CreatedAt: new Date(values.CreatedAt).toISOString(),
       UpdatedAt: new Date(values.UpdatedAt).toISOString(),
     };
-    console.log("Form data: ", submittedValues);
+
     updateArticleMutation.mutate(
       { id: values.Id, data: submittedValues },
       {

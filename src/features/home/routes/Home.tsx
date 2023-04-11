@@ -1,19 +1,14 @@
-import { useEffect, useState, useContext, Suspense, lazy } from "react";
-// import { firstValueFrom, from } from "rxjs";
-// import { ajax } from "rxjs/ajax";
-import { useQuery } from "@tanstack/react-query";
+import { useContext, Suspense, lazy } from "react";
 import { Box } from "@mui/material";
 
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
-import { API_URL } from "../../../config";
 import { LatestArticles } from "../components/LatestArticles/LatestArticles";
-import { Spinner } from "../../../components/Spinner/Spinner";
+import { DisplayAd } from "../../../components/AdSense/DisplayAd";
 import { ContentLayout, MainLayout } from "../../global";
 import {
   ArticleContextInterface,
   ArticleContext,
 } from "../../../context/ArticleCtx";
-import { CategoryCard } from "../components/Categories/CategoryCard";
 import CategoryList from "../components/Categories/CategoryList";
 import { Card } from "../types";
 
@@ -25,14 +20,11 @@ const ClimateChangeList = lazy(
 );
 
 export const Home: React.FC = () => {
-  const { data, dataIsLoading, dataIsError } =
+  const { initialData, initialDataIsLoading, initialDataIsError } =
     useContext<ArticleContextInterface>(ArticleContext);
 
-  console.log({ data });
-
-  if (dataIsLoading) {
-    return <Spinner />;
-  }
+  const { data, dataIsLoading, dataIsError } =
+    useContext<ArticleContextInterface>(ArticleContext);
 
   if (dataIsError) {
     return (
@@ -65,19 +57,28 @@ export const Home: React.FC = () => {
           "Here we share interesting insights and perspectives on the latest news and trends in popular topics."
         }
       >
+        {/* <DisplayAd /> */}
         <PageTitle title={"Latest Articles"} />
-        <LatestArticles data={data} />
+        <LatestArticles
+          dataIsLoading={initialDataIsLoading}
+          data={initialData}
+        />
         <Suspense>
-          <CategoryList listTitle={"Categories"} />
+          <CategoryList
+            dataIsLoading={dataIsLoading}
+            listTitle={"Categories"}
+          />
         </Suspense>
         <Suspense>
           <GreenTechList
+            dataIsLoading={dataIsLoading}
             listTitle={"Green Technology"}
             data={techData?.slice(0, 5)}
           />
         </Suspense>
         <Suspense>
           <ClimateChangeList
+            dataIsLoading={dataIsLoading}
             listTitle={"Climate Change"}
             data={climateData?.slice(0, 2)}
           />

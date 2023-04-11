@@ -1,5 +1,4 @@
-// DropdownNavbar.tsx
-import { Box, Divider } from "@mui/material";
+import { Box, Divider, useMediaQuery, Theme } from "@mui/material";
 import React, { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router";
 import styled from "styled-components";
@@ -12,7 +11,7 @@ const DropdownContainer = styled.div`
   position: absolute;
   width: 100vw;
   height: 0px;
-  top: 50px;
+  top: 80px;
 `;
 
 interface DropdownMenuProps {
@@ -61,6 +60,10 @@ const DropdownNavbar: React.FC<DropdownNavbarProps> = ({
   const dropdownRef = useRef<HTMLUListElement>(null);
   const dropdownItemsRef = useRef<(HTMLLIElement | null)[]>([]);
 
+  const isSmallScreen = useMediaQuery((theme: Theme) =>
+    theme.breakpoints.down("sm")
+  );
+
   useClickOutside(dropdownRef, () => setDropdownOpen(false));
 
   const handleItemClick = (event: React.MouseEvent) => {
@@ -90,10 +93,17 @@ const DropdownNavbar: React.FC<DropdownNavbarProps> = ({
   return (
     <DropdownContainer>
       <DropdownMenu open={dropdownOpen} ref={dropdownRef}>
-        <Box display={"flex"}>
+        <Box display={"flex"} flexDirection={isSmallScreen ? "column" : "row"}>
           <Box>{renderItems([0, 1, 2, 3, 4])}</Box>
-          <Divider orientation="vertical" flexItem />
+          {!isSmallScreen && <Divider orientation="vertical" flexItem />}
+          {isSmallScreen && <Divider orientation="horizontal" />}
           <Box>{renderItems([5, 6, 7, 8, 9])}</Box>
+          {!isSmallScreen && <Divider orientation="vertical" flexItem />}
+          {isSmallScreen && <Divider orientation="horizontal" />}
+          <Box>{renderItems([10, 11, 12, 13, 14])}</Box>
+          {!isSmallScreen && <Divider orientation="vertical" flexItem />}
+          {isSmallScreen && <Divider orientation="horizontal" />}
+          <Box>{renderItems([15, 16, 17, 18, 19])}</Box>
         </Box>
       </DropdownMenu>
     </DropdownContainer>

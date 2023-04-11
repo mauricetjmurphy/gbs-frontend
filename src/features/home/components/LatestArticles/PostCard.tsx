@@ -10,8 +10,8 @@ import {
 } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 
-import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { formatDate } from "../../../../utils/formatDate";
+import { formatBodyText } from "../../../../utils/formatBodyText";
 
 interface PostCardProps {
   id: string;
@@ -23,7 +23,6 @@ interface PostCardProps {
 }
 
 export const PostCard: React.FC<PostCardProps> = (props) => {
-  const { width } = useWindowSize();
   const navigate = useNavigate();
 
   return (
@@ -86,7 +85,7 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography variant={"body2"} component={"p"} sx={{}}>
-          {props.body && `${props.body && props.body[0].split(".")[0]}.`}
+          {formatBodyText(props.body)}
         </Typography>
       </Box>
     </ListItemButton>

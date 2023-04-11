@@ -45,8 +45,6 @@ interface NavigationItem {
 }
 
 const navigation = [
-  // { name: "Climate change", route: "/climate-change" },
-  // { name: "Green tech", route: "/green-tech" },
   // { name: "Opinion", route: "/opinion" },
   { name: "Home", route: "/" },
   { name: "Our Vision", route: "/vision" },
@@ -58,10 +56,6 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
   const { width } = useWindowSize();
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAuth(event.target.checked);
-  };
 
   const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -82,22 +76,19 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
         zIndex: 500,
         justifyContent: "space-between",
         alignItems: "center",
-        background: "#4CAF50",
+        background: "#75bf75",
         ...navigationStyles.secondaryNavSection,
       }}
     >
       <Box
+        display={"flex"}
+        alignItems={"center"}
+        height={"100%"}
+        sx={{ cursor: "pointer" }}
         onClick={() => navigate("/")}
-        sx={{
-          width: "50px",
-          height: "50px",
-          cursor: "pointer",
-          borderTop: "1px solid #ccc",
-          borderBottom: "1px solid #ccc",
-        }}
       >
         <img
-          style={{ width: "48px", height: "48px" }}
+          style={{ width: "70px", height: "70px" }}
           src={"/logo.png"}
           alt=""
         />
@@ -107,7 +98,18 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
         {width > 600 && (
           <ListItemButton
             style={navigationStyles.pageListItem}
+            disableRipple
             onClick={(event) => props.handleDropdownToggle(event)}
+            sx={{
+              position: "relative",
+              color: "#000",
+              textDecoration: "none",
+              margin: "0px 5px",
+              "&:hover": {
+                color: "#00000080",
+                backgroundColor: "transparent",
+              },
+            }}
           >
             {"News"}
           </ListItemButton>
@@ -128,11 +130,22 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
         {width > 600 &&
           navigation.map((item) => (
             <ListItemButton
+              disableRipple
               style={navigationStyles.pageListItem}
               key={nanoid()}
               onClick={() =>
                 navigate(item.route, { state: { category: item.category } })
               }
+              sx={{
+                position: "relative",
+                color: "#000",
+                textDecoration: "none",
+                margin: "0px 5px",
+                "&:hover": {
+                  color: "#00000080",
+                  backgroundColor: "transparent",
+                },
+              }}
             >
               {item.name}
             </ListItemButton>
@@ -140,8 +153,8 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
       </List>
 
       {width > 960 && (
-        <Box>
-          <IconButton
+        <Box width={"70px"}>
+          {/* <IconButton
             size="large"
             aria-label="account of current user"
             aria-controls="menu-appbar"
@@ -167,7 +180,7 @@ const PageNavigation: React.FC<PageNavigationProps> = (props) => {
             onClose={handleClose}
           >
             <MenuItem onClick={handleAdminClick}>Admin</MenuItem>
-          </Menu>
+          </Menu> */}
         </Box>
       )}
     </Box>

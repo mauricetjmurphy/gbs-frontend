@@ -1,9 +1,8 @@
 import { useNavigate } from "react-router";
 import { Typography, Box, Button, styled } from "@mui/material";
 
-import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { formatDate } from "../../../../utils/formatDate";
-import { BUCKET_URL, CF_IMAGE_URL } from "../../../../config";
+import { CF_IMAGE_URL } from "../../../../config";
 import { formatBodyText } from "../../../../utils/formatBodyText";
 
 interface HeadlineCardProps {
@@ -32,7 +31,6 @@ const BackButton = styled(Button)(({ theme }) => ({
 }));
 
 export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
-  const { width } = useWindowSize();
   const navigate = useNavigate();
 
   return (

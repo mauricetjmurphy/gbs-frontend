@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { Button, TextField } from "@mui/material";
+import { Box, Button, TextField } from "@mui/material";
 
 import { API_URL } from "../../../config";
 
@@ -46,9 +46,9 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ setOpen, open }) => {
       style={{ display: "flex", flexDirection: "column" }}
       onSubmit={formik.handleSubmit}
     >
-      <div style={signUpFormStyles.conatainer}>
+      <Box display={"flex"} alignItems={"center"}>
         <TextField
-          style={{}}
+          style={{ flex: 3 }}
           type="email"
           id="email"
           name="email"
@@ -61,13 +61,13 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ setOpen, open }) => {
 
         <Button
           variant="contained"
-          style={signUpFormStyles.signUpButton}
+          style={{ flex: 1, ...signUpFormStyles.signUpButton }}
           type="submit"
           disabled={buttonDisabled}
         >
           Sign Up
         </Button>
-      </div>
+      </Box>
 
       {formik.touched.email && formik.errors.email ? (
         <div style={signUpFormStyles.error}>{formik.errors.email}</div>

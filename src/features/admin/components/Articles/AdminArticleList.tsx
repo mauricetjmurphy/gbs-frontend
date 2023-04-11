@@ -23,8 +23,6 @@ const AdminArticlesList = () => {
   const { data, dataIsLoading, dataIsError, refetch }: any =
     useContext<ArticleContextInterface>(ArticleContext);
 
-  console.log({ data });
-
   const deleteArticleMutation = useMutation(
     async (variables: { id: string; createdAt: string }) => {
       setLoadingItemId(variables.id);

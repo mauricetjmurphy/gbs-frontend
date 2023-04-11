@@ -16,13 +16,13 @@ const Admin = () => {
       <Sidebar />
       <Box maxWidth={"calc(100vw - 300px)"}>
         <Topbar />
-        <Routes>
+        {/* <Routes>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="articles" element={<AdminArticleList />} />
           <Route path="modify-article" element={<ModifyArticle />} />
           <Route path="keywords" element={<AdminKeywords />} />
-          {/* <Route path="titles" element={<Titles />} /> */}
-        </Routes>
+          <Route path="titles" element={<Titles />} />
+        </Routes> */}
       </Box>
     </Box>
   );

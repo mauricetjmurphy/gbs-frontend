@@ -14,6 +14,7 @@ import {
 } from "../../../context/ArticleCtx";
 import { Card } from "../../home/types";
 import BackButton from "../../../components/BackButton/BackButton";
+import { DisplayAd } from "../../../components/AdSense/DisplayAd";
 
 interface ArticlesProps {}
 
@@ -22,6 +23,8 @@ const Articles: React.FC<ArticlesProps> = (props) => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 8;
+
+  console.log(location);
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
@@ -62,7 +65,11 @@ const Articles: React.FC<ArticlesProps> = (props) => {
 
   return (
     <MainLayout>
-      <ContentLayout title={"All Blog Articles"} description={""}>
+      <ContentLayout
+        title={"All Blog Articles"}
+        description={"The is a list of all the websites articles"}
+      >
+        {/* <DisplayAd /> */}
         <PageTitle title={location.state?.category} />
         <BackButton />
         <AllArticlesList

@@ -1,10 +1,10 @@
 import React from "react";
-import { Box, List, Grid } from "@mui/material";
+import { List, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { nanoid } from "nanoid";
 
 import { Card } from "../../types";
-import { useWindowSize } from "../../../../hooks/useWindowSize";
+import BlogCardSkelton from "../../../../components/Skeletons/BlogCardSkelton";
 
 import { BlogCard } from "./BlogCard";
 import { ListHeading } from "./ListHeading";
@@ -12,6 +12,7 @@ import { ListHeading } from "./ListHeading";
 interface BlogCardListProps {
   data: Card[] | undefined;
   listTitle?: string;
+  dataIsLoading: boolean;
 }
 
 const BlogCardListContainer = styled(Grid)(({ theme }) => ({
@@ -34,15 +35,18 @@ export const BlogCardList: React.FC<BlogCardListProps> = (props) => {
           padding: "10px 0px",
         }}
       >
-        {props.data?.map((item: Card) => (
-          <BlogCard
-            key={nanoid()}
-            id={item.Id}
-            title={item.Title}
-            image_url={item.Image_url}
-            body={item.Body}
-          />
-        ))}
+        {props.dataIsLoading && [1, 2, 3].map((i) => <BlogCardSkelton />)}
+
+        {!props.dataIsLoading &&
+          props.data?.map((item: Card) => (
+            <BlogCard
+              key={nanoid()}
+              id={item.Id}
+              title={item.Title}
+              image_url={item.Image_url}
+              body={item.Body}
+            />
+          ))}
       </List>
     </BlogCardListContainer>
   );

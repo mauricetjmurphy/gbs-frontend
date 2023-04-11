@@ -13,7 +13,6 @@ import {
   ArticleContext,
   ArticleContextInterface,
 } from "../../../context/ArticleCtx";
-import { Spinner } from "../../../components/Spinner/Spinner";
 
 import { navigationStyles } from "./navigation.styles";
 
@@ -133,27 +132,7 @@ export const SearchSection: React.FC<SearchProps> = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchItems, setSearchItems] = useState<Card[] | undefined>([]);
 
-  const { data, dataIsLoading, dataIsError } =
-    useContext<ArticleContextInterface>(ArticleContext);
-
-  if (dataIsLoading) {
-    return <Spinner />;
-  }
-
-  if (dataIsError) {
-    return (
-      <Box
-        display={"flex"}
-        height={"100vh"}
-        justifyContent={"center"}
-        flexDirection={"column"}
-        alignItems={"center"}
-      >
-        <h1>The site is temporarily down for maintenance</h1>
-        <h2>Sorry for the inconvenience</h2>
-      </Box>
-    );
-  }
+  const { data } = useContext<ArticleContextInterface>(ArticleContext);
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;

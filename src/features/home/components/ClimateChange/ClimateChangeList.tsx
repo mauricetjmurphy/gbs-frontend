@@ -4,18 +4,17 @@ import { nanoid } from "nanoid";
 
 import { ListHeading } from "../LatestArticles/ListHeading";
 import { Card } from "../../types";
-import { useWindowSize } from "../../../../hooks/useWindowSize";
+import HeadlineSkeleton from "../../../../components/Skeletons/HeadlineSkeleton";
 
 import { ClimateChangeCard } from "./ClimateChangeCard";
 
 interface ClimateChangeListProps {
   listTitle: string;
   data: Card[] | undefined;
+  dataIsLoading: boolean;
 }
 
 const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
-  const { width } = useWindowSize();
-
   return (
     <Box padding={{ xs: "10px", sm: "50px 10px 50px 10px" }}>
       <ListHeading listTitle={props.listTitle} />
@@ -26,6 +25,13 @@ const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
         container
         direction={"row"}
       >
+        {props.dataIsLoading &&
+          [1, 2].map((i) => (
+            <Grid sx={{}} xs={12} md={6} item>
+              <HeadlineSkeleton />
+            </Grid>
+          ))}
+
         {props.data?.map((item: any) => (
           <ClimateChangeCard
             key={nanoid()}

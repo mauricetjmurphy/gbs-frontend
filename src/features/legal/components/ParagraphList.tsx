@@ -13,22 +13,16 @@ export const ParagraphList: React.FC<ParagraphListProps> = (props) => {
     <Box sx={{ padding: "30px 0px" }}>
       <BackButton />
       {Object.entries(props.data).map(([key, value], index: number) => {
-        const dataEntries = Object.entries(props.data);
         return (
-          <Box key={nanoid()} sx={{ padding: "10px 0px" }}>
-            <Typography
-              gutterBottom
-              variant={"h1"}
-              component={"h1"}
-              sx={{ fontWeight: "bold" }}
-            >
+          <Box key={nanoid()} sx={{ padding: "10px" }}>
+            <Typography gutterBottom variant={"h1"} component={"h1"} sx={{}}>
               {!key.replace(/_/g, " ").includes("untitled") &&
                 key.replace(/_/g, " ")}
             </Typography>
 
             {!key.replace(/_/g, " ").includes("untitled list") && (
               <Typography
-                sx={{ fontSize: "16px" }}
+                sx={{ fontSize: "13px" }}
                 variant={"body1"}
                 component={"p"}
               >

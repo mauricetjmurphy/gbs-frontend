@@ -27,7 +27,6 @@ export const footerStyles = {
 
 export const signUpFormStyles = {
   form: { display: "flex", flexDirection: "column" },
-  conatainer: { display: "flex", alignItems: "center" },
   inputField: {
     padding: "14px 14px",
     marginRight: "10px",
