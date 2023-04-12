@@ -1,5 +1,5 @@
 export const contactFormStyles = {
-  input: (width: number) => ({
+  input: () => ({
     width: "100%",
     background: "#faf5f5",
     padding: "15px",
@@ -8,7 +8,7 @@ export const contactFormStyles = {
     fontFamily: "Poppins-regular",
     fontSize: "16px",
   }),
-  textArea: (width: number) => ({
+  textArea: () => ({
     width: "100%",
     background: "#faf5f5",
     padding: "15px",

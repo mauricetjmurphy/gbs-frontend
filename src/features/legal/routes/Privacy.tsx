@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 
 import { ContentLayout } from "../../global";
 import { privacyPolicyData } from "../../../data/privacyPolicyData";
@@ -7,7 +7,7 @@ import { ParagraphList } from "../components/ParagraphList";
 
 interface PrivacyProps {}
 
-const Privacy: React.FC<PrivacyProps> = (props) => {
+const Privacy: FC<PrivacyProps> = (props) => {
   return (
     <>
       <LegalTitle title={"Privacy Policy"} />

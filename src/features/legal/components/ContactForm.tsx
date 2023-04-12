@@ -1,10 +1,8 @@
-import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { InputBase, Button, Grid } from "@mui/material";
 
 import { API_URL } from "../../../config";
-import { useWindowSize } from "../../../hooks/useWindowSize";
 
 import { contactFormStyles } from "./contactForm.styles";
 
@@ -23,7 +21,6 @@ const validationSchema = Yup.object({
 });
 
 export const ContactForm = () => {
-  const { width } = useWindowSize();
   const formik = useFormik({
     initialValues,
     onSubmit: (values) => {
@@ -55,7 +52,7 @@ export const ContactForm = () => {
       >
         <Grid item xs={12} md={6}>
           <InputBase
-            style={contactFormStyles.input(width)}
+            style={contactFormStyles.input()}
             type="text"
             name="firstName"
             placeholder="First Name"
@@ -72,7 +69,7 @@ export const ContactForm = () => {
 
         <Grid item xs={12} md={6}>
           <InputBase
-            style={contactFormStyles.input(width)}
+            style={contactFormStyles.input()}
             type="text"
             name="lastName"
             placeholder="Last Name"
@@ -89,7 +86,7 @@ export const ContactForm = () => {
 
         <Grid item xs={12} md={12} sx={{}}>
           <InputBase
-            style={contactFormStyles.input(width)}
+            style={contactFormStyles.input()}
             type="email"
             name="email"
             placeholder="Email"
@@ -104,7 +101,7 @@ export const ContactForm = () => {
 
         <Grid item xs={12} md={12} sx={{}}>
           <textarea
-            style={contactFormStyles.textArea(width)}
+            style={contactFormStyles.textArea()}
             name="message"
             placeholder="Message"
             onChange={formik.handleChange}

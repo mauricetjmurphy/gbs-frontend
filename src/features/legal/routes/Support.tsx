@@ -1,16 +1,13 @@
-import React from "react";
+import { FC } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 
 import { ContactForm } from "../components/ContactForm";
-import { useWindowSize } from "../../../hooks/useWindowSize";
 import { SocialLinks } from "../../../components/SocialMedia/SocialLinks";
 import { MainLayout, ContentLayout } from "../../global";
 
 interface SupportProps {}
 
-const Support: React.FC<SupportProps> = (props) => {
-  const { width } = useWindowSize();
-
+const Support: FC<SupportProps> = (props) => {
   return (
     <MainLayout>
       <ContentLayout title={"Support Page"} description={""}>

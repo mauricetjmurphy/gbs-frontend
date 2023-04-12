@@ -1,11 +1,11 @@
-import React from "react";
+import { FC } from "react";
 import { Box, Typography } from "@mui/material";
 
 interface LegalTitleProps {
   title: string;
 }
 
-export const LegalTitle: React.FC<LegalTitleProps> = (props) => {
+export const LegalTitle: FC<LegalTitleProps> = (props) => {
   return (
     <Box
       sx={{

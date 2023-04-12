@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import { nanoid } from "nanoid";
-import { Box, Grid, IconButton, Fade } from "@mui/material";
+import { Box, Grid, IconButton } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
 import { ListHeading } from "../LatestArticles/ListHeading";
@@ -14,7 +14,7 @@ interface CategoryListProps {
   dataIsLoading: boolean;
 }
 
-const CategoryList: React.FC<CategoryListProps> = (props) => {
+const CategoryList: FC<CategoryListProps> = (props) => {
   const [startIndex, setStartIndex] = useState(0);
   const [fadeKey, setFadeKey] = useState(0);
 

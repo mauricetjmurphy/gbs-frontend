@@ -1,13 +1,13 @@
-import React from "react";
+import { FC } from "react";
 
 import { ContentLayout } from "../../global";
 import { termsData } from "../../../data/termsData";
 import { LegalTitle } from "../components/LegalTitle";
 import { ParagraphList } from "../components/ParagraphList";
 
-interface termsProps {}
+interface TermsProps {}
 
-const Terms: React.FC<termsProps> = (props) => {
+const Terms: FC<TermsProps> = (props) => {
   return (
     <>
       <LegalTitle title={"Terms of Service"} />

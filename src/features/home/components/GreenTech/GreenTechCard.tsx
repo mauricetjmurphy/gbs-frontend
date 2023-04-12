@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { Typography, Box, Grid } from "@mui/material";
 
-import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { CF_IMAGE_URL } from "../../../../config";
 import { formatBodyText } from "../../../../utils/formatBodyText";
 
@@ -14,7 +13,6 @@ interface MostPopularCardProps {
 }
 
 export const GreenTechCard: React.FC<MostPopularCardProps> = (props) => {
-  const { width } = useWindowSize();
   const navigate = useNavigate();
 
   return (

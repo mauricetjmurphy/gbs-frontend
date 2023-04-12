@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { nanoid } from "nanoid";
 
@@ -15,7 +15,7 @@ interface ClimateChangeListProps {
   dataIsLoading: boolean;
 }
 
-const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
+const ClimateChangeList: FC<ClimateChangeListProps> = (props) => {
   const [randomItems, setRandomItems] = useState<Card[]>([]);
 
   useEffect(() => {

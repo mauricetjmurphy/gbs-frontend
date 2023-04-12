@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 
 import { ContentLayout } from "../../global";
 import { cookiesPolicyData } from "../../../data/cookiesPolicyData";
@@ -7,7 +7,7 @@ import { ParagraphList } from "../components/ParagraphList";
 
 interface CookiesProps {}
 
-const Cookies: React.FC<CookiesProps> = (props) => {
+const Cookies: FC<CookiesProps> = (props) => {
   return (
     <>
       <LegalTitle title={"Cookies Policy"} />
