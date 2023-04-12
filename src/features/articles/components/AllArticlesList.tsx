@@ -2,10 +2,9 @@ import React from "react";
 import { Grid } from "@mui/material";
 import { nanoid } from "nanoid";
 
-import { useWindowSize } from "../../../hooks/useWindowSize";
 import { Card } from "../../home/types";
 
-import ArticleCard from "./ArticleCard";
+import { ArticleCard } from "./ArticleCard";
 
 interface BlogCardListProps {
   data: Card[] | undefined;
@@ -15,7 +14,6 @@ interface BlogCardListProps {
 }
 
 export const AllArticlesList: React.FC<BlogCardListProps> = (props) => {
-  const { width } = useWindowSize();
   const startIndex = (props.currentPage - 1) * props.perPage;
   const endIndex = startIndex + props.perPage;
   const currentData = props.data?.slice(startIndex, endIndex);

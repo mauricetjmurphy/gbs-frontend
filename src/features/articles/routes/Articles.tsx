@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Navigate, useLocation, useNavigate, useParams } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { Box } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
@@ -13,8 +13,8 @@ import {
   ArticleContextInterface,
 } from "../../../context/ArticleCtx";
 import { Card } from "../../home/types";
-import BackButton from "../../../components/BackButton/BackButton";
-import { DisplayAd } from "../../../components/AdSense/DisplayAd";
+import { BackButton } from "../../../components";
+// import { DisplayAd } from "../../../components";
 
 interface ArticlesProps {}
 
@@ -23,8 +23,6 @@ const Articles: React.FC<ArticlesProps> = (props) => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const perPage = 8;
-
-  console.log(location);
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,

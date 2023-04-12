@@ -1,11 +1,10 @@
 import { Box, Divider, useMediaQuery, Theme } from "@mui/material";
-import React, { useEffect, useRef } from "react";
-import { useLocation, useNavigate } from "react-router";
+import React, { useRef } from "react";
+import { useNavigate } from "react-router";
 import styled from "styled-components";
 
-import useClickOutside from "../../../hooks/useClickOutside";
-
-import { categories } from "./DropdownNavbarData";
+import useClickOutside from "../../../../hooks/useClickOutside";
+import { categories } from "../DropdownNavbarData";
 
 const DropdownContainer = styled.div`
   position: absolute;

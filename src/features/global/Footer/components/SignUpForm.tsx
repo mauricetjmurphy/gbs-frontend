@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Box, Button, TextField } from "@mui/material";
 
-import { API_URL } from "../../../config";
+import { signUp } from "../api/signUp";
 
 import { signUpFormStyles } from "./footer.styles";
 
@@ -26,11 +26,7 @@ export const SignUpForm: React.FC<SignUpFormProps> = ({ setOpen, open }) => {
     initialValues,
     onSubmit: (values: any) => {
       setButtonDisabled(true);
-      fetch(`${API_URL}/signup`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: values.email.toLowerCase() }),
-      })
+      signUp(values.email)
         .then(() => {
           setOpen(true);
           formik.resetForm();

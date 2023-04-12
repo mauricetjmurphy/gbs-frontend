@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { useNavigate } from "react-router";
 import { Box, Grid, Typography } from "@mui/material";
 
@@ -12,7 +12,7 @@ interface ArticleCardProps {
   body: string[];
 }
 
-const ArticleCard: React.FC<ArticleCardProps> = (props) => {
+export const ArticleCard: FC<ArticleCardProps> = (props) => {
   const navigate = useNavigate();
 
   return (
@@ -55,5 +55,3 @@ const ArticleCard: React.FC<ArticleCardProps> = (props) => {
     </Grid>
   );
 };
-
-export default ArticleCard;

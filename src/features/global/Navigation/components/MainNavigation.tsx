@@ -11,9 +11,9 @@ import { nanoid } from "nanoid";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router";
 
-import { useWindowSize } from "../../../hooks/useWindowSize";
-import { SocialLinks } from "../../../components/SocialMedia/SocialLinks";
-import { DropdownNavbar, SearchSection } from "../";
+import { useWindowSize } from "../../../../hooks/useWindowSize";
+import { SocialLinks } from "../../../../components/SocialMedia/SocialLinks";
+import { DropdownNavbar, SearchSection } from "../../";
 
 import { navigationStyles } from "./navigation.styles";
 

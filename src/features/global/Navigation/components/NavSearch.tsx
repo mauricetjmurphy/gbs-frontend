@@ -7,12 +7,12 @@ import InputBase from "@mui/material/InputBase";
 import SearchIcon from "@mui/icons-material/Search";
 import CancelIcon from "@mui/icons-material/Cancel";
 
-import { API_URL, CF_IMAGE_URL } from "../../../config";
-import { Card } from "../../home/types";
+import { CF_IMAGE_URL } from "../../../../config";
+import { Card } from "../../../home/types";
 import {
   ArticleContext,
   ArticleContextInterface,
-} from "../../../context/ArticleCtx";
+} from "../../../../context/ArticleCtx";
 
 import { navigationStyles } from "./navigation.styles";
 

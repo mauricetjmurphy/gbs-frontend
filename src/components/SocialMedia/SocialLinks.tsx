@@ -6,7 +6,7 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 
 import { useWindowSize } from "../../hooks/useWindowSize";
-import { navigationStyles } from "../../features/global/Navigation/navigation.styles";
+import { navigationStyles } from "../../features/global/Navigation/components/navigation.styles";
 
 interface SocialNavigationItem {
   name: string;

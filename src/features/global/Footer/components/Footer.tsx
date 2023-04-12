@@ -2,8 +2,8 @@ import { Box, Button, Grid, Typography } from "@mui/material";
 import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
 
-import { useWindowSize } from "../../../hooks/useWindowSize";
-import { SocialLinks } from "../../../components/SocialMedia/SocialLinks";
+import { useWindowSize } from "../../../../hooks/useWindowSize";
+import { SocialLinks } from "../../../../components/SocialMedia/SocialLinks";
 
 import { footerStyles } from "./footer.styles";
 import { SignUp } from "./SignUp";

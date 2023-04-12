@@ -1,10 +1,9 @@
-import React from "react";
+import { ReactElement } from "react";
 
-import { Footer } from "../Footer/Footer";
-import { MainNavigation } from "../Navigation/MainNavigation";
+import { Footer, MainNavigation } from "../..";
 
 interface MainLayoutProps {
-  children: React.ReactElement | React.ReactElement[];
+  children: ReactElement | ReactElement[];
 }
 
 export const MainLayout = ({ children }: MainLayoutProps) => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { FC, useState } from "react";
 import Button from "@material-ui/core/Button";
 import {
   Box,
@@ -11,8 +11,6 @@ import {
   DialogTitle,
 } from "@mui/material";
 
-import { useWindowSize } from "../../../hooks/useWindowSize";
-
 import { SignUpForm } from "./SignUpForm";
 
 interface AlertDialogProps {
@@ -20,7 +18,7 @@ interface AlertDialogProps {
   setOpen: (value: boolean) => void;
 }
 
-const AlertDialog: React.FC<AlertDialogProps> = (props) => {
+const AlertDialog: FC<AlertDialogProps> = (props) => {
   return (
     <Dialog
       open={props.open}
@@ -55,7 +53,6 @@ const AlertDialog: React.FC<AlertDialogProps> = (props) => {
 };
 
 export const SignUp: React.FC = () => {
-  const { width } = useWindowSize();
   const [open, setOpen] = useState(false);
 
   return (
