@@ -3,7 +3,7 @@ import { Box, List } from "@mui/material";
 import { nanoid } from "nanoid";
 
 import { Card } from "../../types";
-import PostCardSkeleton from "../../../../components/Skeletons/PostCardSkeleton";
+import { PostCardSkeleton } from "../../../../components";
 
 import { PostCard } from "./PostCard";
 import { ListHeading } from "./ListHeading";

@@ -5,7 +5,7 @@ type Props = {
   key?: any;
 };
 
-const PostCardSkeleton = (props: Props) => {
+export const PostCardSkeleton = (props: Props) => {
   return (
     <Box key={nanoid()} padding={"15px 5px 30px 5px"}>
       <Box display={"flex"} alignItems={"center"} sx={{ marginBottom: "10px" }}>
@@ -51,5 +51,3 @@ const PostCardSkeleton = (props: Props) => {
     </Box>
   );
 };
-
-export default PostCardSkeleton;

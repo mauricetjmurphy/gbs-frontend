@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ContentLayout } from "../../../components";
+import { ContentLayout } from "../../global";
 import { privacyPolicyData } from "../../../data/privacyPolicyData";
 import { LegalTitle } from "../components/LegalTitle";
 import { ParagraphList } from "../components/ParagraphList";

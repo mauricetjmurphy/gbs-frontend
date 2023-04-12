@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import { useQuery, QueryObserverResult } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import { Card } from "../features/home/types";
 import { API_URL } from "../config";

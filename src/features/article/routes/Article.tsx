@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { useParams } from "react-router";
 import { Box, Grid } from "@mui/material";
 
-import { ContentLayout, MainLayout } from "../../../components";
+import { ContentLayout, MainLayout } from "../../global";
 import { Card } from "../../home/types";
 import { ArticleTitle } from "../components/ArticleTitle";
 import { ArticleImage } from "../components/ArticleImage";
@@ -10,7 +10,7 @@ import { ArticleParagraphList } from "../components/ArticleParagraphList";
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { BlogCardList } from "../../home/components/LatestArticles/BlogCardList";
 import { Spinner } from "../../../components/Spinner/Spinner";
-import BackButton from "../../../components/BackButton/BackButton";
+import { BackButton } from "../../../components/BackButton/BackButton";
 import { ArticleContext } from "../../../context/ArticleCtx";
 import { ArticleAd } from "../../../components/AdSense/ArticleAd";
 import { generateRandomIndicies } from "../../../utils/randomIndices";

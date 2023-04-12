@@ -54,7 +54,7 @@ const Item = ({
   );
 };
 
-const AdminSidebar = () => {
+export const AdminSidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const [selected, setSelected] = useState("Dashboard");
@@ -249,5 +249,3 @@ const AdminSidebar = () => {
     </Box>
   );
 };
-
-export default AdminSidebar;

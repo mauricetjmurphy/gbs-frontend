@@ -52,7 +52,7 @@ interface DropdownNavbarProps {
   toggleDropdown: (event: React.MouseEvent) => void;
 }
 
-const DropdownNavbar: React.FC<DropdownNavbarProps> = ({
+export const DropdownNavbar: React.FC<DropdownNavbarProps> = ({
   dropdownOpen,
   setDropdownOpen,
 }) => {
@@ -109,5 +109,3 @@ const DropdownNavbar: React.FC<DropdownNavbarProps> = ({
     </DropdownContainer>
   );
 };
-
-export default DropdownNavbar;

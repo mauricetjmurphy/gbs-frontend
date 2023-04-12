@@ -1,9 +1,8 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
 
 type Props = {};
 
-const Dashboard = (props: Props) => {
+export const Dashboard = (props: Props) => {
   return (
     <Box
       display={"flex"}
@@ -15,5 +14,3 @@ const Dashboard = (props: Props) => {
     </Box>
   );
 };
-
-export default Dashboard;

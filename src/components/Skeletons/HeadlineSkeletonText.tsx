@@ -5,7 +5,7 @@ type Props = {
   key?: string;
 };
 
-const HeadlineSkeletonText = (props: Props) => {
+export const HeadlineSkeletonText = (props: Props) => {
   return (
     <Box key={nanoid()} width={"100%"} padding={"20px 5px"}>
       <Skeleton
@@ -32,5 +32,3 @@ const HeadlineSkeletonText = (props: Props) => {
     </Box>
   );
 };
-
-export default HeadlineSkeletonText;

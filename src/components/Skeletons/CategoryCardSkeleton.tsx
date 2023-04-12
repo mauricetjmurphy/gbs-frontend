@@ -5,7 +5,7 @@ type Props = {
   key?: string;
 };
 
-const CategoryCardSkeleton = (props: Props) => {
+export const CategoryCardSkeleton = (props: Props) => {
   return (
     <Box key={nanoid()}>
       <Skeleton
@@ -25,5 +25,3 @@ const CategoryCardSkeleton = (props: Props) => {
     </Box>
   );
 };
-
-export default CategoryCardSkeleton;

@@ -3,27 +3,19 @@ import {
   Box,
   Grid,
   List,
-  ListItem,
   Typography,
-  Drawer,
   ListItemButton,
-  ListItemText,
   IconButton,
-  Menu,
-  MenuItem,
 } from "@mui/material";
-import { styled } from "@mui/system";
-import { AccountCircle } from "@mui/icons-material";
 import { nanoid } from "nanoid";
 import MenuIcon from "@mui/icons-material/Menu";
 import { useNavigate } from "react-router";
 
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import { SocialLinks } from "../../../components/SocialMedia/SocialLinks";
+import { DropdownNavbar, SearchSection } from "../";
 
-import { SearchSection } from "./NavSearch";
 import { navigationStyles } from "./navigation.styles";
-import DropdownNavbar from "./DropdownNavbar";
 
 interface PageNavigationProps {
   handleDrawerToggle: () => void;

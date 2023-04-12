@@ -18,11 +18,7 @@ import {
 import * as Yup from "yup";
 import { Box, Container, FormLabel, TextareaAutosize } from "@mui/material";
 import { useLocation, useNavigate } from "react-router";
-import {
-  useMutation,
-  useQueryClient,
-  UseMutationResult,
-} from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { API_URL } from "../../../../config";
 import { Spinner } from "../../../../components/Spinner/Spinner";
@@ -68,7 +64,7 @@ const validationSchema = Yup.object().shape({
   TopStory: Yup.string().required("Required"),
 });
 
-const ModifyArticle: React.FC<ModifyArticleProps> = () => {
+export const ModifyArticle: React.FC<ModifyArticleProps> = () => {
   const classes = useStyles();
   const location = useLocation();
   const navigate = useNavigate();
@@ -345,5 +341,3 @@ const ModifyArticle: React.FC<ModifyArticleProps> = () => {
     </Container>
   );
 };
-
-export default ModifyArticle;

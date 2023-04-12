@@ -2,7 +2,7 @@ import { Box, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import { Card } from "../../types";
-import HeadlineSkeleton from "../../../../components/Skeletons/HeadlineSkeleton";
+import { HeadlineSkeleton } from "../../../../components";
 
 import { BlogCardList } from "./BlogCardList";
 import { PostCardList } from "./PostCardList";

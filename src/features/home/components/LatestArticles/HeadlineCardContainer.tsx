@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { Button } from "@mui/material";
 
-import HeadlineSkeletonText from "../../../../components/Skeletons/HeadlineSkeletonText";
+import { HeadlineSkeletonText } from "../../../../components";
 import { Card } from "../../types";
 
 import { HeadlineCardImage } from "./HeadlineCardImage";

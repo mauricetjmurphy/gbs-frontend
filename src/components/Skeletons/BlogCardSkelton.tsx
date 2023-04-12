@@ -5,7 +5,7 @@ type Props = {
   key?: string;
 };
 
-const BlogCardSkelton = (props: Props) => {
+export const BlogCardSkelton = (props: Props) => {
   return (
     <Box key={nanoid()} padding={"15px 5px 30px 5px"}>
       <Skeleton
@@ -32,5 +32,3 @@ const BlogCardSkelton = (props: Props) => {
     </Box>
   );
 };
-
-export default BlogCardSkelton;

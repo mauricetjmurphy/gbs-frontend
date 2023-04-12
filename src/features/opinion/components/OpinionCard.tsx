@@ -6,7 +6,6 @@ import {
   Divider,
   Grid,
   ListItemAvatar,
-  ListItemButton,
   ListItemText,
   Typography,
 } from "@mui/material";
@@ -14,7 +13,7 @@ import PersonIcon from "@mui/icons-material/Person";
 
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import { formatDate } from "../../../utils/formatDate";
-import CommentIcon from "../../../components/CommentIcon/CommentIcon";
+import { CommentIcon } from "../../../components/CommentIcon/CommentIcon";
 
 interface OpinionCardProps {
   id: string;

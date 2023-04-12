@@ -1,9 +1,7 @@
 import { Box, Button } from "@mui/material";
 import { useNavigate } from "react-router";
 
-type Props = {};
-
-const BackButton = (props: Props) => {
+export const BackButton = () => {
   const navigate = useNavigate();
 
   return (

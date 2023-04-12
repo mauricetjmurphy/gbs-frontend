@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 
 import { ListHeading } from "../LatestArticles/ListHeading";
 import { Card } from "../../types";
-import HeadlineSkeleton from "../../../../components/Skeletons/HeadlineSkeleton";
+import { HeadlineSkeleton } from "../../../../components";
 import { generateRandomIndicies } from "../../../../utils/randomIndices";
 
 import { ClimateChangeCard } from "./ClimateChangeCard";

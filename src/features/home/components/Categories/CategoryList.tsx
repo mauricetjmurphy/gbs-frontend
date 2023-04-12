@@ -4,7 +4,7 @@ import { Box, Grid, IconButton, Fade } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
 import { ListHeading } from "../LatestArticles/ListHeading";
-import CategoryCardSkeleton from "../../../../components/Skeletons/CategoryCardSkeleton";
+import { CategoryCardSkeleton } from "../../../../components";
 
 import { CategoryCard } from "./CategoryCard";
 import { categories } from "./categoryData";

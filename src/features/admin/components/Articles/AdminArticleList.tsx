@@ -15,7 +15,7 @@ import {
 import { Spinner } from "../../../../components/Spinner/Spinner";
 import { API_URL } from "../../../../config";
 
-const AdminArticlesList = () => {
+export const AdminArticleList = () => {
   const theme = useTheme();
   const navigate = useNavigate();
   const [loadingItemId, setLoadingItemId] = useState<string | null>(null);
@@ -202,5 +202,3 @@ const AdminArticlesList = () => {
     </Box>
   );
 };
-
-export default AdminArticlesList;

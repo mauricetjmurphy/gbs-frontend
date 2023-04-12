@@ -4,7 +4,7 @@ import { nanoid } from "nanoid";
 
 import { Card } from "../../types";
 import { ListHeading } from "../LatestArticles/ListHeading";
-import BlogCardSkelton from "../../../../components/Skeletons/BlogCardSkelton";
+import { BlogCardSkelton } from "../../../../components";
 import { generateRandomIndicies } from "../../../../utils/randomIndices";
 
 import { GreenTechCard } from "./GreenTechCard";

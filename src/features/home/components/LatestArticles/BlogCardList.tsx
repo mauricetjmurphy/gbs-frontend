@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import { nanoid } from "nanoid";
 
 import { Card } from "../../types";
-import BlogCardSkelton from "../../../../components/Skeletons/BlogCardSkelton";
+import { BlogCardSkelton } from "../../../../components";
 
 import { BlogCard } from "./BlogCard";
 import { ListHeading } from "./ListHeading";
