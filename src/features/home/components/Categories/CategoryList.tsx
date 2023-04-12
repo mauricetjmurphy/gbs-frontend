@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { nanoid } from "nanoid";
 import { Box, Grid, IconButton, Fade } from "@mui/material";
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 
@@ -62,20 +63,19 @@ const CategoryList: React.FC<CategoryListProps> = (props) => {
         >
           {props.dataIsLoading &&
             displayedCategories.map((item: any, index: number) => (
-              <Grid xs={12} md={3} item>
+              <Grid key={nanoid()} xs={12} md={3} item>
                 <CategoryCardSkeleton />
               </Grid>
             ))}
 
           {!props.dataIsLoading &&
             displayedCategories.map((item: any, index: number) => (
-              <Fade in key={`${fadeKey}-${index}`}>
-                <CategoryCard
-                  category={item.category}
-                  image_url={item.image_url}
-                  path={item.path}
-                />
-              </Fade>
+              <CategoryCard
+                key={nanoid()}
+                category={item.category}
+                image_url={item.image_url}
+                path={item.path}
+              />
             ))}
         </Grid>
         <Box display={"flex"} alignItems={"center"}>

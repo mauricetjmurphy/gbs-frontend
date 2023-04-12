@@ -3,7 +3,7 @@ import { Box } from "@mui/material";
 
 import { PageTitle } from "../../../components/PageTitle/PageTitle";
 import { LatestArticles } from "../components/LatestArticles/LatestArticles";
-import { DisplayAd } from "../../../components/AdSense/DisplayAd";
+// import { DisplayAd } from "../../../components/AdSense/DisplayAd";
 import { ContentLayout, MainLayout } from "../../global";
 import {
   ArticleContextInterface,
@@ -11,6 +11,7 @@ import {
 } from "../../../context/ArticleCtx";
 import CategoryList from "../components/Categories/CategoryList";
 import { Card } from "../types";
+import { generateRandomIndicies } from "../../../utils/randomIndices";
 
 const GreenTechList = lazy(
   () => import("../components/GreenTech/GreenTechList")
@@ -41,12 +42,17 @@ export const Home: React.FC = () => {
     );
   }
 
-  const climateData = data?.filter(
-    (item: Card) => item.Category === "Climate Change"
+  const randomLatestNumbers = generateRandomIndicies(6, 253);
+  const randomLatestItems: any = randomLatestNumbers?.map(
+    (index: any) => data && data[index]
   );
 
   const techData = data?.filter(
     (item: Card) => item.Category === "Green Technology"
+  );
+
+  const climateData = data?.filter(
+    (item: Card) => item.Category === "Climate Change"
   );
 
   return (
@@ -60,8 +66,8 @@ export const Home: React.FC = () => {
         {/* <DisplayAd /> */}
         <PageTitle title={"Latest Articles"} />
         <LatestArticles
-          dataIsLoading={initialDataIsLoading}
-          data={initialData}
+          dataIsLoading={dataIsLoading}
+          data={randomLatestItems}
         />
         <Suspense>
           <CategoryList
@@ -73,14 +79,14 @@ export const Home: React.FC = () => {
           <GreenTechList
             dataIsLoading={dataIsLoading}
             listTitle={"Green Technology"}
-            data={techData?.slice(0, 5)}
+            data={techData}
           />
         </Suspense>
         <Suspense>
           <ClimateChangeList
             dataIsLoading={dataIsLoading}
             listTitle={"Climate Change"}
-            data={climateData?.slice(0, 2)}
+            data={climateData}
           />
         </Suspense>
       </ContentLayout>

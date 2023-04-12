@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Box, Grid } from "@mui/material";
 import { nanoid } from "nanoid";
 
 import { ListHeading } from "../LatestArticles/ListHeading";
 import { Card } from "../../types";
 import HeadlineSkeleton from "../../../../components/Skeletons/HeadlineSkeleton";
+import { generateRandomIndicies } from "../../../../utils/randomIndices";
 
 import { ClimateChangeCard } from "./ClimateChangeCard";
 
@@ -15,6 +16,17 @@ interface ClimateChangeListProps {
 }
 
 const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
+  const [randomItems, setRandomItems] = useState<Card[]>([]);
+
+  useEffect(() => {
+    const randomClimateNumbers = generateRandomIndicies(2, 14);
+    const randomClimateItems = randomClimateNumbers
+      .map((index: any) => props.data?.[index])
+      .filter(Boolean) as Card[];
+
+    setRandomItems(randomClimateItems);
+  }, [props.data]);
+
   return (
     <Box padding={{ xs: "10px", sm: "50px 10px 50px 10px" }}>
       <ListHeading listTitle={props.listTitle} />
@@ -27,14 +39,14 @@ const ClimateChangeList: React.FC<ClimateChangeListProps> = (props) => {
       >
         {props.dataIsLoading &&
           [1, 2].map((i) => (
-            <Grid sx={{}} xs={12} md={6} item>
+            <Grid key={nanoid()} sx={{}} xs={12} md={6} item>
               <HeadlineSkeleton />
             </Grid>
           ))}
 
-        {props.data?.map((item: any) => (
+        {randomItems.map((item: any) => (
           <ClimateChangeCard
-            key={nanoid()}
+            key={item.Id}
             id={item.Id}
             title={item.Title}
             image_url={item.Image_url}

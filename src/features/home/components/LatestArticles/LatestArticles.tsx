@@ -6,7 +6,8 @@ import HeadlineSkeleton from "../../../../components/Skeletons/HeadlineSkeleton"
 
 import { BlogCardList } from "./BlogCardList";
 import { PostCardList } from "./PostCardList";
-import { HeadlineCard } from "./HeadlineCard";
+// import { HeadlineCard } from "./HeadlineCardText";
+import { HeadlineCardContainer } from "./HeadlineCardContainer";
 
 interface LatestArticlesProps {
   data: Card[] | undefined;
@@ -34,16 +35,10 @@ export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
         />
       </Grid>
       <Grid md={6} xs={12} item sx={{}}>
-        {!props.dataIsLoading && props.data ? (
-          <HeadlineCard
-            id={props.data[2]?.Id}
-            title={props.data[2]?.Title}
-            image_url={props.data[2]?.Image_url}
-            body={props.data[2]?.Body}
-            date={props.data[2]?.Date}
-          />
-        ) : (
-          <HeadlineSkeleton />
+        {props.dataIsLoading && <HeadlineSkeleton />}
+
+        {!props.dataIsLoading && (
+          <HeadlineCardContainer data={props.data?.[2]} />
         )}
       </Grid>
       <Grid md={3} xs={12} item sx={{}}>

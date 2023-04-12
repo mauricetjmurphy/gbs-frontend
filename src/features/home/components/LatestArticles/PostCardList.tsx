@@ -22,7 +22,7 @@ export const PostCardList: React.FC<PostCardListProps> = (props) => {
         sx={{ display: "flex", flexDirection: "column", padding: "10px 0px" }}
       >
         {props.dataIsLoading &&
-          [1, 2, 3, 4, 5].map((i) => <PostCardSkeleton />)}
+          [1, 2, 3, 4, 5].map((i) => <PostCardSkeleton key={nanoid()} />)}
 
         {!props.dataIsLoading &&
           props.data &&

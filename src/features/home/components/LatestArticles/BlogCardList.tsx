@@ -35,7 +35,8 @@ export const BlogCardList: React.FC<BlogCardListProps> = (props) => {
           padding: "10px 0px",
         }}
       >
-        {props.dataIsLoading && [1, 2, 3].map((i) => <BlogCardSkelton />)}
+        {props.dataIsLoading &&
+          [1, 2, 3].map((i) => <BlogCardSkelton key={nanoid()} />)}
 
         {!props.dataIsLoading &&
           props.data?.map((item: Card) => (

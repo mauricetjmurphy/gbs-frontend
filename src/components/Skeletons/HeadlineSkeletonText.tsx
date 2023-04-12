@@ -5,32 +5,32 @@ type Props = {
   key?: string;
 };
 
-const BlogCardSkelton = (props: Props) => {
+const HeadlineSkeletonText = (props: Props) => {
   return (
-    <Box key={nanoid()} padding={"15px 5px 30px 5px"}>
+    <Box key={nanoid()} width={"100%"} padding={"20px 5px"}>
       <Skeleton
         animation="wave"
         variant="rectangular"
-        width={"100%"}
-        height={150}
-        sx={{ marginBottom: "15px", borderRadius: "4px" }}
+        width={"100px"}
+        height={12}
+        sx={{ marginBottom: "20px", borderRadius: "4px" }}
       />
       <Skeleton
         animation="wave"
         variant="rectangular"
         width={"100%"}
-        height={18}
+        height={32}
         sx={{ marginBottom: "5px", borderRadius: "4px" }}
       />
       <Skeleton
         animation="wave"
         variant="rectangular"
         width={"100%"}
-        height={18}
-        sx={{ borderRadius: "4px" }}
+        height={16}
+        sx={{ marginBottom: "5px", borderRadius: "4px" }}
       />
     </Box>
   );
 };
 
-export default BlogCardSkelton;
+export default HeadlineSkeletonText;

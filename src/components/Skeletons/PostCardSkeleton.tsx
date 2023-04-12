@@ -1,11 +1,13 @@
 import { Box, Skeleton } from "@mui/material";
-import React from "react";
+import { nanoid } from "nanoid";
 
-type Props = {};
+type Props = {
+  key?: any;
+};
 
 const PostCardSkeleton = (props: Props) => {
   return (
-    <Box padding={"15px 5px 30px 5px"}>
+    <Box key={nanoid()} padding={"15px 5px 30px 5px"}>
       <Box display={"flex"} alignItems={"center"} sx={{ marginBottom: "10px" }}>
         <Skeleton
           sx={{ marginRight: "20px" }}

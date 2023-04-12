@@ -1,11 +1,13 @@
 import { Box, Skeleton } from "@mui/material";
-import React from "react";
+import { nanoid } from "nanoid";
 
-type Props = {};
+type Props = {
+  key?: string;
+};
 
 const HeadlineSkeleton = (props: Props) => {
   return (
-    <Box padding={"20px 5px"}>
+    <Box key={nanoid()} padding={"20px 5px"}>
       <Skeleton
         animation="wave"
         variant="rectangular"

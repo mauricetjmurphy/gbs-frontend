@@ -1,11 +1,13 @@
 import { Box, Skeleton } from "@mui/material";
-import React from "react";
+import { nanoid } from "nanoid";
 
-type Props = {};
+type Props = {
+  key?: string;
+};
 
 const CategoryCardSkeleton = (props: Props) => {
   return (
-    <Box>
+    <Box key={nanoid()}>
       <Skeleton
         animation="wave"
         variant="rectangular"
