@@ -5,7 +5,7 @@ export const categories = [
     path: "/articles",
   },
   {
-    category: "Green Technologies",
+    category: "Green Technology",
     image_url: "green-tech-medium.jpg",
     path: "/articles",
   },

@@ -27,14 +27,14 @@ const LatestArticlesContainer = styled(Grid)(({ theme }) => ({
 export const LatestArticles: React.FC<LatestArticlesProps> = (props) => {
   return (
     <LatestArticlesContainer container>
-      <Grid md={3} xs={12} item sx={{}}>
+      <Grid md={3} xs={12} item>
         <BlogCardList
           data={props.data?.slice(0, 2)}
           listTitle={"Top Stories"}
           dataIsLoading={props.dataIsLoading}
         />
       </Grid>
-      <Grid md={6} xs={12} item sx={{}}>
+      <Grid md={6} xs={12} item>
         {props.dataIsLoading && <HeadlineSkeleton />}
 
         {!props.dataIsLoading && (

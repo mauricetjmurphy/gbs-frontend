@@ -13,6 +13,7 @@ import { Spinner } from "../../../components/Spinner/Spinner";
 import BackButton from "../../../components/BackButton/BackButton";
 import { ArticleContext } from "../../../context/ArticleCtx";
 import { ArticleAd } from "../../../components/AdSense/ArticleAd";
+import { generateRandomIndicies } from "../../../utils/randomIndices";
 
 interface ArticleProps {}
 
@@ -23,7 +24,10 @@ const Article: React.FC<ArticleProps> = (props) => {
 
   const article = data?.find((item: Card) => item.Id === id);
 
-  const ImageCardListData = data?.slice(0, 5).filter((item) => item.Id !== id);
+  const randomIndexNumbers = generateRandomIndicies(6, 253);
+  const randomDataItems: any = randomIndexNumbers?.map(
+    (index: any) => data && data[index]
+  );
 
   if (dataIsLoading) {
     return <Spinner />;
@@ -69,7 +73,7 @@ const Article: React.FC<ArticleProps> = (props) => {
           <Grid item md={4} xs={12} padding={{ xs: "0px", sm: "0px 50px" }}>
             <BlogCardList
               dataIsLoading={dataIsLoading}
-              data={ImageCardListData}
+              data={randomDataItems}
               listTitle={"Top Stories"}
             />
           </Grid>
