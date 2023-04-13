@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { Home } from "../features/home/routes/Home";
+import usePageTracking from "../hooks/usePageTracking";
 // import { useAuth } from "../features/auth/hooks/useAuth";
 
 const Vision = lazy(() => import("../features/vision/routes/Vision"));
@@ -25,6 +26,7 @@ const Terms = lazy(() => import("../features/legal/routes/Terms"));
 
 export const AppRoutes: React.FC = () => {
   // const { isAuthenticated } = useAuth();
+  usePageTracking();
 
   const isAuthenticated = false;
 

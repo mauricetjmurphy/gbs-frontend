@@ -1,7 +1,5 @@
-import React from "react";
 import { styled } from "@mui/material/styles";
 
-import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { Head } from "../../../../components/Head/Head";
 
 interface ContentLayoutProps {
@@ -29,7 +27,6 @@ export const ContentLayout = ({
   title,
   description,
 }: ContentLayoutProps) => {
-  const { width } = useWindowSize();
   return (
     <ContentLayoutContainer>
       <Head title={title} description={description} />

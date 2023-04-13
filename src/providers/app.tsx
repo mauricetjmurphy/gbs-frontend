@@ -18,6 +18,7 @@ import {
 } from "@mui/material";
 import { ThemeOptions } from "@material-ui/core";
 
+import usePageTracking from "../hooks/usePageTracking";
 import { ColorModeContext, useMode } from "../theme/theme";
 import { ScrollToTop } from "../lib/ScrollToTop";
 import { ArticleContextProvider } from "../context/ArticleCtx";
@@ -82,6 +83,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({
   children,
 }: AppProviderProps) => {
   const { theme, colorMode } = useMode();
+
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <HelmetProvider>
