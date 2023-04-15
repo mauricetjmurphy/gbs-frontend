@@ -51,8 +51,6 @@ export const Home: React.FC = () => {
     (item: Card) => item.Category === "Green Technology"
   );
 
-  console.log(techData);
-
   const climateData = data?.filter(
     (item: Card) => item.Category === "Climate Change"
   );
