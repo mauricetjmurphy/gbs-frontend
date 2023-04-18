@@ -14,6 +14,7 @@ import {
 } from "../../../context/ArticleCtx";
 import { Card } from "../../home/types";
 import { BackButton } from "../../../components";
+import { generateRandomIndicies } from "../../../utils/randomIndices";
 // import { DisplayAd } from "../../../components";
 
 interface ArticlesProps {}
