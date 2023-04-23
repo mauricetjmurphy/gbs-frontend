@@ -21,9 +21,6 @@ const ClimateChangeList = lazy(
 );
 
 export const Home: React.FC = () => {
-  const { initialData, initialDataIsLoading, initialDataIsError } =
-    useContext<ArticleContextInterface>(ArticleContext);
-
   const { data, dataIsLoading, dataIsError } =
     useContext<ArticleContextInterface>(ArticleContext);
 
@@ -42,7 +39,7 @@ export const Home: React.FC = () => {
     );
   }
 
-  const randomLatestNumbers = generateRandomIndicies(6, 253);
+  const randomLatestNumbers = generateRandomIndicies(6, data?.length);
   const randomLatestItems: any = randomLatestNumbers?.map(
     (index: any) => data && data[index]
   );

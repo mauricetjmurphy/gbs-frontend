@@ -1,7 +1,10 @@
-export function generateRandomIndicies(amount: number, size: number) {
+export function generateRandomIndicies(
+  amount: number,
+  size: number | undefined
+) {
   const numbers = new Set();
 
-  while (numbers.size < amount) {
+  while (size !== undefined && numbers.size < amount) {
     const randomNumber = Math.floor(Math.random() * size) + 1;
     numbers.add(randomNumber);
   }

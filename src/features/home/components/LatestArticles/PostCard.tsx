@@ -12,6 +12,7 @@ import PersonIcon from "@mui/icons-material/Person";
 
 import { formatDate } from "../../../../utils/formatDate";
 import { formatBodyText } from "../../../../utils/formatBodyText";
+import { cleanLinkText } from "../../../../utils/cleanLinkText";
 
 interface PostCardProps {
   id: string;
@@ -85,7 +86,7 @@ export const PostCard: React.FC<PostCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography variant={"body2"} component={"p"} sx={{}}>
-          {formatBodyText(props.body)}
+          {cleanLinkText(formatBodyText(props.body))}
         </Typography>
       </Box>
     </ListItemButton>

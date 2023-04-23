@@ -6,6 +6,7 @@ import { formatDate } from "../../../../utils/formatDate";
 import { useWindowSize } from "../../../../hooks/useWindowSize";
 import { CF_IMAGE_URL } from "../../../../config";
 import { formatBodyText } from "../../../../utils/formatBodyText";
+import { cleanLinkText } from "../../../../utils/cleanLinkText";
 
 interface ClimateChangeCardProps {
   id: string;
@@ -73,7 +74,7 @@ export const ClimateChangeCard: React.FC<ClimateChangeCardProps> = (props) => {
             {props.title}
           </Typography>
           <Typography sx={{}} variant={"body2"} component={"p"}>
-            {formatBodyText(props.body)}
+            {cleanLinkText(formatBodyText(props.body))}
           </Typography>
         </Box>
       </Button>

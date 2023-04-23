@@ -4,6 +4,7 @@ import { Typography, Box, Button, styled } from "@mui/material";
 import { formatDate } from "../../../../utils/formatDate";
 import { CF_IMAGE_URL } from "../../../../config";
 import { formatBodyText } from "../../../../utils/formatBodyText";
+import { cleanLinkText } from "../../../../utils/cleanLinkText";
 
 interface HeadlineCardProps {
   id: string | undefined;
@@ -77,7 +78,7 @@ export const HeadlineCard: React.FC<HeadlineCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography sx={{}} variant={"body1"} component={"p"}>
-          {formatBodyText(props.body, 500)}
+          {cleanLinkText(formatBodyText(props.body, 500))}
         </Typography>
       </Box>
     </BackButton>

@@ -3,6 +3,7 @@ import { ListItemButton, Typography, Box } from "@mui/material";
 
 import { CF_IMAGE_URL } from "../../../../config";
 import { formatBodyText } from "../../../../utils/formatBodyText";
+import { cleanLinkText } from "../../../../utils/cleanLinkText";
 
 interface BlogCardProps {
   id: string;
@@ -55,7 +56,7 @@ export const BlogCard: React.FC<BlogCardProps> = (props) => {
           {props.title}
         </Typography>
         <Typography sx={{}} variant={"body2"} component={"p"}>
-          {formatBodyText(props.body)}
+          {cleanLinkText(formatBodyText(props.body))}
         </Typography>
       </Box>
     </ListItemButton>

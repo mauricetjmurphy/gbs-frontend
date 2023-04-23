@@ -1,14 +1,9 @@
 import * as React from "react";
 // import { Provider } from "react-redux";
-import { ProSidebarProvider } from "react-pro-sidebar";
 import { ErrorBoundary } from "react-error-boundary";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router } from "react-router-dom";
-import {
-  QueryClient,
-  QueryClientProvider,
-  useQuery,
-} from "@tanstack/react-query";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Box,
   Button,
@@ -18,7 +13,7 @@ import {
 } from "@mui/material";
 import { ThemeOptions } from "@material-ui/core";
 
-import usePageTracking from "../hooks/usePageTracking";
+// import usePageTracking from "../hooks/usePageTracking";
 import { ColorModeContext, useMode } from "../theme/theme";
 import { ScrollToTop } from "../lib/ScrollToTop";
 import { ArticleContextProvider } from "../context/ArticleCtx";
@@ -89,17 +84,15 @@ export const AppProvider: React.FC<AppProviderProps> = ({
       <HelmetProvider>
         <QueryClientProvider client={queryClient}>
           <ColorModeContext.Provider value={colorMode}>
-            <ProSidebarProvider>
-              <ThemeProvider theme={{ ...theme, ...colorMode } as ThemeOptions}>
-                <ArticleContextProvider>
-                  <CssBaseline />
-                  <Router>
-                    <ScrollToTop />
-                    {children}
-                  </Router>
-                </ArticleContextProvider>
-              </ThemeProvider>
-            </ProSidebarProvider>
+            <ThemeProvider theme={{ ...theme, ...colorMode } as ThemeOptions}>
+              <ArticleContextProvider>
+                <CssBaseline />
+                <Router>
+                  <ScrollToTop />
+                  {children}
+                </Router>
+              </ArticleContextProvider>
+            </ThemeProvider>
           </ColorModeContext.Provider>
         </QueryClientProvider>
       </HelmetProvider>

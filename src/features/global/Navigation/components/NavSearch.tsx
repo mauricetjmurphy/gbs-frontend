@@ -13,6 +13,7 @@ import {
   ArticleContext,
   ArticleContextInterface,
 } from "../../../../context/ArticleCtx";
+import { cleanLinkText } from "../../../../utils/cleanLinkText";
 
 import { navigationStyles } from "./navigation.styles";
 
@@ -87,43 +88,47 @@ const SearchItemList: React.FC<SerchItemsListProps> = (props) => {
         overflow: "scroll",
       }}
     >
-      {props.data?.map((item) => (
-        <Grid
-          key={nanoid()}
-          onClick={() => {
-            navigate(`/article/${item.Id}`);
-            props.setSearchTerm("");
-          }}
-          container
-          direction={{ xs: "row", md: "row" }}
-          sx={{
-            "&:hover": { background: "#cccccc95" },
-            cursor: "pointer",
-          }}
-        >
-          <Grid item xs={4} md={4}>
-            <Box sx={{ overflow: "hidden", padding: "10px" }}>
-              <img
-                src={`${CF_IMAGE_URL}/${item.Image_url}`}
-                alt={item.Title}
-                style={{ width: "100%" }}
-              />
-            </Box>
+      {props.data?.map((item) => {
+        const body = `${item.Body[0].substring(0, 50)}...`;
+
+        return (
+          <Grid
+            key={nanoid()}
+            onClick={() => {
+              navigate(`/article/${item.Id}`);
+              props.setSearchTerm("");
+            }}
+            container
+            direction={{ xs: "row", md: "row" }}
+            sx={{
+              "&:hover": { background: "#cccccc95" },
+              cursor: "pointer",
+            }}
+          >
+            <Grid item xs={4} md={4}>
+              <Box sx={{ overflow: "hidden", padding: "10px" }}>
+                <img
+                  src={`${CF_IMAGE_URL}/${item.Image_url}`}
+                  alt={item.Title}
+                  style={{ width: "100%" }}
+                />
+              </Box>
+            </Grid>
+            <Grid item xs={8} md={8}>
+              <Typography
+                sx={{ paddingTop: "10px", fontWeight: "bold" }}
+                variant="body2"
+              >
+                {item.Title}
+              </Typography>
+              <Typography variant="body2" sx={{ color: "#818181" }}>
+                {`${cleanLinkText(item.Body[0]).substring(0, 50)}...`}
+              </Typography>
+            </Grid>
+            <Divider sx={{ width: "100%" }} />
           </Grid>
-          <Grid item xs={8} md={8}>
-            <Typography
-              sx={{ paddingTop: "10px", fontWeight: "bold" }}
-              variant="body2"
-            >
-              {item.Title}
-            </Typography>
-            <Typography variant="body2" sx={{ color: "#818181" }}>
-              {`${item.Body[0].substring(0, 50)}...`}
-            </Typography>
-          </Grid>
-          <Divider sx={{ width: "100%" }} />
-        </Grid>
-      ))}
+        );
+      })}
     </Box>
   );
 };
